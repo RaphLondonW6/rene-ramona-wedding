@@ -5,8 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useLanguage } from '@/context/LanguageContext'
 
 const RSVP_ENDPOINT =
-  process.env.NEXT_PUBLIC_RSVP_ENDPOINT ||
-  'https://script.google.com/macros/s/AKfycbw6_3RvsV9S772KSp4IYsI0tlRpeRJvaqzUevo2AyxWdBR7_kgjqAjdqrys506-MDh3xQ/exec'
+  'https://script.google.com/macros/s/AKfycbyF7hfTXoQHWHwwq13syhCktAicjsTlokS1i7dJU7Kxhfc3nAZGm0Ab3YUYnKKUztREQw/exec'
 
 type FormValues = {
   firstName: string
@@ -57,18 +56,20 @@ export default function RSVP() {
 
     setStatus('submitting')
     try {
-      const payload = {
-        ...data,
-        submittedAt: new Date().toISOString(),
-      }
+      const body = new URLSearchParams()
+      Object.entries({ ...data, submittedAt: new Date().toISOString() })
+        .forEach(([k, v]) => body.append(k, String(v ?? '')))
 
-      const res = await fetch('/api/rsvp', {
+      // Submit directly to GAS with no-cors (avoids CF Workers proxy issues).
+      // no-cors always returns an opaque response — we can't read it,
+      // but if there's no network exception the data reached GAS.
+      await fetch(RSVP_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
       })
 
-      if (!res.ok) throw new Error('Server error')
       setStatus('success')
     } catch {
       setStatus('error')
