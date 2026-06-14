@@ -55,25 +55,21 @@ export default function RSVP() {
     if (honeypot) return
 
     setStatus('submitting')
-    try {
-      const body = new URLSearchParams()
-      Object.entries({ ...data, submittedAt: new Date().toISOString() })
-        .forEach(([k, v]) => body.append(k, String(v ?? '')))
 
-      // Submit directly to GAS with no-cors (avoids CF Workers proxy issues).
-      // no-cors always returns an opaque response — we can't read it,
-      // but if there's no network exception the data reached GAS.
-      await fetch(RSVP_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString(),
-      })
+    const body = new URLSearchParams()
+    Object.entries({ ...data, submittedAt: new Date().toISOString() })
+      .forEach(([k, v]) => body.append(k, String(v ?? '')))
 
-      setStatus('success')
-    } catch {
-      setStatus('error')
-    }
+    // Fire-and-forget: no-cors returns an opaque response we can't read.
+    // The browser sends the request regardless — just show success.
+    fetch(RSVP_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    }).catch(console.error)
+
+    setStatus('success')
   }
 
   if (status === 'success') {
