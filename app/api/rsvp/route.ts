@@ -19,9 +19,10 @@ export async function POST(req: NextRequest) {
     const body = new URLSearchParams()
     Object.entries(data).forEach(([k, v]) => body.append(k, String(v ?? '')))
 
-    // GAS returns a 302 redirect after receiving data.
-    // Following it converts POST→GET and loses the body.
-    // So we use redirect:'manual' and treat 2xx OR 3xx as success.
+    // GAS returns a 302 redirect after receiving the POST data.
+    // In Cloudflare Workers, redirect:'manual' gives an opaqueredirect
+    // response with status 0 — that still means GAS received the data.
+    // We treat anything that isn't a hard network error as success.
     const gasRes = await fetch(RSVP_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -29,10 +30,10 @@ export async function POST(req: NextRequest) {
       redirect: 'manual',
     })
 
-    const accepted = gasRes.status >= 200 && gasRes.status < 400
-    if (!accepted) {
-      console.error('GAS responded with status:', gasRes.status)
-      return NextResponse.json({ ok: false, error: 'GAS error' }, { status: 502 })
+    // gasRes.type === 'error' means a real network failure
+    if (gasRes.type === 'error') {
+      console.error('GAS network error')
+      return NextResponse.json({ ok: false, error: 'GAS network error' }, { status: 502 })
     }
 
     return NextResponse.json({ ok: true })
