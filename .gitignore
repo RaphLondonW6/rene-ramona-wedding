@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+.next/
+out/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large media files — host these on Cloudflare Stream or R2 instead
+public/videos/*.mp4
+public/videos/*.MP4
+public/videos/*.mov
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts

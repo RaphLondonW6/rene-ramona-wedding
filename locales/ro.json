@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "welcome": "Bun Venit",
+    "program": "Program",
+    "rsvp": "Confirmare",
+    "accommodation": "Cazare",
+    "honeymoon": "Fond Lună de Miere",
+    "contact": "Contact"
+  },
+  "hero": {
+    "names": "Rene & Ramona",
+    "date": "12 Iunie 2027",
+    "tagline": "Împreună cu familiile noastre, vă invităm să celebrați nunta noastră.",
+    "countdown": {
+      "days": "Zile",
+      "hours": "Ore",
+      "minutes": "Minute",
+      "seconds": "Secunde"
+    },
+    "scroll": "Derulați pentru a explora"
+  },
+  "welcome": {
+    "title": "Bun Venit",
+    "body": "Așteptăm cu nerăbdare să vă vedem pe 12 iunie 2027. Ceremonia va avea loc la Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, România, la ora 16:00.",
+    "mapsButton": "Deschide în Google Maps"
+  },
+  "program": {
+    "title": "Ceremonie & Program",
+    "subtitle": "Programul zilei noastre speciale",
+    "events": [
+      { "time": "17:00", "title": "Ceremonia", "description": "la Phoenix Cernica" },
+      { "time": "18:00", "title": "Recepție", "description": "Fotografii și recepție în grădină" },
+      { "time": "20:30", "title": "Cina", "description": "Bucurați-vă de o cină festivă împreună" },
+      { "time": "23:00", "title": "Petrecere de Seară", "description": "Dansați și sărbătoriți până noaptea târziu" }
+    ]
+  },
+  "rsvp": {
+    "title": "Confirmați Prezența",
+    "subtitle": "Vă rugăm să confirmați prezența până pe 30/05/2027.",
+    "dresscode": {
+      "title": "Cod Vestimentar",
+      "subtitle": "Cocktail — Un echilibru între elegant și confortabil.",
+      "men": "Bărbați: Costum și cravată.",
+      "women": "Femei: Rochii până la genunchi, midi sau la gleznă."
+    },
+    "form": {
+      "firstName": "Prenume",
+      "lastName": "Nume de Familie",
+      "email": "Adresă de Email",
+      "phone": "Număr de Telefon",
+      "attendance": "Participare",
+      "attending": "Voi participa",
+      "notAttending": "Nu pot participa",
+      "message": "Mesaj pentru cuplu (opțional)",
+      "messagePlaceholder": "Scrieți un mesaj sau o notă specială…",
+      "dietary": "Cerințe Alimentare",
+      "dietaryOptions": {
+        "none": "Fără cerințe speciale",
+        "allergies": "Alergii",
+        "gluten": "Intoleranță la gluten",
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "other": "Altele"
+      },
+      "dietaryOtherPlaceholder": "Vă rugăm specificați cerința alimentară…",
+      "mealTitle": "Selecție Meniu",
+      "starterTitle": "Aperitive & Canapele",
+      "starterNote": "O selecție de canapele și aperitive va fi servită.",
+      "starters": [
+        "Tartă cu brânză brie și gem de coacăze roșii",
+        "Quiche Lorraine",
+        "Terină de ficat de gâscă și pui cu fructe confiate și chutney de portocale cu ardei iute",
+        "Ruladă de brânză cu struguri în crustă de nucă coaptă",
+        "Piept de rață afumat",
+        "Vitello Tonnato",
+        "Căni canapé cu icre de știucă și arpagic",
+        "Smochine cu brânză de capră și fulgi de migdale",
+        "Roșii cherry cu mozzarella și busuioc",
+        "Măsline verzi siciliene"
+      ],
+      "mainCourseTitle": "Fel Principal",
+      "mainCourseOption1": "Opțiunea 1",
+      "mainCourseOption1Details": {
+        "fish": "Fel de pește: File de doradă cu sos de unt și lămâie servit cu risotto alb",
+        "traditional": "Fel tradițional: Sarmale cu mămăligă, slănină, smântână și ardei iute",
+        "main": "Fel principal: Picior de rață confit servit cu piure de țelină și pară în sos de vin roșu",
+        "dessert": "Desert: Tort de nuntă"
+      },
+      "gdpr": "Sunt de acord ca datele mele personale să fie stocate și utilizate exclusiv în scopul organizării acestui eveniment nupțial, în conformitate cu GDPR.",
+      "submit": "Confirmați Prezența",
+      "submitting": "Se trimite…",
+      "successTitle": "Mulțumim!",
+      "successMessage": "Confirmarea dvs. a fost primită. Abia așteptăm să sărbătorim împreună cu voi!",
+      "errorMessage": "Ceva nu a mers bine. Vă rugăm să încercați din nou sau să ne contactați direct.",
+      "required": "Acest câmp este obligatoriu",
+      "invalidEmail": "Introduceți o adresă de email validă"
+    }
+  },
+  "accommodation": {
+    "title": "Hoteluri & Cazare",
+    "subtitle": "Recomandăm următoarele opțiuni în apropierea locației",
+    "bookButton": "Rezervați",
+    "distanceFrom": "de la locație"
+  },
+  "honeymoon": {
+    "title": "Fond Lună de Miere",
+    "body": "Prezența voastră, buna dispoziție și dorința de a celebra uniunea noastră sunt tot ceea ce ne dorim în această zi specială. Dacă doriți să ne oferiți un mic cadou, planificăm o călătorie pentru luna noastră de miere. Puteți contribui la proiectul nostru fie online, făcând clic pe butonul de mai jos, fie prin cutia de cadouri disponibilă la locația de recepție în ziua nunții.",
+    "contributeButton": "Contribuiți",
+    "wishTitle": "Trimiteți o Urare",
+    "wishPlaceholder": "Scrieți o urare sinceră pentru Rene & Ramona…",
+    "wishButton": "Generați Urare",
+    "wishGenerating": "Se creează urarea…"
+  },
+  "contact": {
+    "title": "Contactați-ne",
+    "address": "Flat 43, High St, Brentford TW8 0FR, Regatul Unit",
+    "rene": "Rene",
+    "ramona": "Ramona",
+    "emailButton": "Trimiteți-ne un email"
+  },
+  "footer": {
+    "made": "Creat cu dragoste pentru",
+    "names": "Rene & Ramona",
+    "date": "12 Iunie 2027"
+  }
+}

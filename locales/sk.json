@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "welcome": "Vitajte",
+    "program": "Program",
+    "rsvp": "Potvrdenie",
+    "accommodation": "Ubytovanie",
+    "honeymoon": "Fond Medové týždne",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "names": "Rene & Ramona",
+    "date": "12. júna 2027",
+    "tagline": "Spoločne s našimi rodinami vás pozývame osláviť našu svadbu.",
+    "countdown": {
+      "days": "Dni",
+      "hours": "Hodiny",
+      "minutes": "Minúty",
+      "seconds": "Sekundy"
+    },
+    "scroll": "Posúvajte sa pre viac"
+  },
+  "welcome": {
+    "title": "Vitajte",
+    "body": "Tešíme sa, že vás uvidíme 12. júna 2027. Obrad sa bude konať v Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, Rumunsko o 16:00.",
+    "mapsButton": "Otvoriť v Google Maps"
+  },
+  "program": {
+    "title": "Obrad & Program",
+    "subtitle": "Harmonogram nášho výnimočného dňa",
+    "events": [
+      { "time": "17:00", "title": "Obrad", "description": "v Phoenix Cernica" },
+      { "time": "18:00", "title": "Recepcia", "description": "Fotografovanie a recepcia v záhrade" },
+      { "time": "20:30", "title": "Večera", "description": "Vychutnajte si slávnostnú večeru spolu" },
+      { "time": "23:00", "title": "Večerná párty", "description": "Tancujte a oslavujte do noci" }
+    ]
+  },
+  "rsvp": {
+    "title": "Potvrďte Svoju Účasť",
+    "subtitle": "Ďakujeme za potvrdenie účasti do 30. 05. 2027.",
+    "dresscode": {
+      "title": "Dress Code",
+      "subtitle": "Koktejlový — Rovnováha medzi elegantným a pohodlným.",
+      "men": "Muži: Oblek s kravatou.",
+      "women": "Ženy: Šaty po kolená, midi alebo čajová dĺžka."
+    },
+    "form": {
+      "firstName": "Meno",
+      "lastName": "Priezvisko",
+      "email": "E-mailová adresa",
+      "phone": "Telefónne číslo",
+      "attendance": "Účasť",
+      "attending": "Zúčastním sa",
+      "notAttending": "Nemôžem sa zúčastniť",
+      "message": "Správa pre pár (voliteľné)",
+      "messagePlaceholder": "Napíšte správu alebo špeciálnu poznámku…",
+      "dietary": "Diétne požiadavky",
+      "dietaryOptions": {
+        "none": "Žiadne špeciálne požiadavky",
+        "allergies": "Alergie",
+        "gluten": "Intolerancia na glutén",
+        "vegetarian": "Vegetarián",
+        "vegan": "Vegán",
+        "other": "Iné"
+      },
+      "dietaryOtherPlaceholder": "Uveďte prosím svoju diétnu požiadavku…",
+      "mealTitle": "Výber jedla",
+      "starterTitle": "Predjedlá & Kanapky",
+      "starterNote": "Bude servírovaný výber kanapiek a predjedál.",
+      "starters": [
+        "Tartaletka s brie syrom a džemom z ríbezlí",
+        "Quiche Lorraine",
+        "Terina z husacej a kuraciny pečene s kandizovaným ovocím a pomarančovým chutney s chilli",
+        "Syrová roláda s hroznami v pečenej orechovej kôrke",
+        "Údené kačacie prsia",
+        "Vitello Tonnato",
+        "Kanapkové košíčky s ikrami zo štiaky a pažítkou",
+        "Figy s kozím syrom a mandľovými plátkami",
+        "Čerešňové paradajky s mozzarellou a bazalkou",
+        "Sicílske zelené olivy"
+      ],
+      "mainCourseTitle": "Hlavný chod",
+      "mainCourseOption1": "Možnosť 1",
+      "mainCourseOption1Details": {
+        "fish": "Rybí chod: Filet z morského pražma s citrónovým maslovým omáčkou servírovaný s bielym rizotom",
+        "traditional": "Tradičný chod: Plnená kapusta s polentou, slaninou, kyslou smotanou a pálivou paprikou",
+        "main": "Hlavný chod: Konfitovaná kačacia stehná s pyré zo zeleru a hruškou v červenom víne",
+        "dessert": "Dezert: Svadobná torta"
+      },
+      "gdpr": "Súhlasím s tým, že moje osobné údaje budú uchovávané a použité výlučne na účely organizácie tejto svadobnej udalosti v súlade s GDPR.",
+      "submit": "Potvrdiť účasť",
+      "submitting": "Odosiela sa…",
+      "successTitle": "Ďakujeme!",
+      "successMessage": "Vaše RSVP bolo prijaté. Tešíme sa, že to oslavíme s vami!",
+      "errorMessage": "Niečo sa pokazilo. Skúste to znova alebo nás kontaktujte priamo.",
+      "required": "Toto pole je povinné",
+      "invalidEmail": "Zadajte platnú e-mailovú adresu"
+    }
+  },
+  "accommodation": {
+    "title": "Hotely & Ubytovanie",
+    "subtitle": "Odporúčame nasledujúce možnosti v blízkosti miesta konania",
+    "bookButton": "Rezervovať",
+    "distanceFrom": "od miesta konania"
+  },
+  "honeymoon": {
+    "title": "Fond Medové týždne",
+    "body": "Vaša prítomnosť, dobrá nálada a túžba osláviť naše spojenie sú všetko, čo si v tento výnimočný deň prajeme. Ak nám chcete dať malý darček, plánujeme výlet na medové týždne. Môžete prispieť k nášmu projektu buď online kliknutím na tlačidlo nižšie, alebo prostredníctvom darčekovej škatule dostupnej na recepcii v deň svadby.",
+    "contributeButton": "Prispieť",
+    "wishTitle": "Pošlite Svadobné Prianie",
+    "wishPlaceholder": "Napíšte úprimné prianie pre Rene & Ramona…",
+    "wishButton": "Generovať prianie",
+    "wishGenerating": "Tvorí sa prianie…"
+  },
+  "contact": {
+    "title": "Kontaktujte Nás",
+    "address": "Flat 43, High St, Brentford TW8 0FR, Spojené kráľovstvo",
+    "rene": "Rene",
+    "ramona": "Ramona",
+    "emailButton": "Pošlite nám e-mail"
+  },
+  "footer": {
+    "made": "Vytvorené s láskou pre",
+    "names": "Rene & Ramona",
+    "date": "12. júna 2027"
+  }
+}

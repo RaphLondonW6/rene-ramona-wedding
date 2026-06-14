@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-ivory: #FDFBF7;
+  --color-cream: #F5ECD7;
+  --color-champagne: #C9A84C;
+  --color-gold: #B8973E;
+  --color-gold-light: #E8D5A3;
+  --color-warm-brown: #8B7355;
+  --color-dark-text: #2C2C2C;
+  --color-light-text: #6B6B6B;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-ivory);
+  color: var(--color-dark-text);
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Typography ─── */
+.font-serif-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-serif-body {
+  font-family: 'Cormorant Garamond', Garamond, serif;
+}
+
+/* ─── Gold divider ─── */
+.gold-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-champagne), transparent);
+  margin: 0 auto;
+}
+
+.gold-divider-wide {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-champagne), transparent);
+  margin: 0 auto;
+}
+
+/* ─── Section base ─── */
+.section-base {
+  @apply py-24 px-6 md:px-12 lg:px-24;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  @apply text-4xl md:text-5xl text-center mb-4;
+  color: var(--color-dark-text);
+  letter-spacing: 0.02em;
+}
+
+.section-subtitle {
+  font-family: 'Cormorant Garamond', Garamond, serif;
+  @apply text-xl text-center mb-12;
+  color: var(--color-light-text);
+  font-style: italic;
+}
+
+/* ─── Buttons ─── */
+.btn-gold {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-3 text-sm tracking-widest uppercase;
+  background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 50%, #C9A84C 100%);
+  background-size: 200% auto;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border: none;
+  cursor: pointer;
+  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.btn-gold:hover {
+  background-position: right center;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4);
+}
+
+.btn-gold:focus-visible {
+  outline: 2px solid var(--color-champagne);
+  outline-offset: 3px;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 px-8 py-3 text-sm tracking-widest uppercase;
+  border: 1px solid var(--color-champagne);
+  color: var(--color-champagne);
+  background: transparent;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-outline:hover {
+  background: var(--color-champagne);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ─── Form inputs ─── */
+.form-input {
+  @apply w-full px-4 py-3 bg-white border border-gray-200 text-darkText placeholder-gray-400;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9375rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  border-radius: 0;
+}
+
+.form-input:focus {
+  border-color: var(--color-champagne);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+}
+
+.form-input.error {
+  border-color: #e53e3e;
+}
+
+/* ─── Scroll reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Floral ornament ─── */
+.ornament {
+  @apply text-champagne text-2xl text-center my-6;
+  font-family: 'Playfair Display', serif;
+  opacity: 0.6;
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-ivory); }
+::-webkit-scrollbar-thumb { background: var(--color-gold-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-champagne); }
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(201, 168, 76, 0.2);
+  color: var(--color-dark-text);
+}
+
+/* ─── Timeline ─── */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--color-champagne) 20%, var(--color-champagne) 80%, transparent);
+  transform: translateX(-50%);
+}
+
+@media (max-width: 767px) {
+  .timeline-line {
+    left: 24px;
+  }
+}
+
+/* ─── Accommodation card ─── */
+.accom-card {
+  @apply bg-white overflow-hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.accom-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

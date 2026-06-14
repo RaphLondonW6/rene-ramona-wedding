@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "welcome": "Welcome",
+    "program": "Program",
+    "rsvp": "RSVP",
+    "accommodation": "Accommodation",
+    "honeymoon": "Honeymoon Fund",
+    "contact": "Contact"
+  },
+  "hero": {
+    "names": "Rene & Ramona",
+    "date": "12 June 2027",
+    "tagline": "Together with our families, we invite you to celebrate our wedding.",
+    "countdown": {
+      "days": "Days",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    },
+    "scroll": "Scroll to explore"
+  },
+  "welcome": {
+    "title": "Welcome",
+    "body": "We are looking forward to seeing you on the 12th of June 2027. The ceremony will take place at Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, Romania at 16:00.",
+    "mapsButton": "Open in Google Maps"
+  },
+  "program": {
+    "title": "Ceremony & Program",
+    "subtitle": "The timeline of our special day",
+    "events": [
+      { "time": "17:00", "title": "Ceremony", "description": "at Phoenix Cernica" },
+      { "time": "18:00", "title": "Reception", "description": "Pictures and reception in the garden" },
+      { "time": "20:30", "title": "Dinner", "description": "Enjoy a celebratory dinner together" },
+      { "time": "23:00", "title": "Evening Party", "description": "Dance and celebrate into the night" }
+    ]
+  },
+  "rsvp": {
+    "title": "Confirm Your Presence",
+    "subtitle": "Thank you for confirming your presence before 30/05/2027.",
+    "dresscode": {
+      "title": "Dress Code",
+      "subtitle": "Cocktail — A balance between elegant and comfortable.",
+      "men": "Men: A suit and tie.",
+      "women": "Women: Knee-length, tea-length, or midi dresses."
+    },
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "attendance": "Attendance",
+      "attending": "I will attend",
+      "notAttending": "I cannot attend",
+      "message": "Message to the couple (optional)",
+      "messagePlaceholder": "Write a message or any special note…",
+      "dietary": "Dietary Requirements",
+      "dietaryOptions": {
+        "none": "No special requirements",
+        "allergies": "Allergies",
+        "gluten": "Gluten intolerance",
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "other": "Other"
+      },
+      "dietaryOtherPlaceholder": "Please specify your dietary requirement…",
+      "mealTitle": "Meal Selection",
+      "starterTitle": "Starters & Canapés",
+      "starterNote": "A selection of canapés and starters will be served.",
+      "starters": [
+        "Brie cheese tartlet with redcurrant jam",
+        "Quiche Lorraine",
+        "Goose and chicken liver terrine with candied fruit and orange chutney with chilli",
+        "Cheese roulade with grapes in baked walnut crust",
+        "Smoked duck breast",
+        "Vitello Tonnato",
+        "Canapé cups with pike roe and chives",
+        "Fig with goat cheese and almond flakes",
+        "Cherry tomatoes with mozzarella and basil",
+        "Sicilian green olives"
+      ],
+      "mainCourseTitle": "Main Course",
+      "mainCourseOption1": "Option 1",
+      "mainCourseOption1Details": {
+        "fish": "Fish Course: Sea bream fillet with lemon butter sauce served with white risotto",
+        "traditional": "Traditional Course: Cabbage rolls with polenta, bacon, sour cream and hot pepper",
+        "main": "Main Course: Duck confit leg served with celeriac purée and pear in red wine sauce",
+        "dessert": "Dessert: Wedding Cake"
+      },
+      "gdpr": "I agree to my personal data being stored and used solely for the purpose of organising this wedding event, in accordance with GDPR.",
+      "submit": "Confirm Attendance",
+      "submitting": "Sending…",
+      "successTitle": "Thank you!",
+      "successMessage": "Your RSVP has been received. We can't wait to celebrate with you!",
+      "errorMessage": "Something went wrong. Please try again or contact us directly.",
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address"
+    }
+  },
+  "accommodation": {
+    "title": "Hotels & Accommodation",
+    "subtitle": "We recommend the following options near the venue",
+    "bookButton": "Book Now",
+    "distanceFrom": "from venue"
+  },
+  "honeymoon": {
+    "title": "Honeymoon Fund",
+    "body": "Your presence, your good mood and your desire to celebrate our union are all we wish for on this special day. If you would like to give us a small gift, we are planning a trip for our honeymoon. You can contribute to our project either online by clicking on the Contribute button below, or through the gift box available at the reception venue on the wedding day.",
+    "contributeButton": "Contribute",
+    "wishTitle": "Send a Wedding Wish",
+    "wishPlaceholder": "Write a heartfelt wish for Rene & Ramona…",
+    "wishButton": "Generate Wish",
+    "wishGenerating": "Creating your wish…"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "address": "Flat 43, High St, Brentford TW8 0FR, United Kingdom",
+    "rene": "Rene",
+    "ramona": "Ramona",
+    "emailButton": "Send us an email"
+  },
+  "footer": {
+    "made": "Made with love for",
+    "names": "Rene & Ramona",
+    "date": "12 June 2027"
+  }
+}
