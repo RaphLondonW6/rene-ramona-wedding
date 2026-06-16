@@ -276,6 +276,7 @@
 
     /* ── Print ── */
     @media print {
+      @page { size: A4 portrait; margin: 6mm; }
       * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
@@ -286,10 +287,22 @@
       .card-outer {
         box-shadow: none;
         max-width: 148mm;
-        margin: 4mm auto;
+        margin: 0 auto;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
+      .card-inner { padding: 18px 60px 24px !important; }
+      .monogram-oval { width: 52px !important; height: 62px !important; margin-bottom: 6px !important; }
+      .monogram-oval span { font-size: 24px !important; }
+      .page-title { font-size: 36px !important; margin-bottom: 14px !important; }
+      .menu-card { padding: 20px 28px 20px !important; }
+      .divider { margin: 10px 0 !important; }
+      .section-header { margin-bottom: 10px !important; }
+      .starter-note { margin-bottom: 8px !important; }
+      .starter-list li { margin-bottom: 4px !important; font-size: 12px !important; }
+      .main-list li { margin-bottom: 6px !important; font-size: 12px !important; }
+      .dessert-item { font-size: 12px !important; }
+      .footer-note { margin-top: 14px !important; }
     }
   </style>
 </head>
