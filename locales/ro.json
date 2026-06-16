@@ -78,14 +78,14 @@
         "Roșii cherry cu mozzarella și busuioc",
         "Măsline verzi siciliene"
       ],
-      "mainCourseTitle": "Fel Principal",
-      "mainCourseOption1": "Opțiunea 1",
-      "mainCourseOption1Details": {
-        "fish": "Fel de pește: File de doradă cu sos de unt și lămâie servit cu risotto alb",
-        "traditional": "Fel tradițional: Sarmale cu mămăligă, slănină, smântână și ardei iute",
-        "main": "Fel principal: Picior de rață confit servit cu piure de țelină și pară în sos de vin roșu",
-        "dessert": "Desert: Tort de nuntă"
-      },
+      "mainCourseTitle": "Feluri Principale",
+      "mainCourseItems": [
+        "Fel de pește: File de doradă cu sos de unt și lămâie servit cu risotto alb",
+        "Fel tradițional: Sarmale cu mămăligă, slănină, smântână și ardei iute",
+        "Fel principal: Picior de rață confit servit cu piure de țelină și pară în sos de vin roșu"
+      ],
+      "dessertTitle": "Desert",
+      "dessertItem": "Tort de nuntă",
       "gdpr": "Sunt de acord ca datele mele personale să fie stocate și utilizate exclusiv în scopul organizării acestui eveniment nupțial, în conformitate cu GDPR.",
       "submit": "Confirmați Prezența",
       "submitting": "Se trimite…",

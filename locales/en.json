@@ -78,14 +78,14 @@
         "Cherry tomatoes with mozzarella and basil",
         "Sicilian green olives"
       ],
-      "mainCourseTitle": "Main Course",
-      "mainCourseOption1": "Option 1",
-      "mainCourseOption1Details": {
-        "fish": "Fish Course: Sea bream fillet with lemon butter sauce served with white risotto",
-        "traditional": "Traditional Course: Cabbage rolls with polenta, bacon, sour cream and hot pepper",
-        "main": "Main Course: Duck confit leg served with celeriac purée and pear in red wine sauce",
-        "dessert": "Dessert: Wedding Cake"
-      },
+      "mainCourseTitle": "Main Courses",
+      "mainCourseItems": [
+        "Fish Course: Sea bream fillet with lemon butter sauce served with white risotto",
+        "Traditional Course: Cabbage rolls with polenta, bacon, sour cream and hot pepper",
+        "Main Course: Duck confit leg served with celeriac purée and pear in red wine sauce"
+      ],
+      "dessertTitle": "Dessert",
+      "dessertItem": "Wedding Cake",
       "gdpr": "I agree to my personal data being stored and used solely for the purpose of organising this wedding event, in accordance with GDPR.",
       "submit": "Confirm Attendance",
       "submitting": "Sending…",

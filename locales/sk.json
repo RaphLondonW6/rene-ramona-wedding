@@ -78,14 +78,14 @@
         "Čerešňové paradajky s mozzarellou a bazalkou",
         "Sicílske zelené olivy"
       ],
-      "mainCourseTitle": "Hlavný chod",
-      "mainCourseOption1": "Možnosť 1",
-      "mainCourseOption1Details": {
-        "fish": "Rybí chod: Filet z morského pražma s citrónovým maslovým omáčkou servírovaný s bielym rizotom",
-        "traditional": "Tradičný chod: Plnená kapusta s polentou, slaninou, kyslou smotanou a pálivou paprikou",
-        "main": "Hlavný chod: Konfitovaná kačacia stehná s pyré zo zeleru a hruškou v červenom víne",
-        "dessert": "Dezert: Svadobná torta"
-      },
+      "mainCourseTitle": "Hlavné chody",
+      "mainCourseItems": [
+        "Rybí chod: Filet z morského pražma s citrónovým maslovým omáčkou servírovaný s bielym rizotom",
+        "Tradičný chod: Plnená kapusta s polentou, slaninou, kyslou smotanou a pálivou paprikou",
+        "Hlavný chod: Konfitovaná kačacia stehná s pyré zo zeleru a hruškou v červenom víne"
+      ],
+      "dessertTitle": "Dezert",
+      "dessertItem": "Svadobná torta",
       "gdpr": "Súhlasím s tým, že moje osobné údaje budú uchovávané a použité výlučne na účely organizácie tejto svadobnej udalosti v súlade s GDPR.",
       "submit": "Potvrdiť účasť",
       "submitting": "Odosiela sa…",
