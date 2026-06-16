@@ -77,10 +77,22 @@
     .card-outer {
       width: 100%;
       max-width: 560px;
-      background: var(--cream);
+      background-color: var(--cream);
+      background-image: url('./Gemini_Generated_Image_u6ogjtu6ogjtu6og.png');
+      background-size: cover;
+      background-position: center top;
       position: relative;
       overflow: hidden;
       box-shadow: 0 12px 60px rgba(90,60,20,0.15), 0 2px 10px rgba(90,60,20,0.08);
+    }
+    /* soft cream wash so floral reads as elegant, not overwhelming */
+    .card-outer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(253, 248, 242, 0.42);
+      z-index: 1;
+      pointer-events: none;
     }
     /* thin gold line border */
     .card-outer::before {
@@ -89,40 +101,24 @@
       inset: 5px;
       border: 1px solid var(--gold-light);
       pointer-events: none;
-      z-index: 3;
+      z-index: 4;
     }
-
-    /* ── Botanical panels ── */
-    .botanical-panel {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 125px;
-      z-index: 1;
-      opacity: 0.22;
-      pointer-events: none;
-    }
-    .botanical-panel.left  { left: 0; }
-    .botanical-panel.right { right: 0; transform: scaleX(-1); }
-    .botanical-panel svg { width: 100%; height: 100%; }
 
     /* ── Inner content ── */
     .card-inner {
       position: relative;
       z-index: 2;
-      padding: 50px 130px 46px;
+      padding: 50px 80px 46px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
     @media (max-width: 480px) {
-      .botanical-panel { width: 80px; }
-      .card-inner { padding: 38px 88px 38px; }
+      .card-inner { padding: 38px 50px 38px; }
     }
     @media (max-width: 360px) {
-      .botanical-panel { width: 60px; }
-      .card-inner { padding: 32px 68px 32px; }
+      .card-inner { padding: 32px 32px 32px; }
     }
 
     /* ── Monogram ── */
@@ -132,6 +128,7 @@
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin: 0 auto 26px;
+      background: var(--cream);
     }
     .monogram-oval span {
       font-family: 'Great Vibes', cursive;
@@ -145,6 +142,7 @@
       border: 1px solid var(--gold-pale);
       border-radius: 100px 100px 4px 4px;
       padding: 34px 28px 30px;
+      background: rgba(253, 248, 242, 0.94);
     }
     @media (max-width: 480px) {
       .arch-frame { border-radius: 70px 70px 4px 4px; padding: 26px 16px 24px; }
@@ -213,6 +211,8 @@
     /* ── RSVP ── */
     .rsvp-section {
       margin-top: 30px; width: 100%; text-align: center;
+      background: rgba(253, 248, 242, 0.94);
+      padding: 20px 16px 4px;
     }
     .rsvp-title {
       font-family: 'Cinzel', serif;
@@ -253,8 +253,8 @@
 
   <div class="card-outer">
 
-    <!-- Left botanical panel -->
-    <div class="botanical-panel left">
+    <!-- botanical panels removed — floral background image used instead -->
+    <div class="botanical-panel left" style="display:none">
       <svg viewBox="0 0 130 920" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
         <g fill="none" stroke="#8a6830" stroke-linecap="round" stroke-linejoin="round">
 
@@ -636,8 +636,7 @@
       </svg>
     </div>
 
-    <!-- Right botanical (mirrored via CSS scaleX(-1)) -->
-    <div class="botanical-panel right">
+    <div class="botanical-panel right" style="display:none">
       <svg viewBox="0 0 130 920" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
         <use href="#botanicals"/>
         <g fill="none" stroke="#8a6830" stroke-linecap="round" stroke-linejoin="round">
