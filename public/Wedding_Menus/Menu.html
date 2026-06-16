@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rene &amp; Ramona — Wedding Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #b8935a;
+      --gold-light: #d4af7a;
+      --gold-pale: #e8d5b0;
+      --cream: #fbf8f2;
+      --ivory: #f5f0e8;
+      --dark: #2c2416;
+      --text: #3d2f1a;
+      --text-light: #7a6545;
+    }
+
+    body {
+      background: var(--ivory);
+      min-height: 100vh;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 48px;
+    }
+
+    /* ── UI Bar ── */
+    .ui-bar {
+      width: 100%;
+      max-width: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .btn-pdf {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-pale);
+      background: transparent;
+      padding: 7px 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-pdf:hover { background: var(--gold-pale); color: var(--dark); }
+    .lang-toggle {
+      display: flex;
+      border: 1px solid var(--gold-pale);
+    }
+    .lang-toggle button {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      background: transparent;
+      border: none;
+      border-right: 1px solid var(--gold-pale);
+      color: var(--text-light);
+      padding: 7px 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-toggle button:last-child { border-right: none; }
+    .lang-toggle button.active { background: var(--gold); color: #fff; }
+
+    /* ── Outer Card ── */
+    .card-outer {
+      width: 100%;
+      max-width: 560px;
+      background-color: var(--cream);
+      background-image: url('../Wedding_Invitations/Gemini_Generated_Image_u6ogjtu6ogjtu6og.png');
+      background-size: cover;
+      background-position: center top;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 12px 60px rgba(90,60,20,0.15), 0 2px 10px rgba(90,60,20,0.08);
+    }
+    /* cream wash */
+    .card-outer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(253, 248, 242, 0.42);
+      z-index: 1;
+      pointer-events: none;
+    }
+    /* gold border */
+    .card-outer::before {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border: 1px solid var(--gold-light);
+      pointer-events: none;
+      z-index: 4;
+    }
+
+    /* ── Inner content ── */
+    .card-inner {
+      position: relative;
+      z-index: 2;
+      padding: 50px 80px 50px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    @media (max-width: 480px) {
+      .card-inner { padding: 38px 50px 38px; }
+    }
+    @media (max-width: 360px) {
+      .card-inner { padding: 32px 28px 32px; }
+    }
+
+    /* ── Monogram ── */
+    .monogram-oval {
+      width: 64px; height: 78px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 10px;
+      background: var(--cream);
+    }
+    .monogram-oval span {
+      font-family: 'Great Vibes', cursive;
+      font-size: 30px; color: var(--gold);
+      letter-spacing: -2px; line-height: 1;
+    }
+
+    /* ── Page title ── */
+    .page-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(38px, 8vw, 54px);
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    /* ── Menu card ── */
+    .menu-card {
+      width: 100%;
+      border: 1px solid var(--gold-pale);
+      background: rgba(253, 248, 242, 0.95);
+      padding: 38px 32px 34px;
+      border-radius: 4px;
+    }
+    @media (max-width: 480px) {
+      .menu-card { padding: 26px 18px 24px; }
+    }
+
+    /* ── Dividers ── */
+    .divider {
+      width: 100%; display: flex; align-items: center; gap: 8px;
+      margin: 18px 0;
+    }
+    .divider-line { flex: 1; height: 1px; background: var(--gold-pale); }
+    .divider-diamond {
+      width: 4px; height: 4px;
+      background: var(--gold-light); transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ── Section headers ── */
+    .section-header {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: block;
+      text-align: center;
+    }
+
+    /* ── Starter items ── */
+    .starter-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 13px;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .starter-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .starter-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 7px;
+      line-height: 1.5;
+      text-align: left;
+    }
+    .starter-list li .bullet {
+      color: var(--gold);
+      font-size: 16px;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
+    /* ── Main course items ── */
+    .main-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .main-list li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14px;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      line-height: 1.5;
+      text-align: left;
+    }
+    .main-list li:last-child { margin-bottom: 0; }
+    .main-list li .bullet {
+      color: var(--gold);
+      font-size: 16px;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+    .course-label {
+      font-weight: 500;
+      color: var(--text-light);
+    }
+
+    /* ── Dessert ── */
+    .dessert-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+      text-align: left;
+    }
+    .dessert-item .bullet {
+      color: var(--gold);
+      font-size: 16px;
+      line-height: 1.3;
+      flex-shrink: 0;
+    }
+
+    /* ── Footer note ── */
+    .footer-note {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 11px;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      text-align: center;
+      margin-top: 28px;
+      display: block;
+    }
+
+    /* ── Print ── */
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      body { background: #fff; padding: 0; }
+      .ui-bar { display: none !important; }
+      .card-outer {
+        box-shadow: none;
+        max-width: 148mm;
+        margin: 10mm auto;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UI Bar -->
+  <div class="ui-bar">
+    <button class="btn-pdf" onclick="window.print()" data-key="downloadPdf">⬇ Download PDF</button>
+    <div class="lang-toggle">
+      <button onclick="setLang('en')" class="active" id="btn-en">EN</button>
+      <button onclick="setLang('ro')" id="btn-ro">RO</button>
+      <button onclick="setLang('sk')" id="btn-sk">SK</button>
+    </div>
+  </div>
+
+  <!-- Card -->
+  <div class="card-outer">
+    <div class="card-inner">
+
+      <!-- Monogram -->
+      <div class="monogram-oval"><span>R&amp;R</span></div>
+
+      <!-- Page title -->
+      <span class="page-title" data-key="pageTitle">Wedding Menu</span>
+
+      <!-- Menu card -->
+      <div class="menu-card">
+
+        <!-- Starters -->
+        <span class="section-header" data-key="starterTitle">Starters &amp; Canapés</span>
+        <span class="starter-note" data-key="starterNote">A selection of canapés and starters will be served.</span>
+
+        <ul class="starter-list" id="starterList">
+          <!-- populated by JS -->
+        </ul>
+
+        <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+        <!-- Mains -->
+        <span class="section-header" data-key="mainTitle">Main Courses</span>
+
+        <ul class="main-list" id="mainList">
+          <!-- populated by JS -->
+        </ul>
+
+        <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+        <!-- Dessert -->
+        <span class="section-header" data-key="dessertTitle">Dessert</span>
+
+        <div class="dessert-item" id="dessertItem">
+          <span class="bullet">·</span>
+          <span data-key="dessertItem">Wedding Cake</span>
+        </div>
+
+      </div><!-- /menu-card -->
+
+      <span class="footer-note" data-key="footerNote">12 June 2027 · Phoenix Cernica · Pantelimon, Romania</span>
+
+    </div><!-- /card-inner -->
+  </div><!-- /card-outer -->
+
+  <script>
+    const i18n = {
+      en: {
+        downloadPdf: '⬇ Download PDF',
+        pageTitle: 'Wedding Menu',
+        starterTitle: 'Starters &amp; Canapés',
+        starterNote: 'A selection of canapés and starters will be served.',
+        starters: [
+          'Brie cheese tartlet with redcurrant jam',
+          'Quiche Lorraine',
+          'Goose and chicken liver terrine with candied fruit and orange chutney with chilli',
+          'Cheese roulade with grapes in baked walnut crust',
+          'Smoked duck breast',
+          'Vitello Tonnato',
+          'Canapé cups with pike roe and chives',
+          'Fig with goat cheese and almond flakes',
+          'Cherry tomatoes with mozzarella and basil',
+          'Sicilian green olives',
+        ],
+        mainTitle: 'Main Courses',
+        mains: [
+          { label: 'Fish Course', desc: 'Sea bream fillet with lemon butter sauce served with white risotto' },
+          { label: 'Traditional Course', desc: 'Cabbage rolls with polenta, bacon, sour cream and hot pepper' },
+          { label: 'Main Course', desc: 'Duck confit leg served with celeriac purée and pear in red wine sauce' },
+        ],
+        dessertTitle: 'Dessert',
+        dessertItem: 'Wedding Cake',
+        footerNote: '12 June 2027 · Phoenix Cernica · Pantelimon, Romania',
+      },
+      ro: {
+        downloadPdf: '⬇ Descarcă PDF',
+        pageTitle: 'Meniu Nuntă',
+        starterTitle: 'Aperitive &amp; Canapele',
+        starterNote: 'O selecție de canapele și aperitive va fi servită.',
+        starters: [
+          'Tartă cu brânză brie și gem de coacăze roșii',
+          'Quiche Lorraine',
+          'Terină de ficat de gâscă și pui cu fructe confiate și chutney de portocale cu ardei iute',
+          'Ruladă de brânză cu struguri în crustă de nucă coaptă',
+          'Piept de rață afumat',
+          'Vitello Tonnato',
+          'Căni canapé cu icre de știucă și arpagic',
+          'Smochine cu brânză de capră și fulgi de migdale',
+          'Roșii cherry cu mozzarella și busuioc',
+          'Măsline verzi siciliene',
+        ],
+        mainTitle: 'Feluri Principale',
+        mains: [
+          { label: 'Fel de pește', desc: 'File de doradă cu sos de unt și lămâie servit cu risotto alb' },
+          { label: 'Fel tradițional', desc: 'Sarmale cu mămăligă, slănină, smântână și ardei iute' },
+          { label: 'Fel principal', desc: 'Picior de rață confit servit cu piure de țelină și pară în sos de vin roșu' },
+        ],
+        dessertTitle: 'Desert',
+        dessertItem: 'Tort de nuntă',
+        footerNote: '12 Iunie 2027 · Phoenix Cernica · Pantelimon, România',
+      },
+      sk: {
+        downloadPdf: '⬇ Stiahnuť PDF',
+        pageTitle: 'Svadobné Menu',
+        starterTitle: 'Predjedlá &amp; Kanapky',
+        starterNote: 'Bude servírovaný výber kanapiek a predjedál.',
+        starters: [
+          'Tartaletka s brie syrom a džemom z ríbezlí',
+          'Quiche Lorraine',
+          'Terina z husacej a kuraciny pečene s kandizovaným ovocím a pomarančovým chutney s chilli',
+          'Syrová roláda s hroznami v pečenej orechovej kôrke',
+          'Údené kačacie prsia',
+          'Vitello Tonnato',
+          'Kanapkové košíčky s ikrami zo štiaky a pažítkou',
+          'Figy s kozím syrom a mandľovými plátkami',
+          'Čerešňové paradajky s mozzarellou a bazalkou',
+          'Sicílske zelené olivy',
+        ],
+        mainTitle: 'Hlavné chody',
+        mains: [
+          { label: 'Rybí chod', desc: 'Filet z morského pražma s citrónovým maslovým omáčkou servírovaný s bielym rizotom' },
+          { label: 'Tradičný chod', desc: 'Plnená kapusta s polentou, slaninou, kyslou smotanou a pálivou paprikou' },
+          { label: 'Hlavný chod', desc: 'Konfitovaná kačacia stehná s pyré zo zeleru a hruškou v červenom víne' },
+        ],
+        dessertTitle: 'Dezert',
+        dessertItem: 'Svadobná torta',
+        footerNote: '12. júna 2027 · Phoenix Cernica · Pantelimon, Rumunsko',
+      },
+    };
+
+    function renderLists(lang) {
+      const t = i18n[lang];
+
+      // Starters
+      const sl = document.getElementById('starterList');
+      sl.innerHTML = t.starters.map(s =>
+        `<li><span class="bullet">·</span><span>${s}</span></li>`
+      ).join('');
+
+      // Mains
+      const ml = document.getElementById('mainList');
+      ml.innerHTML = t.mains.map(m =>
+        `<li><span class="bullet">·</span><span><span class="course-label">${m.label}:</span> ${m.desc}</span></li>`
+      ).join('');
+
+      // Dessert
+      document.querySelector('#dessertItem [data-key="dessertItem"]').textContent = t.dessertItem;
+    }
+
+    function setLang(lang) {
+      const t = i18n[lang];
+      // Update data-key text nodes
+      document.querySelectorAll('[data-key]').forEach(el => {
+        const key = el.dataset.key;
+        if (key === 'dessertItem') return; // handled separately
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      // Re-render dynamic lists
+      renderLists(lang);
+      // Toggle active button
+      ['en','ro','sk'].forEach(l =>
+        document.getElementById('btn-' + l).classList.toggle('active', l === lang)
+      );
+      document.documentElement.lang = lang;
+    }
+
+    // Init
+    renderLists('en');
+  </script>
+
+</body>
+</html>
