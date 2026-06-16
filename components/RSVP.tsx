@@ -222,23 +222,40 @@ export default function RSVP() {
 
                 {/* Starters */}
                 <h4 className="font-serif-display text-base text-champagne mb-2">{f.starterTitle}</h4>
-                <p className="font-serif-body text-sm italic text-lightText mb-3">{f.starterNote}</p>
-                <ul className="list-none space-y-1 mb-6">
-                  {f.starters.map((s, i) => (
-                    <li key={i} className="font-body text-sm text-darkText flex items-start gap-2">
-                      <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
-                      {s}
-                    </li>
-                  ))}
-                </ul>
+                <div className="bg-white/70 p-4 border border-cream/80 mb-4">
+                  <p className="font-serif-body text-sm italic text-lightText mb-3">{f.starterNote}</p>
+                  <ul className="list-none space-y-1">
+                    {f.starters.map((s, i) => (
+                      <li key={i} className="font-body text-sm text-darkText flex items-start gap-2">
+                        <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-                {/* Main Course */}
+                {/* Main Courses */}
                 <h4 className="font-serif-display text-base text-champagne mb-2">{f.mainCourseTitle}</h4>
+                <div className="bg-white/70 p-4 border border-cream/80 mb-4">
+                  <ul className="list-none space-y-1">
+                    {(f.mainCourseItems as string[]).map((item, i) => (
+                      <li key={i} className="font-body text-sm text-darkText flex items-start gap-2">
+                        <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Dessert */}
+                <h4 className="font-serif-display text-base text-champagne mb-2">{f.dessertTitle}</h4>
                 <div className="bg-white/70 p-4 border border-cream/80">
-                  <p className="font-serif-display text-sm text-champagne mb-3">{f.mainCourseOption1}</p>
-                  {(Object.values(f.mainCourseOption1Details) as string[]).map((detail, i) => (
-                    <p key={i} className="font-body text-sm text-darkText mb-1.5">{detail}</p>
-                  ))}
+                  <ul className="list-none space-y-1">
+                    <li className="font-body text-sm text-darkText flex items-start gap-2">
+                      <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
+                      {f.dessertItem}
+                    </li>
+                  </ul>
                 </div>
               </div>
             </>
