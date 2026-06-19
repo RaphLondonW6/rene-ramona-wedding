@@ -20,7 +20,7 @@ export default function Contact() {
     <div
       ref={sectionRef}
       className="section-base"
-      style={{ background: 'linear-gradient(180deg, #FDFBF7 0%, #F5ECD7 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #E1BF92 0%, #DFE0E1 100%)' }}
     >
       <div className="max-w-2xl mx-auto text-center">
 

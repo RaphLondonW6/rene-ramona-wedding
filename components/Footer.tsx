@@ -13,7 +13,7 @@ export default function Footer() {
       {/* Monogram */}
       <p
         className="font-serif-display text-3xl mb-4"
-        style={{ color: '#C9A84C' }}
+        style={{ color: '#A8A6A1' }}
         aria-hidden="true"
       >
         R ✦ R
@@ -24,13 +24,13 @@ export default function Footer() {
         style={{
           width: '60px',
           height: '1px',
-          background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+          background: 'linear-gradient(90deg, transparent, #A8A6A1, transparent)',
         }}
       />
 
       <p className="font-serif-body text-sm italic">
         {t.footer.made}{' '}
-        <span className="font-serif-display not-italic" style={{ color: '#C9A84C' }}>
+        <span className="font-serif-display not-italic" style={{ color: '#A8A6A1' }}>
           {t.footer.names}
         </span>
       </p>

@@ -85,7 +85,7 @@ export default function RSVP() {
     <div
       ref={sectionRef}
       className="section-base bg-ivory"
-      style={{ background: 'linear-gradient(180deg, #FDFBF7 0%, #F5ECD7 80%, #FDFBF7 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #E1BF92 0%, #DFE0E1 80%, #E1BF92 100%)' }}
     >
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
@@ -354,7 +354,7 @@ function SuccessBanner({ title, message }: { title: string; message: string }) {
   return (
     <div
       className="section-base flex items-center justify-center"
-      style={{ background: 'linear-gradient(180deg, #FDFBF7 0%, #F5ECD7 100%)', minHeight: '60vh' }}
+      style={{ background: 'linear-gradient(180deg, #E1BF92 0%, #DFE0E1 100%)', minHeight: '60vh' }}
     >
       <div className="text-center max-w-lg">
         <div className="text-6xl mb-6" aria-hidden="true">💌</div>

@@ -42,7 +42,7 @@ export default function HoneymoonFund() {
     <div
       ref={sectionRef}
       className="section-base"
-      style={{ background: 'linear-gradient(180deg, #F5ECD7 0%, #FDFBF7 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #DFE0E1 0%, #E1BF92 100%)' }}
     >
       <div className="max-w-3xl mx-auto text-center">
 

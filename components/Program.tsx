@@ -52,7 +52,7 @@ export default function Program() {
     <div
       ref={sectionRef}
       className="section-base"
-      style={{ background: 'linear-gradient(180deg, #F5ECD7 0%, #FDFBF7 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #DFE0E1 0%, #E1BF92 100%)' }}
     >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
@@ -94,8 +94,8 @@ export default function Program() {
                   <div
                     className="relative z-10 flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-2xl"
                     style={{
-                      background: 'linear-gradient(135deg, #C9A84C, #E8D5A3)',
-                      boxShadow: '0 0 0 4px #FDFBF7, 0 0 0 5px #C9A84C',
+                      background: '#FFFFFF',
+                      boxShadow: '0 0 0 4px #E1BF92, 0 0 0 5px #A8A6A1',
                     }}
                     aria-hidden="true"
                   >

@@ -5,14 +5,14 @@
 @tailwind utilities;
 
 :root {
-  --color-ivory: #FDFBF7;
-  --color-cream: #F5ECD7;
-  --color-champagne: #C9A84C;
-  --color-gold: #B8973E;
-  --color-gold-light: #E8D5A3;
-  --color-warm-brown: #8B7355;
-  --color-dark-text: #2C2C2C;
-  --color-light-text: #6B6B6B;
+  --color-ivory: #E1BF92;
+  --color-cream: #DFE0E1;
+  --color-champagne: #A8A6A1;
+  --color-gold: #A8A6A1;
+  --color-gold-light: #A8A6A1;
+  --color-warm-brown: #38383B;
+  --color-dark-text: #38383B;
+  --color-light-text: #A8A6A1;
 }
 
 * {
@@ -27,8 +27,8 @@ html {
 }
 
 body {
-  background-color: var(--color-ivory);
-  color: var(--color-dark-text);
+  background-color: #E1BF92;
+  color: #38383B;
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -81,7 +81,7 @@ body {
 /* ─── Buttons ─── */
 .btn-gold {
   @apply inline-flex items-center justify-center gap-2 px-8 py-3 text-sm tracking-widest uppercase;
-  background: linear-gradient(135deg, #C9A84C 0%, #E8D5A3 50%, #C9A84C 100%);
+  background: #000000;
   background-size: 200% auto;
   color: #fff;
   font-family: 'Lato', sans-serif;
@@ -89,25 +89,24 @@ body {
   letter-spacing: 0.12em;
   border: none;
   cursor: pointer;
-  transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-gold:hover {
-  background-position: right center;
+  background: #38383B;
   transform: translateY(-1px);
-  box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 .btn-gold:focus-visible {
-  outline: 2px solid var(--color-champagne);
+  outline: 2px solid #38383B;
   outline-offset: 3px;
 }
 
 .btn-outline {
   @apply inline-flex items-center justify-center gap-2 px-8 py-3 text-sm tracking-widest uppercase;
-  border: 1px solid var(--color-champagne);
-  color: var(--color-champagne);
+  border: 1px solid #38383B;
+  color: #38383B;
   background: transparent;
   font-family: 'Lato', sans-serif;
   font-weight: 700;
@@ -117,7 +116,7 @@ body {
 }
 
 .btn-outline:hover {
-  background: var(--color-champagne);
+  background: #38383B;
   color: #fff;
   transform: translateY(-1px);
 }
@@ -133,8 +132,8 @@ body {
 }
 
 .form-input:focus {
-  border-color: var(--color-champagne);
-  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+  border-color: #38383B;
+  box-shadow: 0 0 0 3px rgba(56, 56, 59, 0.1);
 }
 
 .form-input.error {
@@ -162,14 +161,14 @@ body {
 
 /* ─── Custom scrollbar ─── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-ivory); }
-::-webkit-scrollbar-thumb { background: var(--color-gold-light); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-champagne); }
+::-webkit-scrollbar-track { background: #E1BF92; }
+::-webkit-scrollbar-thumb { background: #DFE0E1; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #A8A6A1; }
 
 /* ─── Selection ─── */
 ::selection {
-  background: rgba(201, 168, 76, 0.2);
-  color: var(--color-dark-text);
+  background: rgba(168, 166, 161, 0.2);
+  color: #38383B;
 }
 
 /* ─── Timeline ─── */
@@ -179,7 +178,7 @@ body {
   top: 0;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(180deg, transparent, var(--color-champagne) 20%, var(--color-champagne) 80%, transparent);
+  background: linear-gradient(180deg, transparent, #A8A6A1 20%, #A8A6A1 80%, transparent);
   transform: translateX(-50%);
 }
 

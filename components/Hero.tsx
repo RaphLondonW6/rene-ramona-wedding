@@ -68,42 +68,28 @@ export default function Hero() {
   return (
     <div className="relative h-screen min-h-[600px] overflow-hidden flex items-center justify-center">
 
-      {/* Background image with parallax */}
+      {/* Background video with parallax wrapper */}
       <div ref={heroRef} className="absolute inset-0 will-change-transform">
-        <picture>
-          {/* Primary: the venue photo taken on site */}
-          <source srcSet="/images/hero.jpg" type="image/jpeg" />
-          {/* Fallback: atmospheric Unsplash image */}
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+          poster="/images/hero.jpg"
+        >
+          <source src="/videos/main.mp4" type="video/mp4" />
+          {/* Fallback image if video can't play */}
           <img
-            src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1800&q=85"
+            src="/images/hero.jpg"
             alt="Wedding venue"
             className="w-full h-full object-cover object-center"
-            loading="eager"
-            fetchPriority="high"
           />
-        </picture>
-        {/* Gradient overlay */}
+        </video>
+        {/* Gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
       </div>
-
-      {/* Video background (drone footage) — plays silently if available */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover hidden"
-        id="hero-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden="true"
-        onCanPlay={(e) => {
-          const v = e.currentTarget
-          v.classList.remove('hidden')
-          const img = document.querySelector('.hero-fallback-img') as HTMLElement
-          if (img) img.style.display = 'none'
-        }}
-      >
-        <source src="/videos/drone.mp4" type="video/mp4" />
-      </video>
 
       {/* Overlay content */}
       <div
@@ -125,7 +111,7 @@ export default function Hero() {
           style={{
             width: '120px',
             height: '1px',
-            background: 'linear-gradient(90deg, transparent, #C9A84C, transparent)',
+            background: 'linear-gradient(90deg, transparent, #A8A6A1, transparent)',
             transformOrigin: 'center',
           }}
         />
