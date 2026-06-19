@@ -7,23 +7,7 @@ import Accommodation from '@/components/Accommodation'
 import HoneymoonFund from '@/components/HoneymoonFund'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
-import Image from 'next/image'
-
-function SectionImage({ src, alt }: { src: string; alt: string }) {
-  return (
-    <div className="w-full overflow-hidden" style={{ lineHeight: 0 }}>
-      <Image
-        src={src}
-        alt={alt}
-        width={2400}
-        height={900}
-        className="w-full h-auto object-cover"
-        style={{ display: 'block' }}
-        sizes="100vw"
-      />
-    </div>
-  )
-}
+import SectionImage from '@/components/SectionImage'
 
 export default function Home() {
   return (

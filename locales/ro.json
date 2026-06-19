@@ -8,7 +8,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "names": "Rene & Ramona",
+    "names": "René & Ramona",
     "date": "12 Iunie 2027",
     "tagline": "Împreună cu familiile noastre, vă invităm să celebrați nunta noastră.",
     "countdown": {
@@ -107,20 +107,20 @@
     "body": "Prezența voastră, buna dispoziție și dorința de a celebra uniunea noastră sunt tot ceea ce ne dorim în această zi specială. Dacă doriți să ne oferiți un mic cadou, planificăm o călătorie pentru luna noastră de miere. Puteți contribui la proiectul nostru fie online, făcând clic pe butonul de mai jos, fie prin cutia de cadouri disponibilă la locația de recepție în ziua nunții.",
     "contributeButton": "Contribuiți",
     "wishTitle": "Trimiteți o Urare",
-    "wishPlaceholder": "Scrieți o urare sinceră pentru Rene & Ramona…",
+    "wishPlaceholder": "Scrieți o urare sinceră pentru René & Ramona…",
     "wishButton": "Generați Urare",
     "wishGenerating": "Se creează urarea…"
   },
   "contact": {
     "title": "Contactați-ne",
     "address": "Flat 43, High St, Brentford TW8 0FR, Regatul Unit",
-    "rene": "Rene",
+    "rene": "René",
     "ramona": "Ramona",
     "emailButton": "Trimiteți-ne un email"
   },
   "footer": {
     "made": "Creat cu dragoste pentru",
-    "names": "Rene & Ramona",
+    "names": "René & Ramona",
     "date": "12 Iunie 2027"
   }
 }

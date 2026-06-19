@@ -52,7 +52,7 @@ export default function Program() {
     <div
       ref={sectionRef}
       className="section-base"
-      style={{ background: 'linear-gradient(180deg, #DFE0E1 0%, #E1BF92 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #E1BF92 0%, #DFE0E1 50%, #E1BF92 100%)' }}
     >
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">

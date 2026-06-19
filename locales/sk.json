@@ -8,7 +8,7 @@
     "contact": "Kontakt"
   },
   "hero": {
-    "names": "Rene & Ramona",
+    "names": "René & Ramona",
     "date": "12. júna 2027",
     "tagline": "Spoločne s našimi rodinami vás pozývame osláviť našu svadbu.",
     "countdown": {
@@ -107,20 +107,20 @@
     "body": "Vaša prítomnosť, dobrá nálada a túžba osláviť naše spojenie sú všetko, čo si v tento výnimočný deň prajeme. Ak nám chcete dať malý darček, plánujeme výlet na medové týždne. Môžete prispieť k nášmu projektu buď online kliknutím na tlačidlo nižšie, alebo prostredníctvom darčekovej škatule dostupnej na recepcii v deň svadby.",
     "contributeButton": "Prispieť",
     "wishTitle": "Pošlite Svadobné Prianie",
-    "wishPlaceholder": "Napíšte úprimné prianie pre Rene & Ramona…",
+    "wishPlaceholder": "Napíšte úprimné prianie pre René & Ramona…",
     "wishButton": "Generovať prianie",
     "wishGenerating": "Tvorí sa prianie…"
   },
   "contact": {
     "title": "Kontaktujte Nás",
     "address": "Flat 43, High St, Brentford TW8 0FR, Spojené kráľovstvo",
-    "rene": "Rene",
+    "rene": "René",
     "ramona": "Ramona",
     "emailButton": "Pošlite nám e-mail"
   },
   "footer": {
     "made": "Vytvorené s láskou pre",
-    "names": "Rene & Ramona",
+    "names": "René & Ramona",
     "date": "12. júna 2027"
   }
 }

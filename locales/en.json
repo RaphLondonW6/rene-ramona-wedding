@@ -8,7 +8,7 @@
     "contact": "Contact"
   },
   "hero": {
-    "names": "Rene & Ramona",
+    "names": "René & Ramona",
     "date": "12 June 2027",
     "tagline": "Together with our families, we invite you to celebrate our wedding.",
     "countdown": {
@@ -107,20 +107,20 @@
     "body": "Your presence, your good mood and your desire to celebrate our union are all we wish for on this special day. If you would like to give us a small gift, we are planning a trip for our honeymoon. You can contribute to our project either online by clicking on the Contribute button below, or through the gift box available at the reception venue on the wedding day.",
     "contributeButton": "Contribute",
     "wishTitle": "Send a Wedding Wish",
-    "wishPlaceholder": "Write a heartfelt wish for Rene & Ramona…",
+    "wishPlaceholder": "Write a heartfelt wish for René & Ramona…",
     "wishButton": "Generate Wish",
     "wishGenerating": "Creating your wish…"
   },
   "contact": {
     "title": "Contact Us",
     "address": "Flat 43, High St, Brentford TW8 0FR, United Kingdom",
-    "rene": "Rene",
+    "rene": "René",
     "ramona": "Ramona",
     "emailButton": "Send us an email"
   },
   "footer": {
     "made": "Made with love for",
-    "names": "Rene & Ramona",
+    "names": "René & Ramona",
     "date": "12 June 2027"
   }
 }

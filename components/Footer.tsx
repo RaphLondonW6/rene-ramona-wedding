@@ -39,7 +39,7 @@ export default function Footer() {
       </p>
 
       <p className="font-body text-[10px] mt-6 tracking-wider" style={{ color: '#4A3F37' }}>
-        © {new Date().getFullYear()} · Rene & Ramona
+        © {new Date().getFullYear()} · René & Ramona
       </p>
     </footer>
   )

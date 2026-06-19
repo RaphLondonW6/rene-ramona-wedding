@@ -3,11 +3,11 @@ import './globals.css'
 import { LanguageProvider } from '@/context/LanguageContext'
 
 export const metadata: Metadata = {
-  title: 'Rene & Ramona — 12 June 2027',
+  title: 'René & Ramona — 12 June 2027',
   description: 'Together with our families, we invite you to celebrate our wedding. 12 June 2027 · Phoenix Cernica, Pantelimon, Romania.',
-  keywords: ['wedding', 'Rene', 'Ramona', 'June 2027', 'Phoenix Cernica', 'nunta', 'svadba'],
+  keywords: ['wedding', 'René', 'Ramona', 'June 2027', 'Phoenix Cernica', 'nunta', 'svadba'],
   openGraph: {
-    title: 'Rene & Ramona — 12 June 2027',
+    title: 'René & Ramona — 12 June 2027',
     description: 'Together with our families, we invite you to celebrate our wedding.',
     type: 'website',
     locale: 'en_GB',
@@ -16,13 +16,13 @@ export const metadata: Metadata = {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Rene & Ramona Wedding',
+        alt: 'René & Ramona Wedding',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Rene & Ramona — 12 June 2027',
+    title: 'René & Ramona — 12 June 2027',
     description: 'Together with our families, we invite you to celebrate our wedding.',
   },
   robots: { index: false, follow: false }, // private wedding site

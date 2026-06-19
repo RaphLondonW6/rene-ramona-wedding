@@ -20,7 +20,7 @@ export default function Contact() {
     <div
       ref={sectionRef}
       className="section-base"
-      style={{ background: 'linear-gradient(180deg, #E1BF92 0%, #DFE0E1 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #E1BF92 0%, #DFE0E1 50%, #E1BF92 100%)' }}
     >
       <div className="max-w-2xl mx-auto text-center">
 
@@ -30,7 +30,7 @@ export default function Contact() {
 
         <div className="reveal bg-white/80 backdrop-blur-sm border border-cream/80 p-8 md:p-12 shadow-sm">
 
-          <p className="font-serif-display text-3xl text-champagne mb-2">Rene & Ramona</p>
+          <p className="font-serif-display text-3xl text-champagne mb-2">René & Ramona</p>
 
           <address className="not-italic font-serif-body text-lg text-lightText mt-4 leading-loose">
             {t.contact.address}
@@ -59,7 +59,7 @@ export default function Contact() {
           <a
             href="mailto:dohnanskyr@gmail.com"
             className="btn-gold inline-flex"
-            aria-label="Send an email to Rene and Ramona"
+            aria-label="Send an email to René and Ramona"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}

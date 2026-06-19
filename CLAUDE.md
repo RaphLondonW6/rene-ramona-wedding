@@ -1,4 +1,4 @@
-# CLAUDE.md — Rene & Ramona Wedding Website
+# CLAUDE.md — René & Ramona Wedding Website
 
 Project context for AI assistants. Read this before making any changes.
 
@@ -6,7 +6,7 @@ Project context for AI assistants. Read this before making any changes.
 
 ## Project Overview
 
-Wedding website for Rene & Ramona. Wedding date: **12 June 2027**, venue: **Phoenix Cernica, Pantelimon, Romania**. Live at **https://www.ramonapicksrene.com**.
+Wedding website for René & Ramona. Wedding date: **12 June 2027**, venue: **Phoenix Cernica, Pantelimon, Romania**. Live at **https://www.ramonapicksrene.com**.
 
 Three languages: English (default), Romanian, Slovak.
 

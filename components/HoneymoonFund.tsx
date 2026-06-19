@@ -26,10 +26,10 @@ export default function HoneymoonFund() {
     if (!wish.trim()) return
     setGenerating(true)
     const templates = [
-      `Wishing Rene & Ramona a lifetime of joy and adventures together. ${wish} May every journey you take bring you closer and every memory be a treasure. ✨`,
-      `Dear Rene & Ramona, as you embark on your honeymoon, may it be the first chapter of a beautiful story. ${wish} Here's to love, laughter, and happily ever after. 💛`,
+      `Wishing René & Ramona a lifetime of joy and adventures together. ${wish} May every journey you take bring you closer and every memory be a treasure. ✨`,
+      `Dear René & Ramona, as you embark on your honeymoon, may it be the first chapter of a beautiful story. ${wish} Here's to love, laughter, and happily ever after. 💛`,
       `To the beautiful couple — may your honeymoon be as magical as your love. ${wish} Wishing you sun-kissed days, starlit nights, and a love that grows deeper with every adventure. 🌍`,
-      `Rene & Ramona, your love story inspires us all. ${wish} May your honeymoon be everything you've dreamed of and your marriage be filled with endless happiness. 🥂`,
+      `René & Ramona, your love story inspires us all. ${wish} May your honeymoon be everything you've dreamed of and your marriage be filled with endless happiness. 🥂`,
       `What a privilege to celebrate with you both! ${wish} May your honeymoon be the perfect start to your forever together. With all our love. 💍`,
     ]
     setTimeout(() => {
@@ -42,7 +42,7 @@ export default function HoneymoonFund() {
     <div
       ref={sectionRef}
       className="section-base"
-      style={{ background: 'linear-gradient(180deg, #DFE0E1 0%, #E1BF92 100%)' }}
+      style={{ background: 'linear-gradient(180deg, #E1BF92 0%, #DFE0E1 50%, #E1BF92 100%)' }}
     >
       <div className="max-w-3xl mx-auto text-center">
 

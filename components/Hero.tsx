@@ -153,6 +153,21 @@ export default function Hero() {
         </span>
         <div className="w-px h-12 bg-gradient-to-b from-white/60 to-transparent animate-float" />
       </div>
+
+      {/* Bottom wave */}
+      <svg
+        viewBox="0 0 1440 80"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute bottom-0 left-0 w-full z-20"
+        style={{ height: 'clamp(40px, 6vw, 80px)', display: 'block' }}
+        aria-hidden="true"
+      >
+        <path
+          d="M0,80 L0,40 C180,0 360,70 540,35 C720,0 900,65 1080,30 C1260,0 1380,50 1440,40 L1440,80 Z"
+          fill="#E1BF92"
+        />
+      </svg>
     </div>
   )
 }

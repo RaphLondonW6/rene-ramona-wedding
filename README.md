@@ -1,6 +1,6 @@
-# 💍 Rene & Ramona Wedding Website
+# 💍 René & Ramona Wedding Website
 
-Production-ready Next.js wedding website for Rene & Ramona — 12 June 2027 · Phoenix Cernica, Romania.
+Production-ready Next.js wedding website for René & Ramona — 12 June 2027 · Phoenix Cernica, Romania.
 
 ---
 
