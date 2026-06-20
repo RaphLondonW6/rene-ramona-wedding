@@ -95,7 +95,7 @@ export const accommodations: Accommodation[] = [
     distance: '14 km',
     description: 'A grand five-star hotel in the heart of Bucharest, blending classic architecture with contemporary luxury and impeccable service.',
     stars: 5,
-    image: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80',
+    image: '/images/hotels/GrandHotelBucharest.png',
     bookingUrl: 'https://www.grandhotelbucharest.com/',
     priceRange: '€€€€',
   },
