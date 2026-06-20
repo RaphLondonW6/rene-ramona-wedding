@@ -158,7 +158,7 @@ Welcome (intro italic + body)
 ↓ SectionImage: ceremony-program.jpg
 Program (subtitle: white)
 ↓ SectionImage: confirm-presence.jpg
-RSVP (subtitle: white; success message: white, includes confirmation email note)
+RSVP (subtitle: white; success message: dark, includes confirmation email note; auto-scrolls to #rsvp on submit)
 ↓ SectionImage: menu.jpg
 Menu (Starters, Mains, Dessert, Drinks, Kids)
 ↓ SectionImage: hotels-accommodation.jpg
@@ -187,6 +187,8 @@ Fields submitted to Google Sheets: `firstName`, `lastName`, `email`, `phone`, `a
 `homeAddress` and `nationality` are optional fields added to capture postal address (for sending a physical invite) and nationality.
 
 The Meal Selection has been moved to the standalone **Menu** section (`components/Menu.tsx`). RSVP only contains attendance, personal details, dietary requirements, optional message, and GDPR consent.
+
+On successful submission, the form is replaced in-place by a success banner (no layout shift — the outer wrapper stays in the DOM). A `useEffect` watching `status === 'success'` smoothly scrolls the page to `#rsvp` so the banner is always visible.
 
 ---
 
@@ -233,7 +235,7 @@ CSS z-index stacking on `.card-outer`:
 
 All UI strings live in `locales/{en,ro,sk}.json`. The `LanguageContext` provides a `t` object throughout the Next.js app.
 
-Locale files contain: `nav`, `hero`, `welcome`, `program`, `rsvp`, `accommodation`, `honeymoon`, `parking`, `contact`, `footer`.
+Locale files contain: `nav`, `hero`, `welcome`, `program`, `rsvp`, `accommodation`, `honeymoon`, `parking`, `contact`, `footer`. The `nav` object includes a `menu` key (EN: "Menu", RO: "Meniu", SK: "Menu").
 
 The `parking` key holds: `title`, `subtitle`, `body`, `step1`, `step2`, `step3`.
 
@@ -269,3 +271,4 @@ ffmpeg -i input.MP4 -vf scale=1280:720 -c:v libx264 -crf 26 -preset slow -an -mo
 - **Git lock conflicts** — OneDrive can also create `.git/index.lock`. Remove with `del .git\index.lock` (Windows).
 - **`git add -A` preferred over `git add <path>`** — handles both deletions and additions in one command.
 - **New locale keys accessed with `(t as any).keyName`** — the TypeScript type for `t` is inferred from `en.json`. New keys added without updating the type definition require casting to avoid build errors.
+- **`section-subtitle` CSS class overrides Tailwind color** — the class sets `color: var(--color-light-text)` which wins over plain Tailwind utilities. Use `!text-white` (with `!important`) to override it.

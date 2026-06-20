@@ -169,7 +169,7 @@ export default function RSVP() {
                 {...register('phone', { required: f.required })}
                 type="tel"
                 className={`form-input ${errors.phone ? 'error' : ''}`}
-                placeholder="+44 …"
+                placeholder="RO +40, UK +44, SK +421"
                 autoComplete="tel"
               />
             </Field>
