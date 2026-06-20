@@ -73,7 +73,7 @@ export const accommodations: Accommodation[] = [
     distance: '14 km',
     description: 'Bucharest\'s most celebrated boutique hotel, evoking the golden era of the city\'s Belle Époque. World-class service and interiors.',
     stars: 5,
-    image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=600&q=80',
+    image: '/images/hotels/HotelEpoque.png',
     bookingUrl: 'https://www.booking.com/searchresults.html?ss=Hotel+Epoque+Bucharest&checkin=2027-06-12&checkout=2027-06-13&group_adults=2&no_rooms=1',
     priceRange: '€€€€',
   },
