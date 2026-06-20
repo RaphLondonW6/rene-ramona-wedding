@@ -70,14 +70,13 @@ export default function RSVP() {
     setStatus('success')
   }
 
-  if (status === 'success') {
-    return (
-      <SuccessBanner
-        title={f.successTitle}
-        message={f.successMessage}
-      />
-    )
-  }
+  // Scroll to RSVP section on success so the banner is visible
+  useEffect(() => {
+    if (status === 'success') {
+      const el = document.getElementById('rsvp')
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [status])
 
   const ff = f as any
 
@@ -87,6 +86,17 @@ export default function RSVP() {
       className="section-base bg-ivory"
       style={{ background: 'linear-gradient(180deg, #E1BF92 0%, #DFE0E1 80%, #E1BF92 100%)' }}
     >
+      {status === 'success' && (
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-center max-w-lg">
+            <div className="text-6xl mb-6" aria-hidden="true">💌</div>
+            <h2 className="font-serif-display text-4xl text-darkText mb-4">{f.successTitle}</h2>
+            <div className="gold-divider my-6" />
+            <p className="font-serif-body text-xl italic text-darkText">{f.successMessage}</p>
+          </div>
+        </div>
+      )}
+      {status !== 'success' && (
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <div className="reveal text-champagne text-3xl mb-6" aria-hidden="true">✦</div>
@@ -288,6 +298,7 @@ export default function RSVP() {
           </div>
         </form>
       </div>
+      )}
     </div>
   )
 }
@@ -328,18 +339,3 @@ function Spinner() {
   )
 }
 
-function SuccessBanner({ title, message }: { title: string; message: string }) {
-  return (
-    <div
-      className="section-base flex items-center justify-center"
-      style={{ background: 'linear-gradient(180deg, #E1BF92 0%, #DFE0E1 50%, #E1BF92 100%)', minHeight: '60vh' }}
-    >
-      <div className="text-center max-w-lg">
-        <div className="text-6xl mb-6" aria-hidden="true">💌</div>
-        <h2 className="font-serif-display text-4xl text-darkText mb-4">{title}</h2>
-        <div className="gold-divider my-6" />
-        <p className="font-serif-body text-xl italic text-darkText">{message}</p>
-      </div>
-    </div>
-  )
-}
