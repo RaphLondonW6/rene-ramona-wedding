@@ -51,7 +51,7 @@ export const accommodations: Accommodation[] = [
     distance: '13 km',
     description: "A reliable international brand with modern amenities, central location and easy access to Bucharest's attractions.",
     stars: 4,
-    image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80',
+    image: '/images/hotels/NovotelBucharestCityCentre.png',
     bookingUrl: 'https://www.novotelbucharestcitycentre.com/',
     priceRange: '€€€',
   },
