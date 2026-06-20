@@ -116,7 +116,7 @@ export default function Hero() {
           }}
         />
 
-        <p className="hero-date font-serif-body text-2xl md:text-3xl text-gold-light tracking-[0.2em] uppercase opacity-0">
+        <p className="hero-date font-serif-body text-2xl md:text-3xl text-white tracking-[0.2em] uppercase opacity-0">
           {t.hero.date}
         </p>
 
