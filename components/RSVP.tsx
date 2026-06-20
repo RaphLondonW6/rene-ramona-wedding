@@ -188,11 +188,54 @@ export default function RSVP() {
 
           {/* Nationality */}
           <Field label={ff.nationality} className="mb-4">
-            <input
+            <select
               {...register('nationality')}
-              className="form-input"
-              placeholder={ff.nationalityPlaceholder}
-            />
+              className="form-input bg-white"
+              defaultValue=""
+            >
+              <option value="" disabled>{ff.nationalityPlaceholder}</option>
+              <optgroup label="— Most common —">
+                <option value="Romanian">Romanian</option>
+                <option value="Slovak">Slovak</option>
+                <option value="French">French</option>
+                <option value="British">British</option>
+              </optgroup>
+              <optgroup label="— Other —">
+                <option value="Albanian">Albanian</option>
+                <option value="Austrian">Austrian</option>
+                <option value="Belgian">Belgian</option>
+                <option value="Bulgarian">Bulgarian</option>
+                <option value="Croatian">Croatian</option>
+                <option value="Czech">Czech</option>
+                <option value="Danish">Danish</option>
+                <option value="Dutch">Dutch</option>
+                <option value="Estonian">Estonian</option>
+                <option value="Finnish">Finnish</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Hungarian">Hungarian</option>
+                <option value="Irish">Irish</option>
+                <option value="Italian">Italian</option>
+                <option value="Latvian">Latvian</option>
+                <option value="Lithuanian">Lithuanian</option>
+                <option value="Luxembourgish">Luxembourgish</option>
+                <option value="Maltese">Maltese</option>
+                <option value="Moldovan">Moldovan</option>
+                <option value="Norwegian">Norwegian</option>
+                <option value="Polish">Polish</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Serbian">Serbian</option>
+                <option value="Slovenian">Slovenian</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Swedish">Swedish</option>
+                <option value="Swiss">Swiss</option>
+                <option value="Ukrainian">Ukrainian</option>
+                <option value="American">American</option>
+                <option value="Australian">Australian</option>
+                <option value="Canadian">Canadian</option>
+                <option value="Other">Other</option>
+              </optgroup>
+            </select>
           </Field>
 
           {/* Attendance */}
