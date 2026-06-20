@@ -18,7 +18,7 @@ export const accommodations: Accommodation[] = [
     distance: '35 km',
     description: 'A beautiful Mercure estate resort set in the Romanian countryside, offering a peaceful retreat with elegant rooms and scenic grounds.',
     stars: 4,
-    image: 'https://images.unsplash.com/photo-1587874522487-fe10e954d035?w=600&q=80',
+    image: '/images/hotels/Mercure_Conacul_Cozieni.png',
     bookingUrl: 'https://all.accor.com/hotel/B9U8/index.en.shtml',
     priceRange: '€€',
   },
