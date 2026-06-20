@@ -338,7 +338,7 @@ function SuccessBanner({ title, message }: { title: string; message: string }) {
         <div className="text-6xl mb-6" aria-hidden="true">💌</div>
         <h2 className="font-serif-display text-4xl text-darkText mb-4">{title}</h2>
         <div className="gold-divider my-6" />
-        <p className="font-serif-body text-xl italic text-white">{message}</p>
+        <p className="font-serif-body text-xl italic text-darkText">{message}</p>
       </div>
     </div>
   )

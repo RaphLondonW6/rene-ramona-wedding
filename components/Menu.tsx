@@ -37,7 +37,7 @@ export default function Menu() {
 
           {/* Starters & Canapés */}
           <div>
-            <h3 className="font-serif-display text-lg text-champagne mb-3 text-center">{f.starterTitle}</h3>
+            <h3 className="font-serif-display text-lg text-white mb-3 text-center">{f.starterTitle}</h3>
             <div className="bg-white/70 p-4 border border-cream/80 text-center">
               <div className="mb-4 overflow-hidden rounded-sm">
                 <Image
@@ -60,7 +60,7 @@ export default function Menu() {
 
           {/* Main Courses */}
           <div>
-            <h3 className="font-serif-display text-lg text-champagne mb-3 text-center">{f.mainCourseTitle}</h3>
+            <h3 className="font-serif-display text-lg text-white mb-3 text-center">{f.mainCourseTitle}</h3>
             <div className="bg-white/70 p-4 border border-cream/80 space-y-6 text-center">
               {/* Fish Course */}
               <div>
@@ -109,7 +109,7 @@ export default function Menu() {
 
           {/* Dessert */}
           <div>
-            <h3 className="font-serif-display text-lg text-champagne mb-3 text-center">{f.dessertTitle}</h3>
+            <h3 className="font-serif-display text-lg text-white mb-3 text-center">{f.dessertTitle}</h3>
             <div className="bg-white/70 p-4 border border-cream/80 text-center">
               <p className="font-body text-sm text-darkText">{f.dessertItem}</p>
             </div>
@@ -117,7 +117,7 @@ export default function Menu() {
 
           {/* Drinks Menu */}
           <div>
-            <h3 className="font-serif-display text-lg text-champagne mb-3 text-center">{ff.drinksMenuTitle}</h3>
+            <h3 className="font-serif-display text-lg text-white mb-3 text-center">{ff.drinksMenuTitle}</h3>
             <div className="bg-white/70 p-4 border border-cream/80 text-center">
               <ul className="list-none space-y-1">
                 {(ff.drinksMenuItems as string[]).map((item: string, i: number) => (
@@ -130,7 +130,7 @@ export default function Menu() {
 
           {/* Kids Menu */}
           <div>
-            <h3 className="font-serif-display text-lg text-champagne mb-3 text-center">{ff.kidsMenuTitle}</h3>
+            <h3 className="font-serif-display text-lg text-white mb-3 text-center">{ff.kidsMenuTitle}</h3>
             <div className="bg-white/70 p-4 border border-cream/80 text-center">
               <ul className="list-none space-y-1">
                 {(ff.kidsMenuItems as string[]).map((item: string, i: number) => (
