@@ -67,7 +67,10 @@ export default function Welcome() {
             />
           </svg>
 
-          <p className="font-serif-body text-xl md:text-2xl text-darkText leading-relaxed">
+          <p className="font-serif-body text-xl md:text-2xl text-darkText leading-relaxed italic mb-4">
+            {(t.welcome as any).intro}
+          </p>
+          <p className="font-serif-body text-lg md:text-xl text-darkText leading-relaxed">
             {t.welcome.body}
           </p>
 

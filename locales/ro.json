@@ -5,12 +5,13 @@
     "rsvp": "Confirmare",
     "accommodation": "Cazare",
     "honeymoon": "Fond Lună de Miere",
+    "parking": "Parcare",
     "contact": "Contact"
   },
   "hero": {
     "names": "René & Ramona",
     "date": "12 Iunie 2027",
-    "tagline": "Împreună cu familiile noastre, vă invităm să celebrați nunta noastră.",
+    "tagline": "",
     "countdown": {
       "days": "Zile",
       "hours": "Ore",
@@ -21,7 +22,8 @@
   },
   "welcome": {
     "title": "Bun Venit",
-    "body": "Așteptăm cu nerăbdare să vă vedem pe 12 iunie 2027. Ceremonia va avea loc la Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, România, la ora 16:00.",
+    "intro": "Împreună cu familiile noastre, vă invităm să celebrați nunta noastră.",
+    "body": "Așteptăm cu nerăbdare să vă vedem pe 12 iunie 2027. Ceremonia va avea loc la Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, România, la ora 17:30.",
     "mapsButton": "Deschide în Google Maps"
   },
   "program": {
@@ -31,7 +33,7 @@
       { "time": "17:00", "title": "Ceremonia", "description": "la Phoenix Cernica" },
       { "time": "18:00", "title": "Recepție", "description": "Fotografii și recepție în grădină" },
       { "time": "20:30", "title": "Cina", "description": "Bucurați-vă de o cină festivă împreună" },
-      { "time": "23:00", "title": "Petrecere de Seară", "description": "Dansați și sărbătoriți până noaptea târziu" }
+      { "time": "22:00", "title": "Petrecere de Seară", "description": "Dansați și sărbătoriți până noaptea târziu" }
     ]
   },
   "rsvp": {
@@ -51,6 +53,11 @@
       "attendance": "Participare",
       "attending": "Voi participa",
       "notAttending": "Nu pot participa",
+      "homeAddress": "Adresa de acasă",
+      "homeAddressLabel": "Adresa dvs. de acasă: Am dori să vă trimitem o invitație prin poștă",
+      "homeAddressPlaceholder": "Stradă, Oraș, Cod poștal, Țară…",
+      "nationality": "Naționalitate",
+      "nationalityPlaceholder": "ex. Franceză, Română, Slovacă…",
       "message": "Mesaj pentru cuplu (opțional)",
       "messagePlaceholder": "Scrieți un mesaj sau o notă specială…",
       "dietary": "Cerințe Alimentare",
@@ -86,6 +93,29 @@
       ],
       "dessertTitle": "Desert",
       "dessertItem": "Tort de nuntă",
+      "drinksMenuTitle": "Meniu Băuturi",
+      "drinksMenuItems": [
+        "Băutură de bun venit: Vin spumant la sosirea oaspeților și servit cu tortul",
+        "Whisky: Jameson, JB, Ballantine's, Chivas Regal",
+        "Vodcă: Absolut",
+        "Irish Cream: Baileys",
+        "Aperol, Campari, Martini, Beefeater Gin",
+        "Rom: Havana Club",
+        "Cocktailuri: Aperol Spritz, Hugo, Mojito, Campari Orange, Gin & Tonic, Cuba Libre",
+        "Cocktailuri non-alcoolice: Safe Sex, Virgin Piña Colada, Green Apple",
+        "Prosecco | Vin alb, roze și roșu românesc (Sarica Niculinel Aniversarium)",
+        "Bere și bere fără alcool",
+        "Băuturi răcoritoare: Pepsi, Mirinda, 7UP, Evervess | Apă Aqua Carpatica plată și cu bule (0,5L) | Sucuri Santal: portocale, mere, piersici, merișoare",
+        "Băuturi calde: Espresso, cappuccino, caffè latte"
+      ],
+      "drinksMenuNote": "Consum nelimitat inclus.",
+      "kidsMenuTitle": "Meniu Copii",
+      "kidsMenuItems": [
+        "Aperitiv",
+        "Șnițel de pui cu cartofi prăjiți",
+        "Tort",
+        "Băuturi răcoritoare"
+      ],
       "gdpr": "Sunt de acord ca datele mele personale să fie stocate și utilizate exclusiv în scopul organizării acestui eveniment nupțial, în conformitate cu GDPR.",
       "submit": "Confirmați Prezența",
       "submitting": "Se trimite…",
@@ -104,12 +134,20 @@
   },
   "honeymoon": {
     "title": "Fond Lună de Miere",
-    "body": "Prezența voastră, buna dispoziție și dorința de a celebra uniunea noastră sunt tot ceea ce ne dorim în această zi specială. Dacă doriți să ne oferiți un mic cadou, planificăm o călătorie pentru luna noastră de miere. Puteți contribui la proiectul nostru fie online, făcând clic pe butonul de mai jos, fie prin cutia de cadouri disponibilă la locația de recepție în ziua nunții.",
+    "body": "Prezența voastră, buna dispoziție și dorința de a celebra uniunea noastră sunt tot ceea ce ne dorim în această zi specială.\nNu facem o listă de cadouri de nuntă, dar dacă doriți să ne oferiți un mic cadou, planificăm o călătorie pentru luna noastră de miere.\nPuteți contribui la proiectul nostru fie online, făcând clic pe butonul de mai jos, fie prin cutia de cadouri disponibilă la locația de recepție în ziua nunții.",
     "contributeButton": "Contribuiți",
     "wishTitle": "Trimiteți o Urare",
     "wishPlaceholder": "Scrieți o urare sinceră pentru René & Ramona…",
     "wishButton": "Generați Urare",
     "wishGenerating": "Se creează urarea…"
+  },
+  "parking": {
+    "title": "Parcare & Transport spre București",
+    "subtitle": "Parcare și transport spre București după petrecere",
+    "body": "Parcarea este situată la 100 de metri de restaurantul Garuda By Phoenix Cernica. Echipele și personalul nostru vă vor ajuta să parcați mașina. Uber și Bolt sunt disponibile pe scară largă pentru a călători înapoi la București după petrecere.",
+    "step1": "Pasul 1",
+    "step2": "Pasul 2",
+    "step3": "Pasul 3"
   },
   "contact": {
     "title": "Contactați-ne",

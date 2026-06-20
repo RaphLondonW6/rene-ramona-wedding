@@ -56,8 +56,7 @@ export default function Hero() {
       tl.fromTo('.hero-names', { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1.4 })
         .fromTo('.hero-divider', { scaleX: 0 }, { scaleX: 1, duration: 0.8 }, '-=0.6')
         .fromTo('.hero-date', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1 }, '-=0.4')
-        .fromTo('.hero-tagline', { opacity: 0 }, { opacity: 1, duration: 1 }, '-=0.4')
-        .fromTo('.hero-countdown', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.2')
+        .fromTo('.hero-countdown', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.8 }, '-=0.4')
         .fromTo('.hero-scroll', { opacity: 0 }, { opacity: 1, duration: 0.8 }, '-=0.2')
     }
     loadGsap()
@@ -118,10 +117,6 @@ export default function Hero() {
 
         <p className="hero-date font-serif-body text-2xl md:text-3xl text-white tracking-[0.2em] uppercase opacity-0">
           {t.hero.date}
-        </p>
-
-        <p className="hero-tagline font-serif-body text-lg md:text-xl text-white/80 mt-6 max-w-xl mx-auto leading-relaxed italic opacity-0">
-          {t.hero.tagline}
         </p>
 
         {/* Countdown */}

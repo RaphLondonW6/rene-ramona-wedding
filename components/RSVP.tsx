@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import Image from 'next/image'
 import { useLanguage } from '@/context/LanguageContext'
 
 const RSVP_ENDPOINT =
@@ -13,6 +14,8 @@ type FormValues = {
   email: string
   phone: string
   attendance: 'attending' | 'not-attending'
+  homeAddress: string
+  nationality: string
   message: string
   dietary: string
   dietaryOther: string
@@ -51,17 +54,13 @@ export default function RSVP() {
   }, [])
 
   const onSubmit = async (data: FormValues) => {
-    // Honeypot spam check
     if (honeypot) return
-
     setStatus('submitting')
 
     const body = new URLSearchParams()
     Object.entries({ ...data, submittedAt: new Date().toISOString() })
       .forEach(([k, v]) => body.append(k, String(v ?? '')))
 
-    // Fire-and-forget: no-cors returns an opaque response we can't read.
-    // The browser sends the request regardless — just show success.
     fetch(RSVP_ENDPOINT, {
       method: 'POST',
       mode: 'no-cors',
@@ -80,6 +79,8 @@ export default function RSVP() {
       />
     )
   }
+
+  const ff = f as any
 
   return (
     <div
@@ -109,7 +110,7 @@ export default function RSVP() {
           noValidate
           className="reveal bg-white/80 backdrop-blur-sm border border-cream/80 p-6 md:p-10 shadow-sm"
         >
-          {/* Honeypot (hidden from real users) */}
+          {/* Honeypot */}
           <input
             type="text"
             name="_hp"
@@ -165,6 +166,26 @@ export default function RSVP() {
             </Field>
           </div>
 
+          {/* Home Address */}
+          <Field label={ff.homeAddressLabel} className="mb-4">
+            <textarea
+              {...register('homeAddress')}
+              rows={2}
+              className="form-input resize-none"
+              placeholder={ff.homeAddressPlaceholder}
+              autoComplete="street-address"
+            />
+          </Field>
+
+          {/* Nationality */}
+          <Field label={ff.nationality} className="mb-4">
+            <input
+              {...register('nationality')}
+              className="form-input"
+              placeholder={ff.nationalityPlaceholder}
+            />
+          </Field>
+
           {/* Attendance */}
           <Field label={f.attendance} className="mb-4">
             <div className="flex gap-4">
@@ -216,13 +237,24 @@ export default function RSVP() {
                 </Field>
               )}
 
-              {/* Meal Selection — informational */}
+              {/* ── Meal Selection ── */}
               <div className="mb-6 border border-cream/80 bg-cream/30 p-6">
                 <h3 className="font-serif-display text-xl text-darkText mb-4 text-center">{f.mealTitle}</h3>
 
-                {/* Starters */}
+                {/* Starters & Canapés */}
                 <h4 className="font-serif-display text-base text-champagne mb-2">{f.starterTitle}</h4>
                 <div className="bg-white/70 p-4 border border-cream/80 mb-4">
+                  {/* Canapés image */}
+                  <div className="mb-4 overflow-hidden rounded-sm">
+                    <Image
+                      src="/images/food/canapes.jpg"
+                      alt="Canapés selection"
+                      width={800}
+                      height={400}
+                      className="w-full h-48 object-cover"
+                      sizes="(max-width: 768px) 100vw, 700px"
+                    />
+                  </div>
                   <p className="font-serif-body text-sm italic text-lightText mb-3">{f.starterNote}</p>
                   <ul className="list-none space-y-1">
                     {f.starters.map((s, i) => (
@@ -236,25 +268,95 @@ export default function RSVP() {
 
                 {/* Main Courses */}
                 <h4 className="font-serif-display text-base text-champagne mb-2">{f.mainCourseTitle}</h4>
+                <div className="bg-white/70 p-4 border border-cream/80 mb-4 space-y-4">
+                  {/* Fish Course */}
+                  <div>
+                    <div className="mb-2 overflow-hidden rounded-sm">
+                      <Image
+                        src="/images/food/fish-course.jpg"
+                        alt="Fish course"
+                        width={800}
+                        height={400}
+                        className="w-full h-44 object-cover"
+                        sizes="(max-width: 768px) 100vw, 700px"
+                      />
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
+                      <span className="font-body text-sm text-darkText">{(f.mainCourseItems as string[])[0]}</span>
+                    </div>
+                  </div>
+                  {/* Traditional Course */}
+                  <div>
+                    <div className="mb-2 overflow-hidden rounded-sm">
+                      <Image
+                        src="/images/food/traditional-course.jpg"
+                        alt="Traditional course"
+                        width={800}
+                        height={400}
+                        className="w-full h-44 object-cover"
+                        sizes="(max-width: 768px) 100vw, 700px"
+                      />
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
+                      <span className="font-body text-sm text-darkText">{(f.mainCourseItems as string[])[1]}</span>
+                    </div>
+                  </div>
+                  {/* Main Course */}
+                  <div>
+                    <div className="mb-2 overflow-hidden rounded-sm">
+                      <Image
+                        src="/images/food/main-course.jpg"
+                        alt="Main course"
+                        width={800}
+                        height={400}
+                        className="w-full h-44 object-cover"
+                        sizes="(max-width: 768px) 100vw, 700px"
+                      />
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
+                      <span className="font-body text-sm text-darkText">{(f.mainCourseItems as string[])[2]}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dessert */}
+                <h4 className="font-serif-display text-base text-champagne mb-2">{f.dessertTitle}</h4>
                 <div className="bg-white/70 p-4 border border-cream/80 mb-4">
                   <ul className="list-none space-y-1">
-                    {(f.mainCourseItems as string[]).map((item, i) => (
+                    <li className="font-body text-sm text-darkText flex items-start gap-2">
+                      <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
+                      {f.dessertItem}
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Drinks Menu */}
+                <h4 className="font-serif-display text-base text-champagne mb-2">{ff.drinksMenuTitle}</h4>
+                <div className="bg-white/70 p-4 border border-cream/80 mb-4">
+                  <ul className="list-none space-y-1">
+                    {(ff.drinksMenuItems as string[]).map((item: string, i: number) => (
                       <li key={i} className="font-body text-sm text-darkText flex items-start gap-2">
                         <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
                         {item}
                       </li>
                     ))}
                   </ul>
+                  <p className="font-serif-body text-xs italic text-lightText mt-3">{ff.drinksMenuNote}</p>
                 </div>
 
-                {/* Dessert */}
-                <h4 className="font-serif-display text-base text-champagne mb-2">{f.dessertTitle}</h4>
+                {/* Kids Menu */}
+                <h4 className="font-serif-display text-base text-champagne mb-2">{ff.kidsMenuTitle}</h4>
                 <div className="bg-white/70 p-4 border border-cream/80">
                   <ul className="list-none space-y-1">
-                    <li className="font-body text-sm text-darkText flex items-start gap-2">
-                      <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
-                      {f.dessertItem}
-                    </li>
+                    {(ff.kidsMenuItems as string[]).map((item: string, i: number) => (
+                      <li key={i} className="font-body text-sm text-darkText flex items-start gap-2">
+                        <span className="text-champagne mt-0.5" aria-hidden="true">·</span>
+                        {item}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </div>

@@ -5,12 +5,13 @@
     "rsvp": "RSVP",
     "accommodation": "Accommodation",
     "honeymoon": "Honeymoon Fund",
+    "parking": "Parking",
     "contact": "Contact"
   },
   "hero": {
     "names": "René & Ramona",
     "date": "12 June 2027",
-    "tagline": "Together with our families, we invite you to celebrate our wedding.",
+    "tagline": "",
     "countdown": {
       "days": "Days",
       "hours": "Hours",
@@ -21,7 +22,8 @@
   },
   "welcome": {
     "title": "Welcome",
-    "body": "We are looking forward to seeing you on the 12th of June 2027. The ceremony will take place at Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, Romania at 16:00.",
+    "intro": "Together with our families, we invite you to celebrate our wedding.",
+    "body": "We are looking forward to seeing you on the 12th of June 2027. The ceremony will take place at Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, Romania at 17:30.",
     "mapsButton": "Open in Google Maps"
   },
   "program": {
@@ -31,7 +33,7 @@
       { "time": "17:00", "title": "Ceremony", "description": "at Phoenix Cernica" },
       { "time": "18:00", "title": "Reception", "description": "Pictures and reception in the garden" },
       { "time": "20:30", "title": "Dinner", "description": "Enjoy a celebratory dinner together" },
-      { "time": "23:00", "title": "Evening Party", "description": "Dance and celebrate into the night" }
+      { "time": "22:00", "title": "Evening Party", "description": "Dance and celebrate into the night" }
     ]
   },
   "rsvp": {
@@ -51,6 +53,11 @@
       "attendance": "Attendance",
       "attending": "I will attend",
       "notAttending": "I cannot attend",
+      "homeAddress": "Your home address",
+      "homeAddressLabel": "Your home address: We would like to send you an invite by post",
+      "homeAddressPlaceholder": "Street, City, Postcode, Country…",
+      "nationality": "Nationality",
+      "nationalityPlaceholder": "e.g. French, Romanian, Slovak…",
       "message": "Message to the couple (optional)",
       "messagePlaceholder": "Write a message or any special note…",
       "dietary": "Dietary Requirements",
@@ -86,6 +93,29 @@
       ],
       "dessertTitle": "Dessert",
       "dessertItem": "Wedding Cake",
+      "drinksMenuTitle": "Drinks Menu",
+      "drinksMenuItems": [
+        "Welcome Drink: Sparkling wine on guest arrival and served with the cake",
+        "Whisky: Jameson, JB, Ballantine's, Chivas Regal",
+        "Vodka: Absolut",
+        "Irish Cream: Baileys",
+        "Aperol, Campari, Martini, Beefeater Gin",
+        "Rum: Havana Club",
+        "Cocktails: Aperol Spritz, Hugo, Mojito, Campari Orange, Gin & Tonic, Cuba Libre",
+        "Non-alcoholic cocktails: Safe Sex, Virgin Piña Colada, Green Apple",
+        "Prosecco | Romanian white, rosé and red wine (Sarica Niculinel Aniversarium range)",
+        "Beer and alcohol-free beer",
+        "Soft Drinks: Pepsi, Mirinda, 7UP, Evervess | Still and sparkling Aqua Carpatica water (0.5L) | Santal juices: orange, apple, peach, cranberry",
+        "Hot Drinks: Espresso, cappuccino, caffè latte"
+      ],
+      "drinksMenuNote": "Unlimited consumption included.",
+      "kidsMenuTitle": "Kids Menu",
+      "kidsMenuItems": [
+        "Appetizer",
+        "Chicken Schnitzel with French Fries",
+        "Cake",
+        "Soft Drinks"
+      ],
       "gdpr": "I agree to my personal data being stored and used solely for the purpose of organising this wedding event, in accordance with GDPR.",
       "submit": "Confirm Attendance",
       "submitting": "Sending…",
@@ -104,12 +134,20 @@
   },
   "honeymoon": {
     "title": "Honeymoon Fund",
-    "body": "Your presence, your good mood and your desire to celebrate our union are all we wish for on this special day. If you would like to give us a small gift, we are planning a trip for our honeymoon. You can contribute to our project either online by clicking on the Contribute button below, or through the gift box available at the reception venue on the wedding day.",
+    "body": "Your presence, your good mood and your desire to celebrate our union are all we wish for on this special day.\nWe are not doing a wedding gift list, but if you would like to give us a small gift, we are planning a trip for our honeymoon.\nYou can contribute to our project either online by clicking on the Contribute button below, or through the gift box available at the reception venue on the wedding day.",
     "contributeButton": "Contribute",
     "wishTitle": "Send a Wedding Wish",
     "wishPlaceholder": "Write a heartfelt wish for René & Ramona…",
     "wishButton": "Generate Wish",
     "wishGenerating": "Creating your wish…"
+  },
+  "parking": {
+    "title": "Parking & Travelling back to Bucharest",
+    "subtitle": "Parking & Travelling back to Bucharest after the party",
+    "body": "The parking is located 100 metres from the restaurant Garuda By Phoenix Cernica. Our teams and staff will help guiding you and park your car. Uber and Bolt are widely available to travel back to Bucharest after the party.",
+    "step1": "Step 1",
+    "step2": "Step 2",
+    "step3": "Step 3"
   },
   "contact": {
     "title": "Contact Us",

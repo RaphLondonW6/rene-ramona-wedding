@@ -54,9 +54,11 @@ export default function HoneymoonFund() {
         <div className="reveal text-6xl mb-8" aria-hidden="true">✈️</div>
 
         <div className="reveal bg-white/80 backdrop-blur-sm border border-cream/80 p-8 md:p-12 shadow-sm mb-8">
-          <p className="font-serif-body text-xl md:text-2xl text-darkText leading-relaxed italic">
-            {t.honeymoon.body}
-          </p>
+          {t.honeymoon.body.split('\n').map((para, i) => (
+            <p key={i} className={`font-serif-body text-xl md:text-2xl text-darkText leading-relaxed italic${i > 0 ? ' mt-4' : ''}`}>
+              {para}
+            </p>
+          ))}
 
           <div className="gold-divider my-8" />
 

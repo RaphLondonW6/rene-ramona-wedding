@@ -5,9 +5,11 @@ import Program from '@/components/Program'
 import RSVP from '@/components/RSVP'
 import Accommodation from '@/components/Accommodation'
 import HoneymoonFund from '@/components/HoneymoonFund'
+import Parking from '@/components/Parking'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import SectionImage from '@/components/SectionImage'
+import SectionVideo from '@/components/SectionVideo'
 
 export default function Home() {
   return (
@@ -36,6 +38,8 @@ export default function Home() {
           alt="Honeymoon Fund"
         />
         <section id="honeymoon"><HoneymoonFund /></section>
+        <SectionVideo src="/videos/parking.mp4" />
+        <section id="parking"><Parking /></section>
         <SectionImage
           src="/images/sections/contact.jpg"
           alt="Contact Us"

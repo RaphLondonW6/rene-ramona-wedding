@@ -5,12 +5,13 @@
     "rsvp": "Potvrdenie",
     "accommodation": "Ubytovanie",
     "honeymoon": "Fond Medové týždne",
+    "parking": "Parkovanie",
     "contact": "Kontakt"
   },
   "hero": {
     "names": "René & Ramona",
     "date": "12. júna 2027",
-    "tagline": "Spoločne s našimi rodinami vás pozývame osláviť našu svadbu.",
+    "tagline": "",
     "countdown": {
       "days": "Dni",
       "hours": "Hodiny",
@@ -21,7 +22,8 @@
   },
   "welcome": {
     "title": "Vitajte",
-    "body": "Tešíme sa, že vás uvidíme 12. júna 2027. Obrad sa bude konať v Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, Rumunsko o 16:00.",
+    "intro": "Spoločne s našimi rodinami vás pozývame osláviť našu svadbu.",
+    "body": "Tešíme sa, že vás uvidíme 12. júna 2027. Obrad sa bude konať v Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, Rumunsko o 17:30.",
     "mapsButton": "Otvoriť v Google Maps"
   },
   "program": {
@@ -31,7 +33,7 @@
       { "time": "17:00", "title": "Obrad", "description": "v Phoenix Cernica" },
       { "time": "18:00", "title": "Recepcia", "description": "Fotografovanie a recepcia v záhrade" },
       { "time": "20:30", "title": "Večera", "description": "Vychutnajte si slávnostnú večeru spolu" },
-      { "time": "23:00", "title": "Večerná párty", "description": "Tancujte a oslavujte do noci" }
+      { "time": "22:00", "title": "Večerná párty", "description": "Tancujte a oslavujte do noci" }
     ]
   },
   "rsvp": {
@@ -51,6 +53,11 @@
       "attendance": "Účasť",
       "attending": "Zúčastním sa",
       "notAttending": "Nemôžem sa zúčastniť",
+      "homeAddress": "Domáca adresa",
+      "homeAddressLabel": "Vaša domáca adresa: Radi by sme vám poslali pozvánku poštou",
+      "homeAddressPlaceholder": "Ulica, Mesto, PSČ, Krajina…",
+      "nationality": "Národnosť",
+      "nationalityPlaceholder": "napr. Francúzska, Rumunská, Slovenská…",
       "message": "Správa pre pár (voliteľné)",
       "messagePlaceholder": "Napíšte správu alebo špeciálnu poznámku…",
       "dietary": "Diétne požiadavky",
@@ -86,6 +93,29 @@
       ],
       "dessertTitle": "Dezert",
       "dessertItem": "Svadobná torta",
+      "drinksMenuTitle": "Nápojový lístok",
+      "drinksMenuItems": [
+        "Uvítací nápoj: Šumivé víno pri príchode hostí a podávané s tortou",
+        "Whisky: Jameson, JB, Ballantine's, Chivas Regal",
+        "Vodka: Absolut",
+        "Irish Cream: Baileys",
+        "Aperol, Campari, Martini, Beefeater Gin",
+        "Rum: Havana Club",
+        "Koktaily: Aperol Spritz, Hugo, Mojito, Campari Orange, Gin & Tonic, Cuba Libre",
+        "Nealkoholické koktaily: Safe Sex, Virgin Piña Colada, Green Apple",
+        "Prosecco | Rumunské biele, ružové a červené víno (Sarica Niculinel Aniversarium)",
+        "Pivo a nealkoholické pivo",
+        "Nealkoholické nápoje: Pepsi, Mirinda, 7UP, Evervess | Tichá a perlivá voda Aqua Carpatica (0,5L) | Džúsy Santal: pomaranč, jablko, broskyňa, brusnica",
+        "Teplé nápoje: Espresso, cappuccino, caffè latte"
+      ],
+      "drinksMenuNote": "Neobmedzená konzumácia v cene.",
+      "kidsMenuTitle": "Detské menu",
+      "kidsMenuItems": [
+        "Predjedlo",
+        "Kurací rezeň s hranolkami",
+        "Torta",
+        "Nealkoholické nápoje"
+      ],
       "gdpr": "Súhlasím s tým, že moje osobné údaje budú uchovávané a použité výlučne na účely organizácie tejto svadobnej udalosti v súlade s GDPR.",
       "submit": "Potvrdiť účasť",
       "submitting": "Odosiela sa…",
@@ -104,12 +134,20 @@
   },
   "honeymoon": {
     "title": "Fond Medové týždne",
-    "body": "Vaša prítomnosť, dobrá nálada a túžba osláviť naše spojenie sú všetko, čo si v tento výnimočný deň prajeme. Ak nám chcete dať malý darček, plánujeme výlet na medové týždne. Môžete prispieť k nášmu projektu buď online kliknutím na tlačidlo nižšie, alebo prostredníctvom darčekovej škatule dostupnej na recepcii v deň svadby.",
+    "body": "Vaša prítomnosť, dobrá nálada a túžba osláviť naše spojenie sú všetko, čo si v tento výnimočný deň prajeme.\nNenechávame si zoznam svadobných darov, ale ak nám chcete dať malý darček, plánujeme výlet na medové týždne.\nMôžete prispieť k nášmu projektu buď online kliknutím na tlačidlo nižšie, alebo prostredníctvom darčekovej škatule dostupnej na recepcii v deň svadby.",
     "contributeButton": "Prispieť",
     "wishTitle": "Pošlite Svadobné Prianie",
     "wishPlaceholder": "Napíšte úprimné prianie pre René & Ramona…",
     "wishButton": "Generovať prianie",
     "wishGenerating": "Tvorí sa prianie…"
+  },
+  "parking": {
+    "title": "Parkovanie & Cestovanie späť do Bukurešti",
+    "subtitle": "Parkovanie a cestovanie späť do Bukurešti po párty",
+    "body": "Parkovisko sa nachádza 100 metrov od reštaurácie Garuda By Phoenix Cernica. Naše tímy a personál vám pomôžu zaparkovať auto. Uber a Bolt sú široko dostupné na cestovanie späť do Bukurešti po párty.",
+    "step1": "Krok 1",
+    "step2": "Krok 2",
+    "step3": "Krok 3"
   },
   "contact": {
     "title": "Kontaktujte Nás",
