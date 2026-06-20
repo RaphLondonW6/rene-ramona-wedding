@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { useLanguage } from '@/context/LanguageContext'
 
 const RSVP_ENDPOINT =
-  'https://script.google.com/macros/s/AKfycbyF7hfTXoQHWHwwq13syhCktAicjsTlokS1i7dJU7Kxhfc3nAZGm0Ab3YUYnKKUztREQw/exec'
+  'https://script.google.com/macros/s/AKfycbzdSVxdUYVb0rrlSIQhARb_PnyqcqVGn1xn5zQgl5VF7pP4wmW82WOJbzc24MVSwR1Lpw/exec'
 
 type FormValues = {
   firstName: string
