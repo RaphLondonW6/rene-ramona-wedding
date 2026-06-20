@@ -54,7 +54,7 @@ export default function Accommodation() {
           <div className="reveal text-champagne text-3xl mb-6" aria-hidden="true">✦</div>
           <h2 className="reveal section-title">{t.accommodation.title}</h2>
           <div className="reveal gold-divider my-6" />
-          <p className="reveal section-subtitle">{t.accommodation.subtitle}</p>
+          <p className="reveal section-subtitle text-white">{t.accommodation.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useLanguage, type Locale } from '@/context/LanguageContext'
 
-const SECTIONS = ['welcome', 'program', 'rsvp', 'accommodation', 'honeymoon', 'parking', 'contact'] as const
+const SECTIONS = ['welcome', 'program', 'rsvp', 'menu', 'accommodation', 'honeymoon', 'parking', 'contact'] as const
 
 export default function Navigation() {
   const { t, locale, setLocale } = useLanguage()

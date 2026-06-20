@@ -5,6 +5,7 @@
     "rsvp": "RSVP",
     "accommodation": "Accommodation",
     "honeymoon": "Honeymoon Fund",
+    "menu": "Menu",
     "parking": "Parking",
     "contact": "Contact"
   },
@@ -120,7 +121,7 @@
       "submit": "Confirm Attendance",
       "submitting": "Sending…",
       "successTitle": "Thank you!",
-      "successMessage": "Your RSVP has been received. We can't wait to celebrate with you!",
+      "successMessage": "Your RSVP has been received, we will send you a confirmation email. We can't wait to celebrate with you!",
       "errorMessage": "Something went wrong. Please try again or contact us directly.",
       "required": "This field is required",
       "invalidEmail": "Please enter a valid email address"

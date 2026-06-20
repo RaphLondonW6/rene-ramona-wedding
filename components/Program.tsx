@@ -59,7 +59,7 @@ export default function Program() {
           <div className="reveal text-champagne text-3xl mb-6" aria-hidden="true">✦</div>
           <h2 className="reveal section-title">{t.program.title}</h2>
           <div className="reveal gold-divider my-6" />
-          <p className="reveal section-subtitle">{t.program.subtitle}</p>
+          <p className="reveal section-subtitle text-white">{t.program.subtitle}</p>
         </div>
 
         {/* Timeline */}

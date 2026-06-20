@@ -3,6 +3,7 @@ import Hero from '@/components/Hero'
 import Welcome from '@/components/Welcome'
 import Program from '@/components/Program'
 import RSVP from '@/components/RSVP'
+import Menu from '@/components/Menu'
 import Accommodation from '@/components/Accommodation'
 import HoneymoonFund from '@/components/HoneymoonFund'
 import Parking from '@/components/Parking'
@@ -28,6 +29,11 @@ export default function Home() {
           alt="Confirm Your Presence"
         />
         <section id="rsvp"><RSVP /></section>
+        <SectionImage
+          src="/images/sections/menu.jpg"
+          alt="Menu"
+        />
+        <section id="menu"><Menu /></section>
         <SectionImage
           src="/images/sections/hotels-accommodation.jpg"
           alt="Hotels & Accommodation"

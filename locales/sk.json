@@ -5,6 +5,7 @@
     "rsvp": "Potvrdenie",
     "accommodation": "Ubytovanie",
     "honeymoon": "Fond Medové týždne",
+    "menu": "Menu",
     "parking": "Parkovanie",
     "contact": "Kontakt"
   },
@@ -120,7 +121,7 @@
       "submit": "Potvrdiť účasť",
       "submitting": "Odosiela sa…",
       "successTitle": "Ďakujeme!",
-      "successMessage": "Vaše RSVP bolo prijaté. Tešíme sa, že to oslavíme s vami!",
+      "successMessage": "Vaše RSVP bolo prijaté, pošleme vám potvrdzovací e-mail. Tešíme sa, že to oslavíme s vami!",
       "errorMessage": "Niečo sa pokazilo. Skúste to znova alebo nás kontaktujte priamo.",
       "required": "Toto pole je povinné",
       "invalidEmail": "Zadajte platnú e-mailovú adresu"

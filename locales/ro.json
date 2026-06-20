@@ -5,6 +5,7 @@
     "rsvp": "Confirmare",
     "accommodation": "Cazare",
     "honeymoon": "Fond Lună de Miere",
+    "menu": "Meniu",
     "parking": "Parcare",
     "contact": "Contact"
   },
@@ -120,7 +121,7 @@
       "submit": "Confirmați Prezența",
       "submitting": "Se trimite…",
       "successTitle": "Mulțumim!",
-      "successMessage": "Confirmarea dvs. a fost primită. Abia așteptăm să sărbătorim împreună cu voi!",
+      "successMessage": "Confirmarea dvs. a fost primită, vă vom trimite un email de confirmare. Abia așteptăm să sărbătorim împreună cu voi!",
       "errorMessage": "Ceva nu a mers bine. Vă rugăm să încercați din nou sau să ne contactați direct.",
       "required": "Acest câmp este obligatoriu",
       "invalidEmail": "Introduceți o adresă de email validă"

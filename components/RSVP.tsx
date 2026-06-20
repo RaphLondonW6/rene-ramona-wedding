@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import Image from 'next/image'
 import { useLanguage } from '@/context/LanguageContext'
 
 const RSVP_ENDPOINT =
@@ -93,7 +92,7 @@ export default function RSVP() {
           <div className="reveal text-champagne text-3xl mb-6" aria-hidden="true">✦</div>
           <h2 className="reveal section-title">{t.rsvp.title}</h2>
           <div className="reveal gold-divider my-6" />
-          <p className="reveal section-subtitle">{t.rsvp.subtitle}</p>
+          <p className="reveal section-subtitle text-white">{t.rsvp.subtitle}</p>
         </div>
 
         {/* Dress Code Card */}
@@ -237,108 +236,6 @@ export default function RSVP() {
                 </Field>
               )}
 
-              {/* ── Meal Selection ── */}
-              <div className="mb-6 border border-cream/80 bg-cream/30 p-6">
-                <h3 className="font-serif-display text-xl text-darkText mb-4 text-center">{f.mealTitle}</h3>
-
-                {/* Starters & Canapés */}
-                <h4 className="font-serif-display text-base text-champagne mb-2 text-center">{f.starterTitle}</h4>
-                <div className="bg-white/70 p-4 border border-cream/80 mb-4 text-center">
-                  {/* Canapés image — full size, no crop */}
-                  <div className="mb-4 overflow-hidden rounded-sm">
-                    <Image
-                      src="/images/food/canapes.jpg"
-                      alt="Canapés selection"
-                      width={800}
-                      height={600}
-                      className="w-full h-auto"
-                      sizes="(max-width: 768px) 100vw, 700px"
-                    />
-                  </div>
-                  <p className="font-serif-body text-sm italic text-lightText mb-3">{f.starterNote}</p>
-                  <ul className="list-none space-y-1">
-                    {f.starters.map((s, i) => (
-                      <li key={i} className="font-body text-sm text-darkText">
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Main Courses */}
-                <h4 className="font-serif-display text-base text-champagne mb-2 text-center">{f.mainCourseTitle}</h4>
-                <div className="bg-white/70 p-4 border border-cream/80 mb-4 space-y-6 text-center">
-                  {/* Fish Course */}
-                  <div>
-                    <div className="mb-2 overflow-hidden rounded-sm">
-                      <Image
-                        src="/images/food/fish-course.jpg"
-                        alt="Fish course"
-                        width={800}
-                        height={600}
-                        className="w-full h-auto"
-                        sizes="(max-width: 768px) 100vw, 700px"
-                      />
-                    </div>
-                    <p className="font-body text-sm text-darkText">{(f.mainCourseItems as string[])[0]}</p>
-                  </div>
-                  {/* Traditional Course */}
-                  <div>
-                    <div className="mb-2 overflow-hidden rounded-sm">
-                      <Image
-                        src="/images/food/traditional-course.jpg"
-                        alt="Traditional course"
-                        width={800}
-                        height={600}
-                        className="w-full h-auto"
-                        sizes="(max-width: 768px) 100vw, 700px"
-                      />
-                    </div>
-                    <p className="font-body text-sm text-darkText">{(f.mainCourseItems as string[])[1]}</p>
-                  </div>
-                  {/* Main Course */}
-                  <div>
-                    <div className="mb-2 overflow-hidden rounded-sm">
-                      <Image
-                        src="/images/food/main-course.jpg"
-                        alt="Main course"
-                        width={800}
-                        height={600}
-                        className="w-full h-auto"
-                        sizes="(max-width: 768px) 100vw, 700px"
-                      />
-                    </div>
-                    <p className="font-body text-sm text-darkText">{(f.mainCourseItems as string[])[2]}</p>
-                  </div>
-                </div>
-
-                {/* Dessert */}
-                <h4 className="font-serif-display text-base text-champagne mb-2 text-center">{f.dessertTitle}</h4>
-                <div className="bg-white/70 p-4 border border-cream/80 mb-4 text-center">
-                  <p className="font-body text-sm text-darkText">{f.dessertItem}</p>
-                </div>
-
-                {/* Drinks Menu */}
-                <h4 className="font-serif-display text-base text-champagne mb-2 text-center">{ff.drinksMenuTitle}</h4>
-                <div className="bg-white/70 p-4 border border-cream/80 mb-4 text-center">
-                  <ul className="list-none space-y-1">
-                    {(ff.drinksMenuItems as string[]).map((item: string, i: number) => (
-                      <li key={i} className="font-body text-sm text-darkText">{item}</li>
-                    ))}
-                  </ul>
-                  <p className="font-serif-body text-xs italic text-lightText mt-3">{ff.drinksMenuNote}</p>
-                </div>
-
-                {/* Kids Menu */}
-                <h4 className="font-serif-display text-base text-champagne mb-2 text-center">{ff.kidsMenuTitle}</h4>
-                <div className="bg-white/70 p-4 border border-cream/80 text-center">
-                  <ul className="list-none space-y-1">
-                    {(ff.kidsMenuItems as string[]).map((item: string, i: number) => (
-                      <li key={i} className="font-body text-sm text-darkText">{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
             </>
           )}
 
@@ -441,7 +338,7 @@ function SuccessBanner({ title, message }: { title: string; message: string }) {
         <div className="text-6xl mb-6" aria-hidden="true">💌</div>
         <h2 className="font-serif-display text-4xl text-darkText mb-4">{title}</h2>
         <div className="gold-divider my-6" />
-        <p className="font-serif-body text-xl italic text-lightText">{message}</p>
+        <p className="font-serif-body text-xl italic text-white">{message}</p>
       </div>
     </div>
   )
