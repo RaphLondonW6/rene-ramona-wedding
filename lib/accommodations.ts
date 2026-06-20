@@ -62,7 +62,7 @@ export const accommodations: Accommodation[] = [
     distance: '14 km',
     description: 'One of Bucharest\'s most prestigious five-star hotels, combining timeless elegance with world-class service in the heart of the city.',
     stars: 5,
-    image: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600&q=80',
+    image: '/images/hotels/Corinthia_bucharest.png',
     bookingUrl: 'https://www.corinthia.com/en-gb/bucharest/',
     priceRange: '€€€€',
   },
