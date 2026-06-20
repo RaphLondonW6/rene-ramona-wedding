@@ -48,14 +48,14 @@ export default function Parking() {
               <span className="font-serif-display text-sm text-champagne tracking-widest uppercase mb-1">
                 {step.label}
               </span>
-              <div className="w-full overflow-hidden border border-cream/80 shadow-sm">
+              <div className="w-[70%] overflow-hidden border border-cream/80 shadow-sm">
                 <Image
                   src={step.src}
                   alt={`${step.label} — parking directions`}
                   width={1200}
                   height={900}
                   className="w-full h-auto"
-                  sizes="(max-width: 1024px) 100vw, 900px"
+                  sizes="(max-width: 1024px) 70vw, 630px"
                 />
               </div>
             </div>
