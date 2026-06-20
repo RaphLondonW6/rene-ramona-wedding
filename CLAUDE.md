@@ -184,7 +184,11 @@ The hero also has a bottom wave SVG built directly into `Hero.tsx`.
 
 Fields submitted to Google Sheets: `firstName`, `lastName`, `email`, `phone`, `attendance`, `homeAddress`, `nationality`, `dietary`, `dietaryOther`, `message`, `gdpr`, `submittedAt`. A honeypot field (`_hp`) silently blocks bots.
 
-`homeAddress` and `nationality` are optional fields added to capture postal address (for sending a physical invite) and nationality.
+`homeAddress` and `nationality` are optional fields added to capture postal address (for sending a physical invite) and nationality. `nationality` is a **dropdown** (not a free-text input) with Romanian, Slovak, French, British pinned at the top, followed by an alphabetical list of European and other nationalities.
+
+Phone placeholder reads `RO +40, UK +44, SK +421` as a hint for the three main guest nationalities.
+
+Dietary options: `none`, `gluten`, `vegetarian`, `vegan`, `other` — "Allergies" was removed; "Other" is labelled "Tell us more about it" (RO: "Spuneți-ne mai multe", SK: "Povedzte nám viac").
 
 The Meal Selection has been moved to the standalone **Menu** section (`components/Menu.tsx`). RSVP only contains attendance, personal details, dietary requirements, optional message, and GDPR consent.
 
@@ -272,3 +276,15 @@ ffmpeg -i input.MP4 -vf scale=1280:720 -c:v libx264 -crf 26 -preset slow -an -mo
 - **`git add -A` preferred over `git add <path>`** — handles both deletions and additions in one command.
 - **New locale keys accessed with `(t as any).keyName`** — the TypeScript type for `t` is inferred from `en.json`. New keys added without updating the type definition require casting to avoid build errors.
 - **`section-subtitle` CSS class overrides Tailwind color** — the class sets `color: var(--color-light-text)` which wins over plain Tailwind utilities. Use `!text-white` (with `!important`) to override it.
+- **Parking images are displayed at 70% width** (`w-[70%]`) — centred, stacked vertically. Adjust this value if further resizing is needed.
+
+---
+
+## Cloudflare Routes
+
+The Worker is bound to the domain via routes in the Cloudflare dashboard (Workers & Pages → your Worker → Settings → Triggers):
+
+- `www.ramonapicksrene.com/*` — main site
+- `ramonapicksrene.com/*` — apex domain
+
+Avoid `*.ramonapicksrene.com/*` (wildcard subdomain) — it's broader than needed for a single site and doesn't cover the apex domain anyway.
