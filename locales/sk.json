@@ -64,11 +64,10 @@
       "dietary": "Diétne požiadavky",
       "dietaryOptions": {
         "none": "Žiadne špeciálne požiadavky",
-        "allergies": "Alergie",
         "gluten": "Intolerancia na glutén",
         "vegetarian": "Vegetarián",
         "vegan": "Vegán",
-        "other": "Iné"
+        "other": "Povedzte nám viac"
       },
       "dietaryOtherPlaceholder": "Uveďte prosím svoju diétnu požiadavku…",
       "mealTitle": "Výber jedla",

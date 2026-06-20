@@ -64,11 +64,10 @@
       "dietary": "Cerințe Alimentare",
       "dietaryOptions": {
         "none": "Fără cerințe speciale",
-        "allergies": "Alergii",
         "gluten": "Intoleranță la gluten",
         "vegetarian": "Vegetarian",
         "vegan": "Vegan",
-        "other": "Altele"
+        "other": "Spuneți-ne mai multe"
       },
       "dietaryOtherPlaceholder": "Vă rugăm specificați cerința alimentară…",
       "mealTitle": "Selecție Meniu",

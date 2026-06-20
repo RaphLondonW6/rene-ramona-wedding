@@ -64,11 +64,10 @@
       "dietary": "Dietary Requirements",
       "dietaryOptions": {
         "none": "No special requirements",
-        "allergies": "Allergies",
         "gluten": "Gluten intolerance",
         "vegetarian": "Vegetarian",
         "vegan": "Vegan",
-        "other": "Other"
+        "other": "Tell us more about it"
       },
       "dietaryOtherPlaceholder": "Please specify your dietary requirement…",
       "mealTitle": "Meal Selection",
