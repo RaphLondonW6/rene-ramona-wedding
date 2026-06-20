@@ -128,6 +128,15 @@ rene-ramona-wedding/
 │   │   │   ├── fish-course.jpg
 │   │   │   ├── main-course.jpg
 │   │   │   └── traditional-course.jpg
+│   │   ├── hotels/         # Real hotel photos (local, not Unsplash)
+│   │   │   ├── Mercure_Conacul_Cozieni.png
+│   │   │   ├── ibis-styles-bucharest.jpg
+│   │   │   ├── Mercure_Bucharest_Unirii.png
+│   │   │   ├── NovotelBucharestCityCentre.png
+│   │   │   ├── Corinthia_bucharest.png
+│   │   │   ├── HotelEpoque.png
+│   │   │   ├── InterContinental_Bucharest.png
+│   │   │   └── GrandHotelBucharest.png
 │   │   └── parking/        # Step-by-step parking direction photos
 │   │       ├── step1.jpg
 │   │       ├── step2.jpg
@@ -177,6 +186,25 @@ Footer
 - IntersectionObserver scroll fade-in (opacity 0→1, translateY 40px→0)
 
 The hero also has a bottom wave SVG built directly into `Hero.tsx`.
+
+---
+
+## Accommodation
+
+Hotel data lives in `lib/accommodations.ts`. All 8 hotels use real photos stored locally in `public/images/hotels/`. All booking links go to the hotel's direct website or Accor booking page, with dates pre-filled where supported (check-in 2027-06-12, check-out 2027-06-13).
+
+| # | Hotel | Distance | Photo file | Booking |
+|---|---|---|---|---|
+| 1 | Mercure Conacul Cozieni | 35 km | `Mercure_Conacul_Cozieni.png` | Accor direct |
+| 2 | ibis Styles Bucharest City Center | 13 km | `ibis-styles-bucharest.jpg` | Accor direct + dates |
+| 3 | Mercure Bucharest Unirii | 14 km | `Mercure_Bucharest_Unirii.png` | Accor direct + dates |
+| 4 | Novotel Bucharest City Centre | 13 km | `NovotelBucharestCityCentre.png` | Direct website |
+| 5 | Corinthia Bucharest | 14 km | `Corinthia_bucharest.png` | Direct website |
+| 6 | Hotel Epoque Bucharest | 14 km | `HotelEpoque.png` | Booking.com + dates |
+| 7 | InterContinental Athenee Palace | 14 km | `InterContinental_Bucharest.png` | Direct booking site |
+| 8 | Grand Hotel Bucharest | 14 km | `GrandHotelBucharest.png` | Direct website |
+
+**Note:** Hotel images are in `public/images/hotels/` — add new files there and reference them as `/images/hotels/filename.ext` in `accommodations.ts`.
 
 ---
 
