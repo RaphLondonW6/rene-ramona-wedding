@@ -41,23 +41,23 @@ export default function Parking() {
           </p>
         </div>
 
-        {/* Step-by-step images */}
-        <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+        {/* Step-by-step images — stacked vertically, full width */}
+        <div className="reveal flex flex-col gap-8">
           {steps.map((step, i) => (
             <div key={i} className="flex flex-col items-center gap-3">
+              <span className="font-serif-display text-sm text-champagne tracking-widest uppercase mb-1">
+                {step.label}
+              </span>
               <div className="w-full overflow-hidden border border-cream/80 shadow-sm">
                 <Image
                   src={step.src}
                   alt={`${step.label} — parking directions`}
-                  width={600}
-                  height={600}
-                  className="w-full h-56 sm:h-64 object-cover object-center"
-                  sizes="(max-width: 640px) 100vw, 33vw"
+                  width={1200}
+                  height={900}
+                  className="w-full h-auto"
+                  sizes="(max-width: 1024px) 100vw, 900px"
                 />
               </div>
-              <span className="font-serif-display text-sm text-champagne tracking-widest uppercase">
-                {step.label}
-              </span>
             </div>
           ))}
         </div>
