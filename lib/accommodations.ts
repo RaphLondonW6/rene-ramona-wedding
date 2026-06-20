@@ -84,7 +84,7 @@ export const accommodations: Accommodation[] = [
     distance: '14 km',
     description: 'An iconic Bucharest landmark offering panoramic city views. Premier rooms, a rooftop pool and world-class dining.',
     stars: 5,
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80',
+    image: '/images/hotels/InterContinental_Bucharest.png',
     bookingUrl: 'https://intercontinental-athenee-palace-bucharest.h-rez.com/index.htm',
     priceRange: '€€€€',
   },
