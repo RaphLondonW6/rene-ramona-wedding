@@ -247,7 +247,7 @@ All three language versions (EN/RO/SK) updated in the inline `i18n` JS object.
 
 ## Static Standalone Pages
 
-`public/Wedding_Invitations/Invite.html` and `public/Wedding_Menus/Menu.html` are **self-contained HTML pages** — not Next.js routes. They are served directly as static files.
+`public/Wedding_Invitations/Invite.html`, `public/Wedding_Menus/Menu.html`, and `public/email-confirmation.html` are **self-contained HTML pages** — not Next.js routes. They are served directly as static files.
 
 Key design details:
 - Background: `Gemini_Generated_Image_u6ogjtu6ogjtu6og.png` (gold toile floral, ~2.4MB). **This file is not in git** — copy manually to `public/Wedding_Invitations/`. Menu.html references it via `../Wedding_Invitations/Gemini_Generated_Image_u6ogjtu6ogjtu6og.png`.
@@ -288,6 +288,25 @@ ffmpeg -i input.MP4 -vf scale=1280:720 -c:v libx264 -crf 26 -preset slow -an -mo
 ```
 
 `-an` strips audio (all videos are muted on the site). Adjust `-crf` (18–32) to trade quality vs file size.
+
+---
+
+## RSVP Email Confirmation (N8N + Gmail)
+
+`public/email-confirmation.html` is an HTML email template to be sent automatically to guests after they submit their RSVP. It matches the wedding website design (champagne/gold palette, table-based layout, inline CSS, web-safe fonts for email client compatibility).
+
+**Template variable:** `{{firstName}}` — replace with the guest's first name via N8N expression.
+
+**N8N workflow setup:**
+1. **Trigger** — Google Sheets node, set to "Row Added" on the RSVP sheet
+2. **Gmail node** — paste the HTML as email body (HTML mode)
+3. **To** — map to the `email` column: `{{ $json["email"] }}`
+4. **Subject** — `Your RSVP is confirmed — René & Ramona · 12 June 2027`
+5. **First name** — replace `{{firstName}}` with `{{ $json["firstName"] }}`
+
+**Alternative:** extend the existing Google Apps Script (`RSVP_ENDPOINT`) with `GmailApp.sendEmail()` — simpler if N8N feels like overkill.
+
+**Email includes:** R&R monogram header, personalised confirmation message, event details (date, time, venue), dress code reminder, link to the website, and a GDPR footer note.
 
 ---
 

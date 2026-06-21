@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Image from 'next/image'
 import { useLanguage } from '@/context/LanguageContext'
 
 export default function Parking() {
@@ -17,12 +16,6 @@ export default function Parking() {
     sectionRef.current?.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [])
-
-  const steps = [
-    { src: '/images/parking/step1.jpg', label: p.step1 },
-    { src: '/images/parking/step2.jpg', label: p.step2 },
-    { src: '/images/parking/step3.jpg', label: p.step3 },
-  ]
 
   return (
     <div
@@ -41,25 +34,19 @@ export default function Parking() {
           </p>
         </div>
 
-        {/* Step-by-step images — stacked vertically, full width */}
-        <div className="reveal flex flex-col gap-8">
-          {steps.map((step, i) => (
-            <div key={i} className="flex flex-col items-center gap-3">
-              <span className="font-serif-display text-sm text-champagne tracking-widest uppercase mb-1">
-                {step.label}
-              </span>
-              <div className="w-[70%] overflow-hidden border border-cream/80 shadow-sm">
-                <Image
-                  src={step.src}
-                  alt={`${step.label} — parking directions`}
-                  width={1200}
-                  height={900}
-                  className="w-full h-auto"
-                  sizes="(max-width: 1024px) 70vw, 630px"
-                />
-              </div>
-            </div>
-          ))}
+        <div className="reveal text-center">
+          <a
+            href="/ParkingInstructions.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gold inline-flex items-center gap-3"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+            </svg>
+            {p.parkingButton ?? 'Parking Instructions'}
+          </a>
         </div>
 
         <div className="reveal ornament mt-12 text-center" aria-hidden="true">— ✦ —</div>
