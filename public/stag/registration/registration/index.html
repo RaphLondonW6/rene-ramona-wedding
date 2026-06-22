@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Rene's Stag Party – Ibiza 2027</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --pink:#ff2020;--cyan:#00f0ff;
+  --bg:#09090f;--surface:#12121e;--card:#1a1a2e;
+  --txt:#f0f0ff;--muted:#9090b0;--border:#2a2a45;
+  --display:'Bebas Neue',sans-serif;--body:'Inter',sans-serif;
+  --r:12px;--t:0.25s ease;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16px;line-height:1.6;overflow-x:hidden}
+.container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+.container--narrow{max-width:620px;margin:0 auto;padding:0 1.25rem}
+.section-title{
+  font-family:var(--display);font-size:clamp(2rem,6vw,3.5rem);
+  letter-spacing:.04em;text-align:center;margin-bottom:.5rem;
+  background:linear-gradient(135deg,var(--pink),var(--cyan));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.section-sub{text-align:center;color:var(--muted);margin-bottom:2.5rem;font-size:1rem}
+
+/* LANG SWITCHER */
+.lang-bar{position:fixed;top:1rem;right:1rem;z-index:100}
+.lang-btn{
+  display:flex;align-items:center;gap:.4rem;
+  background:rgba(26,26,46,.85);backdrop-filter:blur(8px);
+  border:1px solid var(--border);border-radius:50px;
+  padding:.45rem 1rem;cursor:pointer;
+  font-family:var(--body);font-size:.8rem;font-weight:600;
+  color:var(--txt);letter-spacing:.08em;text-transform:uppercase;
+  transition:border-color var(--t),box-shadow var(--t);
+}
+.lang-btn:hover{border-color:var(--cyan);box-shadow:0 0 12px rgba(0,240,255,.3)}
+.lang-btn .flag{font-size:1.1rem}
+
+/* HERO */
+.hero{
+  position:relative;min-height:100svh;display:flex;
+  align-items:center;justify-content:center;text-align:center;
+  background:url('https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  overflow:hidden;
+}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(9,9,15,.55) 0%,rgba(9,9,15,.78) 60%,rgba(9,9,15,1) 100%)}
+.hero__content{position:relative;z-index:1;padding:2rem 1.25rem}
+.hero__label{font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem}
+.hero__title{font-family:var(--display);font-size:clamp(4rem,18vw,11rem);line-height:.9;letter-spacing:.02em;color:#fff;text-shadow:0 0 40px rgba(255,32,32,.7),0 0 80px rgba(255,32,32,.35);margin-bottom:1.25rem}
+.hero__sub{font-size:clamp(1rem,3vw,1.4rem);color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2.5rem}
+.hero__scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:var(--muted);font-size:1.5rem;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 2.25rem;border-radius:50px;font-family:var(--body);font-size:.95rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:none;transition:transform var(--t),box-shadow var(--t);text-decoration:none}
+.btn--primary{background:linear-gradient(135deg,var(--pink),#a00000);color:#fff;box-shadow:0 0 24px rgba(255,32,32,.45)}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(255,32,32,.7)}
+.btn--primary:active{transform:scale(.97)}
+.btn--full{width:100%;margin-top:.5rem}
+
+/* DETAILS */
+.details{padding:4rem 0;background:var(--surface)}
+.details__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+@media(min-width:640px){.details__grid{grid-template-columns:repeat(4,1fr)}}
+.details__card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem 1rem;text-align:center;transition:border-color var(--t)}
+.details__card:hover{border-color:var(--pink)}
+.details__icon{font-size:2rem;display:block;margin-bottom:.75rem}
+.details__card h3{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:.35rem}
+.details__card p{font-size:.95rem;font-weight:600;color:var(--txt)}
+.details__card small{display:block;font-size:.75rem;font-weight:400;color:var(--muted);margin-top:.4rem;line-height:1.4}
+
+/* COUNTDOWN */
+.countdown-section{padding:4rem 0;background:var(--bg)}
+.countdown{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.countdown__block{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.25rem 1rem;min-width:90px;text-align:center}
+.countdown__block span{display:block;font-family:var(--display);font-size:clamp(2.5rem,8vw,4rem);color:var(--pink);line-height:1;letter-spacing:.02em}
+.countdown__block label{display:block;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
+
+/* RSVP */
+.rsvp{padding:4rem 0 6rem;background:var(--surface)}
+.toggle-group{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2.5rem}
+.toggle-label{font-size:.9rem;font-weight:600;letter-spacing:.05em;transition:color var(--t)}
+.toggle-label--out{color:var(--muted)}
+.toggle-label--in{color:var(--muted)}
+.toggle-group.is-attending .toggle-label--in{color:var(--cyan)}
+.toggle-group.is-out .toggle-label--out{color:var(--pink)}
+.toggle-switch{cursor:pointer}
+.toggle-switch input{position:absolute;opacity:0;width:0;height:0}
+.toggle-track{display:block;width:60px;height:32px;background:var(--card);border:1px solid var(--border);border-radius:50px;position:relative;transition:background var(--t),border-color var(--t)}
+.toggle-thumb{position:absolute;top:4px;left:4px;width:22px;height:22px;border-radius:50%;background:var(--muted);transition:transform var(--t),background var(--t)}
+.toggle-switch input:checked+.toggle-track{background:rgba(0,240,255,.15);border-color:var(--cyan)}
+.toggle-switch input:checked+.toggle-track .toggle-thumb{transform:translateX(28px);background:var(--cyan);box-shadow:0 0 12px rgba(0,240,255,.8)}
+.toggle-switch input:focus-visible+.toggle-track{outline:2px solid var(--cyan);outline-offset:2px}
+.form-row{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:480px){.form-row{grid-template-columns:1fr 1fr}}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.25rem}
+.form-group label{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.req{color:var(--pink)}
+.form-group input{background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--txt);font-family:var(--body);font-size:1rem;padding:.75rem 1rem;transition:border-color var(--t),box-shadow var(--t);width:100%}
+.form-group input::placeholder{color:var(--muted);opacity:.6}
+.form-group input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,240,255,.15)}
+.form-group input.is-invalid{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,45,120,.15)}
+.error-msg{font-size:.78rem;color:var(--pink);min-height:1em}
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.feedback{margin-top:1.5rem;padding:1rem 1.25rem;border-radius:var(--r);font-size:.95rem;text-align:center;font-weight:500}
+.feedback--success{background:rgba(0,240,255,.1);border:1px solid var(--cyan);color:var(--cyan)}
+.feedback--error{background:rgba(255,45,120,.1);border:1px solid var(--pink);color:var(--pink)}
+
+/* FOOTER */
+.footer{background:var(--bg);border-top:1px solid var(--border);text-align:center;padding:2rem 1.25rem;font-size:.8rem;color:var(--muted)}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE SWITCHER -->
+<div class="lang-bar">
+  <button class="lang-btn" id="lang-btn" onclick="toggleLang()">
+    <span class="flag" id="lang-flag">🇸🇰</span>
+    <span id="lang-label">Slovenčina</span>
+  </button>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <p class="hero__label" data-en="You're invited" data-sk="Si pozvaný">You're invited</p>
+    <h1 class="hero__title">Rene's<br>Stag Party</h1>
+    <p class="hero__sub" data-en="Ibiza &bull; 14 – 16 May 2027" data-sk="Ibiza &bull; 14 – 16 máj 2027">Ibiza &bull; 14 – 16 May 2027</p>
+    <a href="#rsvp" class="btn btn--primary" data-en="RSVP Now" data-sk="Potvrď účasť">RSVP Now</a>
+  </div>
+  <div class="hero__scroll">↓</div>
+</header>
+
+<!-- DETAILS -->
+<section class="details">
+  <div class="container">
+    <div class="details__grid">
+      <div class="details__card">
+        <span class="details__icon">📍</span>
+        <h3 data-en="Location" data-sk="Miesto">Location</h3>
+        <p>Ibiza, Spain</p>
+      </div>
+      <div class="details__card">
+        <span class="details__icon">📅</span>
+        <h3 data-en="Dates" data-sk="Dátumy">Dates</h3>
+        <p data-en="14 – 16 May 2027" data-sk="14 – 16 máj 2027">14 – 16 May 2027</p>
+      </div>
+      <div class="details__card">
+        <span class="details__icon">💶</span>
+        <h3 data-en="Cost" data-sk="Náklady">Cost</h3>
+        <p data-en="From €1,000 / person" data-sk="Od €1 000 / osoba">From €1,000 / person</p>
+        <small data-en="Approx. cost covering flights to Ibiza from your country, accommodation, drinks &amp; activities." data-sk="Odhadované náklady zahŕňajú lety na Ibizu z tvojej krajiny, ubytovanie, nápoje a aktivity.">Approx. cost covering flights to Ibiza from your country, accommodation, drinks &amp; activities.</small>
+      </div>
+      <div class="details__card">
+        <span class="details__icon">🎉</span>
+        <h3 data-en="Vibe" data-sk="Atmosféra">Vibe</h3>
+        <p data-en="Party hard. No regrets." data-sk="Párty naplno. Bez ľútosti.">Party hard. No regrets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section">
+  <div class="container">
+    <h2 class="section-title" data-en="Time Until We Land" data-sk="Čas do odletu">Time Until We Land</h2>
+    <div class="countdown" id="countdown">
+      <div class="countdown__block"><span id="cd-days">--</span><label data-en="Days" data-sk="Dni">Days</label></div>
+      <div class="countdown__block"><span id="cd-hours">--</span><label data-en="Hours" data-sk="Hodiny">Hours</label></div>
+      <div class="countdown__block"><span id="cd-mins">--</span><label data-en="Minutes" data-sk="Minúty">Minutes</label></div>
+      <div class="countdown__block"><span id="cd-secs">--</span><label data-en="Seconds" data-sk="Sekundy">Seconds</label></div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section class="rsvp" id="rsvp">
+  <div class="container--narrow">
+    <h2 class="section-title" data-en="Are You In?" data-sk="Ideš s nami?">Are You In?</h2>
+    <p class="section-sub" data-en="Let us know if you're joining the madness. Fill in your details below." data-sk="Daj nám vedieť, či sa pridáš k šialenstvu. Vyplň svoje údaje nižšie.">Let us know if you're joining the madness. Fill in your details below.</p>
+
+    <form id="rsvp-form" novalidate>
+      <div class="toggle-group is-out" id="toggle-group">
+        <span class="toggle-label toggle-label--out" data-en="Not Attending" data-sk="Neprídem">Not Attending</span>
+        <label class="toggle-switch" for="attendance-toggle" aria-label="Toggle attendance">
+          <input type="checkbox" id="attendance-toggle"/>
+          <span class="toggle-track"><span class="toggle-thumb"></span></span>
+        </label>
+        <span class="toggle-label toggle-label--in" data-en="Attending 🎉" data-sk="Prídem 🎉">Attending 🎉</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first-name" data-en="First Name" data-sk="Meno">First Name <span class="req">*</span></label>
+          <input type="text" id="first-name" placeholder="John" autocomplete="given-name"/>
+          <span class="error-msg" id="err-first-name"></span>
+        </div>
+        <div class="form-group">
+          <label for="last-name" data-en="Surname" data-sk="Priezvisko">Surname <span class="req">*</span></label>
+          <input type="text" id="last-name" placeholder="Smith" autocomplete="family-name"/>
+          <span class="error-msg" id="err-last-name"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email" data-en="Email Address" data-sk="Emailová adresa">Email Address <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="john@example.com" autocomplete="email"/>
+        <span class="error-msg" id="err-email"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="phone" data-en="Phone Number" data-sk="Telefónne číslo">Phone Number <span class="req">*</span></label>
+        <input type="tel" id="phone" placeholder="+44 7700 900000" autocomplete="tel"/>
+        <span class="error-msg" id="err-phone"></span>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--full" id="submit-btn">
+        <span id="btn-text" data-en="Send RSVP" data-sk="Odoslať odpoveď">Send RSVP</span>
+        <span id="btn-spinner" class="spinner hidden" aria-hidden="true"></span>
+      </button>
+    </form>
+
+    <div id="form-success" class="feedback feedback--success hidden" role="alert">
+      <strong data-en="You're locked in!" data-sk="Si zaregistrovaný!">You're locked in!</strong>
+      <span data-en=" See you in Ibiza 🏝️" data-sk=" Uvidíme sa na Ibize 🏝️"> See you in Ibiza 🏝️</span>
+    </div>
+    <div id="form-error" class="feedback feedback--error hidden" role="alert">
+      <span data-en="Something went wrong. Please try again or contact the organiser." data-sk="Niečo sa pokazilo. Skús znova alebo kontaktuj organizátora.">Something went wrong. Please try again or contact the organiser.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p data-en="Rene's Stag Party &bull; Ibiza 2027 &bull; Made with ❤️ and far too much excitement"
+     data-sk="Rozlúčka so slobodou Reného &bull; Ibiza 2027 &bull; Vyrobené s ❤️ a poriadnou dávkou nadšenia">
+    Rene's Stag Party &bull; Ibiza 2027 &bull; Made with ❤️ and far too much excitement
+  </p>
+</footer>
+
+<script>
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzm_lG47GS2G1MhYkjX8g4U-BiRkQk7fyjUULj7kNSbwwBw9YUH09zxDIpCwGQ5Hw5NuA/exec';
+
+/* --- LANGUAGE SWITCHER --- */
+let currentLang = 'en';
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'sk' : 'en';
+  const isEn = currentLang === 'en';
+  document.getElementById('lang-flag').textContent  = isEn ? '🇸🇰' : '🇬🇧';
+  document.getElementById('lang-label').textContent = isEn ? 'Slovenčina' : 'English';
+  document.documentElement.lang = currentLang;
+
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + currentLang);
+    if (!val) return;
+    // Preserve child elements (like <span class="req">)
+    if (el.children.length > 0) {
+      // Only update the text node, not child elements
+      const firstTextNode = Array.from(el.childNodes).find(n => n.nodeType === 3);
+      if (firstTextNode) firstTextNode.textContent = val + ' ';
+    } else {
+      el.innerHTML = val;
+    }
+  });
+
+  // Update validation messages language
+  errMsgs.firstName = isEn ? 'Please enter your first name.' : 'Zadaj svoje meno.';
+  errMsgs.lastName  = isEn ? 'Please enter your surname.'    : 'Zadaj svoje priezvisko.';
+  errMsgs.email     = isEn ? 'Please enter a valid email.'   : 'Zadaj platnú emailovú adresu.';
+  errMsgs.phone     = isEn ? 'Please enter a valid phone number.' : 'Zadaj platné telefónne číslo.';
+}
+
+/* --- COUNTDOWN (target: 14 May 2027) --- */
+(function(){
+  const target = new Date('2027-05-14T00:00:00').getTime();
+  function tick(){
+    const diff = target - Date.now();
+    if(diff<=0){document.getElementById('countdown').innerHTML='<p style="color:var(--cyan);font-size:1.5rem;letter-spacing:.1em">WE\'RE IN IBIZA 🎉</p>';return;}
+    const d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1e3);
+    document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+    document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent=String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent=String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+/* --- TOGGLE --- */
+const tog = document.getElementById('attendance-toggle');
+const tg  = document.getElementById('toggle-group');
+tog.addEventListener('change', () => {
+  tg.classList.toggle('is-attending', tog.checked);
+  tg.classList.toggle('is-out', !tog.checked);
+});
+
+/* --- VALIDATION --- */
+const errMsgs = {
+  firstName: 'Please enter your first name.',
+  lastName:  'Please enter your surname.',
+  email:     'Please enter a valid email.',
+  phone:     'Please enter a valid phone number.'
+};
+const fields = {
+  'first-name': { test: v => v.trim().length >= 2, key: 'firstName' },
+  'last-name':  { test: v => v.trim().length >= 2, key: 'lastName'  },
+  'email':      { test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()), key: 'email' },
+  'phone':      { test: v => /^[+\d\s\-().]{7,20}$/.test(v.trim()), key: 'phone' }
+};
+function validateField(id) {
+  const el = document.getElementById(id), errEl = document.getElementById('err-'+id);
+  const { test, key } = fields[id];
+  const ok = test(el.value);
+  el.classList.toggle('is-invalid', !ok);
+  errEl.textContent = ok ? '' : errMsgs[key];
+  return ok;
+}
+Object.keys(fields).forEach(id => {
+  const el = document.getElementById(id);
+  el.addEventListener('blur',  () => validateField(id));
+  el.addEventListener('input', () => { if(el.classList.contains('is-invalid')) validateField(id); });
+});
+
+/* --- SUBMIT --- */
+document.getElementById('rsvp-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  document.getElementById('form-success').classList.add('hidden');
+  document.getElementById('form-error').classList.add('hidden');
+  if (!Object.keys(fields).map(validateField).every(Boolean)) return;
+
+  const payload = {
+    firstName: document.getElementById('first-name').value.trim(),
+    lastName:  document.getElementById('last-name').value.trim(),
+    email:     document.getElementById('email').value.trim(),
+    phone:     document.getElementById('phone').value.trim(),
+    attending: tog.checked ? 'Yes' : 'No',
+    timestamp: new Date().toISOString()
+  };
+
+  const btn = document.getElementById('submit-btn');
+  const btnTxt = document.getElementById('btn-text');
+  const spinner = document.getElementById('btn-spinner');
+  btn.disabled = true;
+  btnTxt.textContent = currentLang === 'en' ? 'Sending…' : 'Odosiela sa…';
+  spinner.classList.remove('hidden');
+
+  try {
+    await fetch(APPS_SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+    document.getElementById('rsvp-form').reset();
+    tg.classList.remove('is-attending'); tg.classList.add('is-out');
+    document.getElementById('form-success').classList.remove('hidden');
+  } catch(err) {
+    document.getElementById('form-error').classList.remove('hidden');
+  } finally {
+    btn.disabled = false;
+    btnTxt.textContent = currentLang === 'en' ? 'Send RSVP' : 'Odoslať odpoveď';
+    spinner.classList.add('hidden');
+  }
+});
+</script>
+</body>
+</html>
