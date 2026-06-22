@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npx @cloudflare/next-on-pages@1 && (cp -r public/. .vercel/output/static/ 2>/dev/null || true) && touch .vercel/output/static/.assetsignore",
+    "build": "next build",
+    "cf-build": "npx @cloudflare/next-on-pages@1 && (cp -r public/. .vercel/output/static/ 2>/dev/null || true) && touch .vercel/output/static/.assetsignore",
     "start": "next start",
     "lint": "next lint"
   },
