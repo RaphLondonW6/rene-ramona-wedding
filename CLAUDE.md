@@ -66,7 +66,10 @@ git commit --allow-empty -m "Trigger rebuild" && git push
 ```
 
 **If Cloudflare shows "error fetching repository":**
-Go to Settings → Builds & Deployments → Git repository → Disconnect → reconnect the GitHub repo, then retry.
+Go to Settings → Builds & Deployments → Git repository → Disconnect → reconnect the GitHub repo, then retry. If the retry button is greyed out, push an empty commit instead:
+```bash
+git commit --allow-empty -m "Trigger rebuild" && git push
+```
 
 ---
 
@@ -323,7 +326,7 @@ ffmpeg -i input.MP4 -vf scale=1280:720 -c:v libx264 -crf 26 -preset slow -an -mo
 - **`git add -A` preferred over `git add <path>`** — handles both deletions and additions in one command.
 - **New locale keys accessed with `(t as any).keyName`** — the TypeScript type for `t` is inferred from `en.json`. New keys added without updating the type definition require casting to avoid build errors.
 - **`section-subtitle` CSS class overrides Tailwind color** — the class sets `color: var(--color-light-text)` which wins over plain Tailwind utilities. Use `!text-white` (with `!important`) to override it.
-- **Parking images are displayed at 70% width** (`w-[70%]`) — centred, stacked vertically. Adjust this value if further resizing is needed.
+- **Parking section uses a PDF button, not images** — the 3 step images were removed. A single "Parking Instructions" button links to `/ParkingInstructions.pdf` (opens in new tab). The PDF is at `public/ParkingInstructions.pdf` (1.7MB). Button label is translated: EN "Parking Instructions", RO "Instrucțiuni de parcare", SK "Pokyny k parkovaniu".
 
 ---
 
