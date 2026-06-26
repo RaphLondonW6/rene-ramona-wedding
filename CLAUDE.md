@@ -26,14 +26,25 @@ Three languages: English (default), Romanian, Slovak.
 The site is deployed to **Cloudflare Workers** (not Vercel). CI/CD is automatic from GitHub — every push to `main` triggers a Cloudflare build.
 
 **How the build works:**
-Cloudflare runs `npm run build` (from `package.json`). The build script is set to:
+The Cloudflare dashboard is configured with two separate commands:
+
+- **Build command:** `npm run cf-build`
+- **Deploy command:** `npx wrangler deploy`
+
+`cf-build` in `package.json` is:
 ```
 npx @cloudflare/next-on-pages@1 && (cp -r public/. .vercel/output/static/ 2>/dev/null || true) && touch .vercel/output/static/.assetsignore
 ```
 
-The `|| true` on the `cp` step is intentional — `@cloudflare/next-on-pages` already copies `public/` during the Vercel build, so re-copying produces "same file" errors. The `|| true` makes those non-fatal while still ensuring static files are present.
+`@cloudflare/next-on-pages` internally runs `vercel build` → `npm run build` (= `next build`), then packages the output as a Cloudflare Worker at `.vercel/output/static/_worker.js`. `wrangler deploy` then uploads that worker.
 
-**Cloudflare dashboard deploy command:** `npx wrangler deploy`
+The `package.json` scripts are:
+```json
+"build": "next build",
+"cf-build": "npx @cloudflare/next-on-pages@1 && (cp -r public/. .vercel/output/static/ 2>/dev/null || true) && touch .vercel/output/static/.assetsignore"
+```
+
+The `|| true` on the `cp` step is intentional — `@cloudflare/next-on-pages` already copies `public/` during the Vercel build, so re-copying produces "same file" errors. The `|| true` makes those non-fatal while still ensuring static files are present.
 
 **wrangler.toml:**
 ```toml
@@ -250,7 +261,7 @@ All three language versions (EN/RO/SK) updated in the inline `i18n` JS object.
 
 ## Static Standalone Pages
 
-`public/Wedding_Invitations/Invite.html`, `public/Wedding_Menus/Menu.html`, and `public/email-confirmation.html` are **self-contained HTML pages** — not Next.js routes. They are served directly as static files.
+`public/Wedding_Invitations/Invite.html`, `public/Wedding_Menus/Menu.html`, `public/email-confirmation.html`, and `public/stag/registration/registration/index.html` are **self-contained HTML pages** — not Next.js routes. They are served directly as static files by Cloudflare's ASSETS binding.
 
 Key design details:
 - Background: `Gemini_Generated_Image_u6ogjtu6ogjtu6og.png` (gold toile floral, ~2.4MB). **This file is not in git** — copy manually to `public/Wedding_Invitations/`. Menu.html references it via `../Wedding_Invitations/Gemini_Generated_Image_u6ogjtu6ogjtu6og.png`.
@@ -313,9 +324,39 @@ ffmpeg -i input.MP4 -vf scale=1280:720 -c:v libx264 -crf 26 -preset slow -an -mo
 
 ---
 
+## Stag Party Registration Page
+
+A hidden, standalone page for René's stag party (Ibiza, 14–16 May 2027). It is **not linked from the wedding site navigation** — accessible only via direct URL:
+
+**URL:** `https://ramonapicksrene.com/stag/registration/registration`
+
+**File:** `public/stag/registration/registration/index.html`
+
+Cloudflare's ASSETS binding serves `index.html` automatically for directory-style paths, so the `.html` extension is not needed in the URL.
+
+**Page features:**
+- Dark neon theme (`--bg:#09090f`, neon pink `#ff2020` / cyan `#00f0ff`)
+- Bebas Neue + Inter fonts (Google Fonts)
+- EN/SK language switcher (toggle button, top-right)
+- Hero section with Ibiza beach background (Unsplash)
+- Event details grid (location, dates, cost, vibe) — Cost card shows "From €1,000 / person" with no sub-text
+- Cost note block (`.details__note`) below the grid — explains flights are booked individually, encourages booking early, translated EN/SK inline via `data-en`/`data-sk` attributes
+- Live countdown to 14 May 2027
+- RSVP form: first name, last name, email, phone, attending toggle
+- Submissions go to a **separate** Google Apps Script endpoint (different from the wedding RSVP):
+  ```
+  https://script.google.com/macros/s/AKfycbzm_lG47GS2G1MhYkjX8g4U-BiRkQk7fyjUULj7kNSbwwBw9YUH09zxDIpCwGQ5Hw5NuA/exec
+  ```
+
+**Translation approach:** All translations are inline `data-en` / `data-sk` attributes on HTML elements — there are no separate JSON locale files for this page. The `toggleLang()` JS function swaps element content by reading the active language's `data-*` attribute.
+
+The source file is also at `C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\RENE_Ramona_Wedding\Stag\registration.html` — edit there and copy to `public/stag/registration/registration/index.html` to update.
+
+---
+
 ## Known Gotchas
 
-- **Build script in `package.json` must run `@cloudflare/next-on-pages`** — Cloudflare always runs `npm run build`, ignoring the dashboard build command field. The package.json build script is the source of truth.
+- **Cloudflare dashboard build command must be `npm run cf-build`** — the dashboard build command field is the source of truth for Cloudflare Workers deployments. If it gets reset to `npm run build`, the `_worker.js` file won't be generated and `wrangler deploy` will fail with "entry-point file not found". Always verify: Build command = `npm run cf-build`, Deploy command = `npx wrangler deploy`.
 - **Static files must be in `public/`** — Next.js only serves static assets from this directory, not from the project root.
 - **`cp -r public/` in the build script needs `|| true`** — `@cloudflare/next-on-pages` already copies public files during the Vercel build step; re-copying produces "same file" errors that would fail the build without `|| true`.
 - **Videos are gitignored** — `public/videos/*.mp4` is in `.gitignore`. Always use `git add -f` to force-add video files.
