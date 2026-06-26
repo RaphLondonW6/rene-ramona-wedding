@@ -104,6 +104,9 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
 .form-group input::placeholder{color:var(--muted);opacity:.6}
 .form-group input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,240,255,.15)}
 .form-group input.is-invalid{border-color:var(--pink);box-shadow:0 0 0 3px rgba(255,45,120,.15)}
+.form-group textarea{background:var(--card);border:1px solid var(--border);border-radius:8px;color:var(--txt);font-family:var(--body);font-size:1rem;padding:.75rem 1rem;transition:border-color var(--t),box-shadow var(--t);width:100%;resize:vertical;min-height:100px}
+.form-group textarea::placeholder{color:var(--muted);opacity:.6}
+.form-group textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,240,255,.15)}
 .error-msg{font-size:.78rem;color:var(--pink);min-height:1em}
 .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -225,6 +228,11 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
         <span class="error-msg" id="err-phone"></span>
       </div>
 
+      <div class="form-group">
+        <label for="comments" data-en="Questions or Comments" data-sk="Otázky alebo komentáre">Questions or Comments</label>
+        <textarea id="comments" data-en-placeholder="Anything you'd like to know or tell us…" data-sk-placeholder="Čokoľvek, čo chceš vedieť alebo nám povedať…" placeholder="Anything you'd like to know or tell us…"></textarea>
+      </div>
+
       <button type="submit" class="btn btn--primary btn--full" id="submit-btn">
         <span id="btn-text" data-en="Send RSVP" data-sk="Odoslať odpoveď">Send RSVP</span>
         <span id="btn-spinner" class="spinner hidden" aria-hidden="true"></span>
@@ -272,6 +280,11 @@ function toggleLang() {
     } else {
       el.innerHTML = val;
     }
+  });
+
+  // Update textarea placeholders
+  document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+    el.placeholder = el.getAttribute('data-' + currentLang + '-placeholder') || el.getAttribute('data-en-placeholder');
   });
 
   // Update validation messages language
@@ -344,6 +357,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
     email:     document.getElementById('email').value.trim(),
     phone:     document.getElementById('phone').value.trim(),
     attending: tog.checked ? 'Yes' : 'No',
+    comments:  document.getElementById('comments').value.trim(),
     timestamp: new Date().toISOString()
   };
 

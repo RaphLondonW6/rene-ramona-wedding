@@ -342,7 +342,9 @@ Cloudflare's ASSETS binding serves `index.html` automatically for directory-styl
 - Event details grid (location, dates, cost, vibe) — Cost card shows "From €1,000 / person" with no sub-text
 - Cost note block (`.details__note`) below the grid — explains flights are booked individually, encourages booking early, translated EN/SK inline via `data-en`/`data-sk` attributes
 - Live countdown to 14 May 2027
-- RSVP form: first name, last name, email, phone, attending toggle
+- RSVP form: first name, last name, email, phone, attending toggle, free-text comments field
+- Payload fields sent to Google Sheets: `firstName`, `lastName`, `email`, `phone`, `attending`, `comments`, `timestamp`
+- Comments field label/placeholder are translated via `data-en`/`data-sk` and `data-en-placeholder`/`data-sk-placeholder` attributes; placeholder swap is handled in `toggleLang()`
 - Submissions go to a **separate** Google Apps Script endpoint (different from the wedding RSVP):
   ```
   https://script.google.com/macros/s/AKfycbzm_lG47GS2G1MhYkjX8g4U-BiRkQk7fyjUULj7kNSbwwBw9YUH09zxDIpCwGQ5Hw5NuA/exec
