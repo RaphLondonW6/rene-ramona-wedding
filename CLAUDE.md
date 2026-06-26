@@ -347,7 +347,7 @@ Cloudflare's ASSETS binding serves `index.html` automatically for directory-styl
 - Comments field label/placeholder are translated via `data-en`/`data-sk` and `data-en-placeholder`/`data-sk-placeholder` attributes; placeholder swap is handled in `toggleLang()`
 - Submissions go to a **separate** Google Apps Script endpoint (different from the wedding RSVP):
   ```
-  https://script.google.com/macros/s/AKfycbzm_lG47GS2G1MhYkjX8g4U-BiRkQk7fyjUULj7kNSbwwBw9YUH09zxDIpCwGQ5Hw5NuA/exec
+  https://script.google.com/macros/s/AKfycbx-j5358T5pYsoumhYdeoa-shYgrb0Q1KFryjH4E_9WN5WbgB7TWy1b3ib95njlxWTebg/exec
   ```
 
 **Translation approach:** All translations are inline `data-en` / `data-sk` attributes on HTML elements — there are no separate JSON locale files for this page. The `toggleLang()` JS function swaps element content by reading the active language's `data-*` attribute.
