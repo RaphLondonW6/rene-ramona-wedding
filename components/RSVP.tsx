@@ -4,8 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useLanguage } from '@/context/LanguageContext'
 
-const RSVP_ENDPOINT =
-  'https://script.google.com/macros/s/AKfycbzdSVxdUYVb0rrlSIQhARb_PnyqcqVGn1xn5zQgl5VF7pP4wmW82WOJbzc24MVSwR1Lpw/exec'
+const RSVP_ENDPOINT = 'https://n8n.ramonapicksrene.com/webhook/rsvp-wedding'
 
 type FormValues = {
   firstName: string
@@ -56,18 +55,29 @@ export default function RSVP() {
     if (honeypot) return
     setStatus('submitting')
 
-    const body = new URLSearchParams()
-    Object.entries({ ...data, submittedAt: new Date().toISOString() })
-      .forEach(([k, v]) => body.append(k, String(v ?? '')))
-
-    fetch(RSVP_ENDPOINT, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: body.toString(),
-    }).catch(console.error)
-
-    setStatus('success')
+    try {
+      const res = await fetch(RSVP_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName:    data.firstName,
+          lastName:     data.lastName,
+          email:        data.email,
+          phone:        data.phone,
+          address:      data.homeAddress,
+          nationality:  data.nationality,
+          attendance:   data.attendance,
+          dietary:      data.dietary,
+          otherDietary: data.dietaryOther,
+          message:      data.message,
+        }),
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      setStatus('success')
+    } catch (err) {
+      console.error(err)
+      setStatus('error')
+    }
   }
 
   // Scroll to RSVP section on success so the banner is visible
