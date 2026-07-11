@@ -17,7 +17,7 @@ Three languages: English (default), Romanian, Slovak.
 - **Next.js 14** (App Router) + TypeScript
 - **Tailwind CSS** for the main site
 - **Cloudflare Workers** for deployment (via `@cloudflare/next-on-pages`)
-- **Google Apps Script** as RSVP backend (no database)
+- **n8n** as RSVP backend (self-hosted at `n8n.ramonapicksrene.com`)
 
 ---
 
@@ -63,6 +63,17 @@ binding = "ASSETS"
 git add -A
 git commit -m "your message"
 git push
+```
+
+Deployment is handled by a **GitHub Action** (`.github/workflows/deploy.yml`) — every push to `main` automatically runs `npm run cf-build && npx wrangler deploy`. Build logs are visible under the **Actions** tab in the GitHub repo.
+
+The action uses two GitHub repository secrets:
+- `CF_ACCOUNT_ID` — Cloudflare account ID (`2e99169e657be427103ebb71111c22c6`)
+- `CF_API_TOKEN` — Cloudflare API token with Edit Workers permissions (named `github-actions-deploy` in Cloudflare)
+
+**If auto-deploy stops working:** check the Actions tab in GitHub for error logs. As a manual fallback, use the deploy hook:
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/workers/builds/deploy_hooks/fd8bb0fe-ae1c-478a-b519-5f8760fa319f"
 ```
 
 **Videos are in `.gitignore` — force-add them:**
@@ -224,7 +235,22 @@ Hotel data lives in `lib/accommodations.ts`. All 8 hotels use real photos stored
 
 ## RSVP Form Fields
 
-Fields submitted to Google Sheets: `firstName`, `lastName`, `email`, `phone`, `attendance`, `homeAddress`, `nationality`, `dietary`, `dietaryOther`, `message`, `gdpr`, `submittedAt`. A honeypot field (`_hp`) silently blocks bots.
+Internal form field names (React Hook Form): `firstName`, `lastName`, `email`, `phone`, `attendance`, `homeAddress`, `nationality`, `dietary`, `dietaryOther`, `message`, `gdpr`. A honeypot field (`_hp`) silently blocks bots.
+
+JSON payload sent to n8n uses these **exact** keys (note the mapping from internal names):
+
+| JSON key (sent to n8n) | Internal form field |
+|---|---|
+| `firstName` | `firstName` |
+| `lastName` | `lastName` |
+| `email` | `email` |
+| `phone` | `phone` |
+| `address` | `homeAddress` |
+| `nationality` | `nationality` |
+| `attendance` | `attendance` |
+| `dietary` | `dietary` |
+| `otherDietary` | `dietaryOther` |
+| `message` | `message` |
 
 `homeAddress` and `nationality` are optional fields added to capture postal address (for sending a physical invite) and nationality. `nationality` is a **dropdown** (not a free-text input) with Romanian, Slovak, French, British pinned at the top, followed by an alphabetical list of European and other nationalities.
 
@@ -238,15 +264,17 @@ On successful submission, the form is replaced in-place by a success banner (no 
 
 ---
 
-## RSVP → Google Sheets
+## RSVP → n8n Webhook
 
-Submissions are POSTed (no-cors) to a Google Apps Script endpoint hardcoded in `components/RSVP.tsx`:
+Submissions are POSTed as JSON to the n8n webhook endpoint hardcoded in `components/RSVP.tsx`:
 
 ```
-https://script.google.com/macros/s/AKfycbzdSVxdUYVb0rrlSIQhARb_PnyqcqVGn1xn5zQgl5VF7pP4wmW82WOJbzc24MVSwR1Lpw/exec
+const RSVP_ENDPOINT = 'https://n8n.ramonapicksrene.com/webhook/rsvp-wedding'
 ```
 
-**Important:** When redeploying the Apps Script, use **Manage deployments → update existing deployment** to keep the URL stable. Creating a new deployment generates a new URL which requires updating `RSVP_ENDPOINT` in `RSVP.tsx`.
+Request: `POST`, `Content-Type: application/json`. The 10-field JSON body maps internal form names to the n8n-expected keys (see field table above). Errors are caught and set `status('error')` — unlike the old Google Apps Script integration which used `no-cors` and silently ignored failures.
+
+**n8n is self-hosted at `n8n.ramonapicksrene.com`.** If submissions stop working, check that the n8n instance is running and the `rsvp-wedding` webhook workflow is active.
 
 ---
 
@@ -312,13 +340,11 @@ ffmpeg -i input.MP4 -vf scale=1280:720 -c:v libx264 -crf 26 -preset slow -an -mo
 **Template variable:** `{{firstName}}` — replace with the guest's first name via N8N expression.
 
 **N8N workflow setup:**
-1. **Trigger** — Google Sheets node, set to "Row Added" on the RSVP sheet
+1. **Trigger** — Webhook node at path `rsvp-wedding` (receives the RSVP form POST directly)
 2. **Gmail node** — paste the HTML as email body (HTML mode)
-3. **To** — map to the `email` column: `{{ $json["email"] }}`
+3. **To** — map to: `{{ $json["email"] }}`
 4. **Subject** — `Your RSVP is confirmed — René & Ramona · 12 June 2027`
 5. **First name** — replace `{{firstName}}` with `{{ $json["firstName"] }}`
-
-**Alternative:** extend the existing Google Apps Script (`RSVP_ENDPOINT`) with `GmailApp.sendEmail()` — simpler if N8N feels like overkill.
 
 **Email includes:** R&R monogram header, personalised confirmation message, event details (date, time, venue), dress code reminder, link to the website, and a GDPR footer note.
 
@@ -366,6 +392,7 @@ The source file is also at `C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\RE
 - **`next.config.js` requires `images.unoptimized: true`** — Cloudflare Workers does not support Next.js image optimisation.
 - **Git index corruption** — OneDrive sync can corrupt `.git/index`. If git commands fail with "bad signature" or "index file corrupt", run `del .git\index` then `git reset` (Windows) to rebuild.
 - **Git lock conflicts** — OneDrive can also create `.git/index.lock`. Remove with `del .git\index.lock` (Windows).
+- **`.npmrc` sets `legacy-peer-deps=true`** — required because `wrangler@4.x` and `@cloudflare/next-on-pages@1.x` have conflicting optional peer deps on `@cloudflare/workers-types` (v4 vs v5). Without this, `npx @cloudflare/next-on-pages@1` fails with `ERESOLVE` during Cloudflare builds.
 - **`git add -A` preferred over `git add <path>`** — handles both deletions and additions in one command.
 - **New locale keys accessed with `(t as any).keyName`** — the TypeScript type for `t` is inferred from `en.json`. New keys added without updating the type definition require casting to avoid build errors.
 - **`section-subtitle` CSS class overrides Tailwind color** — the class sets `color: var(--color-light-text)` which wins over plain Tailwind utilities. Use `!text-white` (with `!important`) to override it.
