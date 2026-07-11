@@ -66,7 +66,7 @@ export default function RSVP() {
           phone:        data.phone,
           address:      data.homeAddress,
           nationality:  data.nationality,
-          attendance:   data.attendance,
+          attendance:   data.attendance === 'attending' ? 'true' : 'false',
           dietary:      data.dietary,
           otherDietary: data.dietaryOther,
           message:      data.message,
