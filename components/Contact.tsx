@@ -38,26 +38,9 @@ export default function Contact() {
 
           <div className="gold-divider my-8" />
 
-          {/* Phone numbers */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-8">
-            <ContactCard
-              name={t.contact.rene}
-              phone="+44 7944 170811"
-              emoji="🤵"
-            />
-            <div className="hidden sm:block w-px h-12 bg-champagne/30" aria-hidden="true" />
-            <ContactCard
-              name={t.contact.ramona}
-              phone="+44 7464 731767"
-              emoji="👰"
-            />
-          </div>
-
-          <div className="gold-divider my-8" />
-
           {/* Email CTA */}
           <a
-            href="mailto:dohnanskyr@gmail.com"
+            href="mailto:hello@ramonapicksrene.com"
             className="btn-gold inline-flex"
             aria-label="Send an email to René and Ramona"
           >
@@ -71,22 +54,6 @@ export default function Contact() {
 
         <div className="reveal ornament mt-12" aria-hidden="true">— ✦ —</div>
       </div>
-    </div>
-  )
-}
-
-function ContactCard({ name, phone, emoji }: { name: string; phone: string; emoji: string }) {
-  return (
-    <div className="flex flex-col items-center gap-1">
-      <span className="text-3xl" aria-hidden="true">{emoji}</span>
-      <span className="font-serif-display text-lg text-darkText">{name}</span>
-      <a
-        href={`tel:${phone.replace(/\s/g, '')}`}
-        className="font-body text-sm text-champagne hover:text-gold transition-colors"
-        aria-label={`Call ${name} at ${phone}`}
-      >
-        {phone}
-      </a>
     </div>
   )
 }
