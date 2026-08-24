@@ -3,6 +3,13 @@ main = ".vercel/output/static/_worker.js/index.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
+# Required for next-on-pages dynamic route modules (__next-on-pages-dist__/...)
+# Without this, server-rendered routes fail with "No such module" at runtime.
+find_additional_modules = true
+rules = [
+  { type = "ESModule", globs = ["**/*.js"], fallthrough = true }
+]
+
 [assets]
 directory = ".vercel/output/static"
 binding = "ASSETS"
