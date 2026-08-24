@@ -333,6 +333,68 @@ ffmpeg -i input.MP4 -vf scale=1280:720 -c:v libx264 -crf 26 -preset slow -an -mo
 
 ---
 
+## Guest Photo Wall — "The Evidence" (/evidence)
+
+An Instagram-style guest photo/video wall. Guests upload photos & videos which publish **immediately** (no moderation). Live at `https://www.ramonapicksrene.com/evidence`, linked in nav as "📸 The Evidence" (RO: Dovezile, SK: Dôkazy).
+
+**Architecture:**
+- **R2 bucket `wedding-media`** (binding `MEDIA`) — stores original media, keys are `<uuid>.<ext>`
+- **D1 database `wedding-posts`** (binding `DB`) — `posts` table (metadata incl. email, never exposed publicly) + `upload_log` (per-IP rate limiting). Schema: `schema.sql`
+- **API routes** (all edge runtime, in `app/api/`):
+  - `GET /api/posts?cursor=<ts>_<id>` — cursor-paginated feed (12/page), never returns emails
+  - `POST /api/posts` — multipart upload: validates MIME + size (images ≤20MB, videos ≤95MB — Workers request cap is 100MB), honeypot field `website`, rate limit 10 uploads/10min/IP, stores R2 + D1, fires n8n webhook via `waitUntil` (5s timeout, never blocks upload)
+  - `GET /api/media/[key]` — streams from R2 with Range support (required for iOS video), immutable cache headers
+  - `DELETE /api/posts/[id]` — admin-only delete, requires `x-admin-token` header matching `ADMIN_TOKEN` secret:
+    ```bash
+    curl -X DELETE https://www.ramonapicksrene.com/api/posts/<id> -H "x-admin-token: <token>"
+    ```
+- **Frontend:** `app/evidence/page.tsx` + `components/EvidenceWall.tsx` — infinite scroll, floating + FAB, bottom-sheet upload modal, client-side image compression (canvas → 1920px JPEG 85% before upload), rotating funny loading messages, CSS confetti on success. All microcopy trilingual in `locales/*.json` under `evidence` key.
+- **Overlay:** the "💍 Ramona & René · 12·06·2027" ribbon is a CSS overlay on the feed — originals in R2 stay untouched.
+- **n8n webhook** (confirmation email): `https://n8n.ramonapicksrene.com/webhook/6bdd98e4-4e3c-4b98-b00a-8ea3444cb59a` — payload: `{event, postId, guestName, guestEmail, mediaType, contentType, sizeBytes, mediaUrl, feedUrl, timestamp}`
+- **`lib/cloudflare.ts`** — `env()` / `waitUntil()` helpers wrapping `getRequestContext()` from `@cloudflare/next-on-pages` (added to devDependencies)
+
+**One-time setup (required before first deploy):**
+```bash
+npx wrangler r2 bucket create wedding-media
+npx wrangler d1 create wedding-posts   # copy database_id into wrangler.toml (replaces REPLACE_WITH_D1_DATABASE_ID)
+npx wrangler d1 execute wedding-posts --remote --file=schema.sql
+npx wrangler secret put ADMIN_TOKEN    # any long random string
+```
+The GitHub Action's CF API token must have R2 + D1 edit permissions.
+
+---
+
+## Wedding Invitation Card
+
+A standalone invitation card image is hosted at:
+```
+https://www.ramonapicksrene.com/images/invitation-card.png
+```
+
+**Source file:** `C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\wedding-invitation-card.html`
+
+The card features the couple's beach photo (`couple.png`, same folder), gold border frame, Great Vibes / Cormorant Garamond / Cinzel fonts, and a CSS gradient fade from photo into cream card background.
+
+**To regenerate the image** (e.g. after content changes):
+1. Open `wedding-invitation-card.html` in a browser to preview
+2. Run Chrome headless to export:
+```powershell
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --screenshot="C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\invitation-card.png" --window-size=680,1200 --enable-local-file-access "file:///C:/Users/RSCHAEFFER/OneDrive%20-%20ACCOR/Accor/CLAUDE/wedding-invitation-card.html"
+```
+3. Crop any black banner at the bottom if present
+4. Copy to `public/images/invitation-card.png` and push to repo
+
+**Used in n8n email** — added below the sign-off as:
+```html
+<div style="text-align:center;margin:1.5rem 0;">
+  <img src="https://www.ramonapicksrene.com/images/invitation-card.png"
+       alt="Ramona & René — Wedding Invitation"
+       style="max-width:100%;border:1px solid #e8e0d0;" />
+</div>
+```
+
+---
+
 ## RSVP Email Confirmation (N8N + Gmail)
 
 `public/email-confirmation.html` is an HTML email template to be sent automatically to guests after they submit their RSVP. It matches the wedding website design (champagne/gold palette, table-based layout, inline CSS, web-safe fonts for email client compatibility).

@@ -75,6 +75,14 @@ export default function Navigation() {
               </button>
             </li>
           ))}
+          <li>
+            <a
+              href="/evidence"
+              className={`text-xs tracking-[0.15em] uppercase font-body transition-colors duration-200 hover:text-champagne focus:outline-none focus-visible:ring-2 focus-visible:ring-champagne ${textColor}`}
+            >
+              📸 {(t.nav as any).evidence}
+            </a>
+          </li>
         </ul>
 
         {/* Right side: language switcher + mobile menu */}
@@ -113,6 +121,14 @@ export default function Navigation() {
               </button>
             </li>
           ))}
+          <li>
+            <a
+              href="/evidence"
+              className="text-xs tracking-[0.15em] uppercase font-body text-darkText hover:text-champagne transition-colors duration-200 block py-1"
+            >
+              📸 {(t.nav as any).evidence}
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

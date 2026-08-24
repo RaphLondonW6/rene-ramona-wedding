@@ -6,3 +6,12 @@ compatibility_flags = ["nodejs_compat"]
 [assets]
 directory = ".vercel/output/static"
 binding = "ASSETS"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "wedding-media"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wedding-posts"
+database_id = "46503719-d1fd-448b-9a7d-28f9f28e5a11"
