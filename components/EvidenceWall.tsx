@@ -140,16 +140,17 @@ export default function EvidenceWall() {
         )}
       </main>
 
-      {/* Floating + button */}
+      {/* Floating upload button */}
       <button
         onClick={() => setModalOpen(true)}
         aria-label={e.uploadCta}
-        className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-champagne text-white text-3xl leading-none
+        className="fixed bottom-6 right-6 z-40 w-16 h-16 rounded-full
                    shadow-lg hover:scale-110 active:scale-95 transition-transform duration-200
                    flex items-center justify-center animate-[fabPulse_3s_ease-in-out_infinite] motion-reduce:animate-none
                    focus:outline-none focus-visible:ring-4 focus-visible:ring-champagne/40"
       >
-        +
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/evidence-fab.png" alt="" className="w-full h-full object-contain drop-shadow-lg" />
       </button>
       <style>{`
         @keyframes fabPulse {
