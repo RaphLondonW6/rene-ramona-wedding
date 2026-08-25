@@ -224,7 +224,38 @@ function PostCard({
         </p>
         <time className="font-body text-[11px] text-darkText/40">{time}</time>
       </div>
+
+      <PostIdRow id={post.id} />
     </article>
+  )
+}
+
+function PostIdRow({ id }: { id: string }) {
+  const [copied, setCopied] = useState(false)
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(id)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 1500)
+    } catch {
+      // clipboard API unavailable — no-op, id is still visible/selectable
+    }
+  }
+
+  return (
+    <button
+      onClick={copy}
+      title="Tap to copy post ID (for admin deletion)"
+      className="w-full px-4 pb-2 flex items-center justify-between text-left group"
+    >
+      <span className="font-mono text-[10px] text-darkText/30 group-hover:text-darkText/60 truncate">
+        ID: {id}
+      </span>
+      <span className="font-body text-[10px] text-darkText/30 group-hover:text-champagne ml-2 shrink-0">
+        {copied ? '✓ Copied' : '📋 Copy'}
+      </span>
+    </button>
   )
 }
 
