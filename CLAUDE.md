@@ -33,8 +33,10 @@ The Cloudflare dashboard is configured with two separate commands:
 
 `cf-build` in `package.json` is:
 ```
-npx @cloudflare/next-on-pages@1 && (cp -r public/. .vercel/output/static/ 2>/dev/null || true) && touch .vercel/output/static/.assetsignore
+npx @cloudflare/next-on-pages@1 && (cp -r public/. .vercel/output/static/ 2>/dev/null || true) && echo _worker.js > .vercel/output/static/.assetsignore
 ```
+
+The `.assetsignore` contains `_worker.js` so the worker's source code is not served as public static files.
 
 `@cloudflare/next-on-pages` internally runs `vercel build` → `npm run build` (= `next build`), then packages the output as a Cloudflare Worker at `.vercel/output/static/_worker.js`. `wrangler deploy` then uploads that worker.
 
@@ -53,9 +55,25 @@ main = ".vercel/output/static/_worker.js/index.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
+# Required for next-on-pages dynamic route modules (__next-on-pages-dist__/...)
+# Without this, server-rendered routes fail with "No such module" at runtime.
+find_additional_modules = true
+rules = [
+  { type = "ESModule", globs = ["**/*.js"], fallthrough = true }
+]
+
 [assets]
 directory = ".vercel/output/static"
 binding = "ASSETS"
+
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "wedding-media"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wedding-posts"
+database_id = "46503719-d1fd-448b-9a7d-28f9f28e5a11"
 ```
 
 **To deploy:**
@@ -342,7 +360,7 @@ An Instagram-style guest photo/video wall. Guests upload photos & videos which p
 - **D1 database `wedding-posts`** (binding `DB`) — `posts` table (metadata incl. email, never exposed publicly) + `upload_log` (per-IP rate limiting). Schema: `schema.sql`
 - **API routes** (all edge runtime, in `app/api/`):
   - `GET /api/posts?cursor=<ts>_<id>` — cursor-paginated feed (12/page), never returns emails
-  - `POST /api/posts` — multipart upload: validates MIME + size (images ≤20MB, videos ≤95MB — Workers request cap is 100MB), honeypot field `website`, rate limit 10 uploads/10min/IP, stores R2 + D1, fires n8n webhook via `waitUntil` (5s timeout, never blocks upload)
+  - `POST /api/posts` — multipart upload: validates MIME + size (images ≤20MB, videos ≤50MB — chosen to keep clips short & the feed fast; Workers hard request cap is 100MB), honeypot field `website`, rate limit 10 uploads/10min/IP, stores R2 + D1, fires n8n webhook via `waitUntil` (5s timeout, never blocks upload)
   - `GET /api/media/[key]` — streams from R2 with Range support (required for iOS video), immutable cache headers
   - `DELETE /api/posts/[id]` — admin-only delete, requires `x-admin-token` header matching `ADMIN_TOKEN` secret:
     ```bash
@@ -353,14 +371,12 @@ An Instagram-style guest photo/video wall. Guests upload photos & videos which p
 - **n8n webhook** (confirmation email): `https://n8n.ramonapicksrene.com/webhook/6bdd98e4-4e3c-4b98-b00a-8ea3444cb59a` — payload: `{event, postId, guestName, guestEmail, mediaType, contentType, sizeBytes, mediaUrl, feedUrl, timestamp}`
 - **`lib/cloudflare.ts`** — `env()` / `waitUntil()` helpers wrapping `getRequestContext()` from `@cloudflare/next-on-pages` (added to devDependencies)
 
-**One-time setup (required before first deploy):**
-```bash
-npx wrangler r2 bucket create wedding-media
-npx wrangler d1 create wedding-posts   # copy database_id into wrangler.toml (replaces REPLACE_WITH_D1_DATABASE_ID)
-npx wrangler d1 execute wedding-posts --remote --file=schema.sql
-npx wrangler secret put ADMIN_TOKEN    # any long random string
-```
-The GitHub Action's CF API token must have R2 + D1 edit permissions.
+**Setup status: DONE (Aug 2026).** R2 bucket `wedding-media` created (R2 had to be enabled account-wide in the dashboard first — error 10042 otherwise), D1 `wedding-posts` created (id `46503719-d1fd-448b-9a7d-28f9f28e5a11`), schema applied via `npx wrangler d1 execute wedding-posts --remote --file=schema.sql`, `ADMIN_TOKEN` secret set on the Worker.
+
+**Gotchas learned during deployment:**
+- **R2 must be enabled account-wide** before bucket creation/deploy works (dashboard → R2 → activate, requires a payment card even for free tier). Error: `code: 10042`.
+- **`find_additional_modules = true` + ESModule rules in wrangler.toml are mandatory** — without them, server-rendered routes fail at runtime with `No such module "__next-on-pages-dist__/functions/<route>.func.js"` while static pages keep working. First surfaced when `/evidence` (first non-static route) was added.
+- The D1 binding must stay named `DB` and R2 binding `MEDIA` (that's what `lib/cloudflare.ts` expects), regardless of what wrangler's suggested config snippet shows.
 
 ---
 

@@ -42,7 +42,7 @@
     "errorTitle": "Arhivele ți-au respins depunerea.",
     "errorBody": "Ceva a mers prost la noi — capodopera ta nu a ajuns. Respiră, ia un aperitiv și încearcă din nou.",
     "errorRetry": "Încearcă din nou",
-    "errorTooLargeVideo": "Videoclipul e o epopee cinematografică (peste 95 MB). Scurtează-l și retrimite-l arhivelor.",
+    "errorTooLargeVideo": "Videoclipul e o epopee cinematografică (peste 50 MB). Scurtează-l și retrimite-l arhivelor.",
     "errorTooLargeImage": "Poza e uriașă. Până și arhivele au limite (20 MB). Încearcă una mai mică.",
     "errorUnsupported": "Arhivele nu recunosc acest format. Doar poze (JPG, PNG, WebP, GIF) și videoclipuri (MP4, MOV, WebM).",
     "errorRateLimited": "Ușor, paparazzo oficial al nunții. Încarci prea repede — mai așteaptă câteva minute.",

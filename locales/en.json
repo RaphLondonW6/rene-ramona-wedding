@@ -42,7 +42,7 @@
     "errorTitle": "The archives rejected your submission.",
     "errorBody": "Something went wrong on our side — your masterpiece never arrived. Take a breath, maybe a canapé, and try again.",
     "errorRetry": "Try again",
-    "errorTooLargeVideo": "That video is a cinematic epic (over 95 MB). Trim it to a shorter clip and resubmit to the archives.",
+    "errorTooLargeVideo": "That video is a cinematic epic (over 50 MB). Trim it to a shorter clip and resubmit to the archives.",
     "errorTooLargeImage": "That photo is enormous. Even the archives have limits (20 MB). Please try a smaller one.",
     "errorUnsupported": "The archives don't recognise this file format. Photos (JPG, PNG, WebP, GIF) and videos (MP4, MOV, WebM) only.",
     "errorRateLimited": "Easy there, official wedding paparazzo. You're uploading too fast — give it a few minutes.",

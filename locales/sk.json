@@ -42,7 +42,7 @@
     "errorTitle": "Archívy vaše podanie zamietli.",
     "errorBody": "Niečo sa pokazilo u nás — vaše majstrovské dielo nedorazilo. Nadýchnite sa, dajte si kanapku a skúste to znova.",
     "errorRetry": "Skúsiť znova",
-    "errorTooLargeVideo": "To video je filmový epos (viac ako 95 MB). Skráťte ho a odovzdajte archívom znova.",
+    "errorTooLargeVideo": "To video je filmový epos (viac ako 50 MB). Skráťte ho a odovzdajte archívom znova.",
     "errorTooLargeImage": "Tá fotka je obrovská. Aj archívy majú limity (20 MB). Skúste menšiu.",
     "errorUnsupported": "Archívy tento formát nepoznajú. Iba fotky (JPG, PNG, WebP, GIF) a videá (MP4, MOV, WebM).",
     "errorRateLimited": "Pomaly, oficiálny svadobný paparazzo. Nahrávate príliš rýchlo — počkajte pár minút.",

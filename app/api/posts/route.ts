@@ -5,7 +5,7 @@ export const runtime = 'edge'
 
 const PAGE_SIZE = 12
 const MAX_IMAGE_BYTES = 20 * 1024 * 1024 // 20 MB
-const MAX_VIDEO_BYTES = 95 * 1024 * 1024 // 95 MB (Workers request limit is 100 MB)
+const MAX_VIDEO_BYTES = 50 * 1024 * 1024 // 50 MB — keeps clips short & the feed fast (Workers hard cap is 100 MB)
 const RATE_LIMIT = 10 // uploads per window per IP
 const RATE_WINDOW_MS = 10 * 60 * 1000
 

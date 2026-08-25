@@ -415,7 +415,7 @@ function PostIdRow({ id }: { id: string }) {
 /* ---------------- Upload modal ---------------- */
 
 const MAX_IMAGE_BYTES = 20 * 1024 * 1024
-const MAX_VIDEO_BYTES = 95 * 1024 * 1024
+const MAX_VIDEO_BYTES = 50 * 1024 * 1024
 
 async function compressImage(file: File): Promise<File> {
   try {
