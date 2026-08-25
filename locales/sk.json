@@ -49,7 +49,8 @@
     "submittedBy": ["Odovzdal(a)", "Svedok:", "Prezradil(a)", "Zdokumentoval(a)", "Zvečnil(a)", "Priznal(a) sa"],
     "videoBadge": "Video dôkaz",
     "loadMore": "Načítavajú sa ďalšie pochybné momenty…",
-    "footer": "Všetky dôkazy trvalo archivujú Ramona & René · 12. júna 2027"
+    "footer": "Všetky dôkazy trvalo archivujú Ramona & René · 12. júna 2027",
+    "newArrivals": "✨ Pribudli nové dôkazy — kliknite pre zobrazenie"
   },
   "hero": {
     "names": "René & Ramona",

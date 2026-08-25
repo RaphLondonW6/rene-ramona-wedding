@@ -29,11 +29,19 @@ export default function EvidenceWall() {
   const { t } = useLanguage()
   const e = (t as any).evidence
   const [posts, setPosts] = useState<Post[]>([])
+  const [pendingPosts, setPendingPosts] = useState<Post[]>([])
   const [cursor, setCursor] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [loadingMore, setLoadingMore] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
   const sentinelRef = useRef<HTMLDivElement>(null)
+  const postsRef = useRef<Post[]>([])
+  const pendingRef = useRef<Post[]>([])
+  const loadingRef = useRef(true)
+
+  useEffect(() => { postsRef.current = posts }, [posts])
+  useEffect(() => { pendingRef.current = pendingPosts }, [pendingPosts])
+  useEffect(() => { loadingRef.current = loading }, [loading])
 
   const fetchPage = useCallback(async (cur: string | null) => {
     const res = await fetch(`/api/posts${cur ? `?cursor=${cur}` : ''}`)
@@ -51,6 +59,47 @@ export default function EvidenceWall() {
       .catch(() => {})
       .finally(() => setLoading(false))
   }, [fetchPage])
+
+  // Background poll every 5s for new posts — shown via a tap-to-reveal
+  // banner rather than a hard reload, so scrolling/video playback aren't disrupted.
+  useEffect(() => {
+    const poll = async () => {
+      if (loadingRef.current || document.hidden) return
+      try {
+        const d = await fetchPage(null)
+        const knownIds = new Set([
+          ...postsRef.current.map((p) => p.id),
+          ...pendingRef.current.map((p) => p.id),
+        ])
+        const freshOnes = d.posts.filter((p) => !knownIds.has(p.id))
+        if (freshOnes.length > 0) {
+          setPendingPosts((prev) => [...freshOnes, ...prev])
+        }
+      } catch {
+        // transient network hiccup — just try again next tick
+      }
+    }
+    const iv = setInterval(poll, 5000)
+    return () => clearInterval(iv)
+  }, [fetchPage])
+
+  const [burstSeq, setBurstSeq] = useState(0)
+  const fireConfetti = useCallback(() => setBurstSeq((s) => s + 1), [])
+
+  // Welcome burst shortly after the feed first loads
+  useEffect(() => {
+    if (!loading) {
+      const t = setTimeout(fireConfetti, 300)
+      return () => clearTimeout(t)
+    }
+  }, [loading, fireConfetti])
+
+  const revealPending = useCallback(() => {
+    setPosts((p) => [...pendingRef.current, ...p])
+    setPendingPosts([])
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    fireConfetti()
+  }, [fireConfetti])
 
   // infinite scroll
   useEffect(() => {
@@ -95,6 +144,25 @@ export default function EvidenceWall() {
           <span className="font-serif-display text-lg text-champagne tracking-widest">R&R</span>
         </div>
       </header>
+
+      {pendingPosts.length > 0 && (
+        <div className="sticky top-14 z-30 max-w-lg mx-auto px-4 -mb-2">
+          <button
+            onClick={revealPending}
+            className="w-full mt-3 bg-champagne text-white text-xs tracking-wide font-body py-2.5 px-4 rounded-full shadow-lg
+                       hover:brightness-110 active:scale-[0.98] transition-all
+                       animate-[bannerDrop_0.4s_ease-out] motion-reduce:animate-none"
+          >
+            {e.newArrivals}
+          </button>
+        </div>
+      )}
+      <style>{`
+        @keyframes bannerDrop {
+          from { opacity: 0; transform: translateY(-8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
 
       <main className="max-w-lg mx-auto px-4 pb-32 pt-8">
         {/* Title */}
@@ -160,6 +228,80 @@ export default function EvidenceWall() {
       `}</style>
 
       {modalOpen && <UploadModal e={e} onClose={() => setModalOpen(false)} onPosted={onPosted} />}
+
+      <SideConfetti trigger={burstSeq} />
+    </div>
+  )
+}
+
+/* ---------------- Side confetti burst ---------------- */
+
+const CONFETTI_EMOJI = ['🎉', '✨', '🥂', '💍', '🍾', '💛', '🎊']
+
+function SideConfetti({ trigger }: { trigger: number }) {
+  const sides = useMemo(() => {
+    if (trigger === 0) return null
+    const makeSide = (dir: 1 | -1) =>
+      Array.from({ length: 16 }, (_, i) => ({
+        tx: dir * (80 + Math.random() * 260),
+        ty: -(160 + Math.random() * 380),
+        rot: (Math.random() * 720 - 360).toFixed(0),
+        dur: (1.1 + Math.random() * 0.7).toFixed(2),
+        delay: (Math.random() * 0.25).toFixed(2),
+        emoji: CONFETTI_EMOJI[(i + dir) % CONFETTI_EMOJI.length],
+        size: 16 + Math.round(Math.random() * 14),
+      }))
+    return { left: makeSide(1), right: makeSide(-1) }
+  }, [trigger])
+
+  if (!sides) return null
+
+  return (
+    <div
+      key={trigger}
+      className="fixed inset-0 z-20 pointer-events-none overflow-hidden motion-reduce:hidden"
+      aria-hidden="true"
+    >
+      {sides.left.map((p, i) => (
+        <span
+          key={`l-${i}`}
+          className="absolute bottom-0 left-0"
+          style={
+            {
+              fontSize: p.size,
+              '--tx': `${p.tx}px`,
+              '--ty': `${p.ty}px`,
+              '--rot': `${p.rot}deg`,
+              animation: `sideConfettiBurst ${p.dur}s ease-out ${p.delay}s forwards`,
+            } as React.CSSProperties
+          }
+        >
+          {p.emoji}
+        </span>
+      ))}
+      {sides.right.map((p, i) => (
+        <span
+          key={`r-${i}`}
+          className="absolute bottom-0 right-0"
+          style={
+            {
+              fontSize: p.size,
+              '--tx': `${p.tx}px`,
+              '--ty': `${p.ty}px`,
+              '--rot': `${p.rot}deg`,
+              animation: `sideConfettiBurst ${p.dur}s ease-out ${p.delay}s forwards`,
+            } as React.CSSProperties
+          }
+        >
+          {p.emoji}
+        </span>
+      ))}
+      <style>{`
+        @keyframes sideConfettiBurst {
+          0% { transform: translate(0, 0) rotate(0deg); opacity: 1; }
+          100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
+        }
+      `}</style>
     </div>
   )
 }
