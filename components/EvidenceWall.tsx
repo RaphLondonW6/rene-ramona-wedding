@@ -94,6 +94,17 @@ export default function EvidenceWall() {
     }
   }, [loading, fireConfetti])
 
+  // Keep the party going — ambient confetti bursts on a loop while the
+  // page is open (paused when the tab is hidden, skipped for reduced-motion users)
+  useEffect(() => {
+    if (loading) return
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const iv = setInterval(() => {
+      if (!document.hidden) fireConfetti()
+    }, 3500)
+    return () => clearInterval(iv)
+  }, [loading, fireConfetti])
+
   const revealPending = useCallback(() => {
     setPosts((p) => [...pendingRef.current, ...p])
     setPendingPosts([])
