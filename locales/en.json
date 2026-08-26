@@ -178,11 +178,7 @@
   "honeymoon": {
     "title": "Honeymoon Fund",
     "body": "Your presence, your good mood and your desire to celebrate our union are all we wish for on this special day.\nWe are not doing a wedding gift list, but if you would like to give us a small gift, we are planning a trip for our honeymoon.\nYou can contribute to our project either online by clicking on the Contribute button below, or through the gift box available at the reception venue on the wedding day.",
-    "contributeButton": "Contribute",
-    "wishTitle": "Send a Wedding Wish",
-    "wishPlaceholder": "Write a heartfelt wish for René & Ramona…",
-    "wishButton": "Generate Wish",
-    "wishGenerating": "Creating your wish…"
+    "contributeButton": "Contribute"
   },
   "parking": {
     "title": "Parking & Travelling back to Bucharest",

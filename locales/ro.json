@@ -178,11 +178,7 @@
   "honeymoon": {
     "title": "Fond Lună de Miere",
     "body": "Prezența voastră, buna dispoziție și dorința de a celebra uniunea noastră sunt tot ceea ce ne dorim în această zi specială.\nNu facem o listă de cadouri de nuntă, dar dacă doriți să ne oferiți un mic cadou, planificăm o călătorie pentru luna noastră de miere.\nPuteți contribui la proiectul nostru fie online, făcând clic pe butonul de mai jos, fie prin cutia de cadouri disponibilă la locația de recepție în ziua nunții.",
-    "contributeButton": "Contribuiți",
-    "wishTitle": "Trimiteți o Urare",
-    "wishPlaceholder": "Scrieți o urare sinceră pentru René & Ramona…",
-    "wishButton": "Generați Urare",
-    "wishGenerating": "Se creează urarea…"
+    "contributeButton": "Contribuiți"
   },
   "parking": {
     "title": "Parcare & Transport spre București",

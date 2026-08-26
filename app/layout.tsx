@@ -3,6 +3,7 @@ import './globals.css'
 import { LanguageProvider } from '@/context/LanguageContext'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.ramonapicksrene.com'),
   title: 'René & Ramona — 12 June 2027',
   description: 'Together with our families, we invite you to celebrate our wedding. 12 June 2027 · Phoenix Cernica, Pantelimon, Romania.',
   keywords: ['wedding', 'René', 'Ramona', 'June 2027', 'Phoenix Cernica', 'nunta', 'svadba'],
@@ -11,9 +12,10 @@ export const metadata: Metadata = {
     description: 'Together with our families, we invite you to celebrate our wedding.',
     type: 'website',
     locale: 'en_GB',
+    url: 'https://www.ramonapicksrene.com',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: 'https://www.ramonapicksrene.com/images/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'René & Ramona Wedding',
@@ -24,6 +26,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'René & Ramona — 12 June 2027',
     description: 'Together with our families, we invite you to celebrate our wedding.',
+    images: ['https://www.ramonapicksrene.com/images/og-image.jpg'],
   },
   robots: { index: false, follow: false }, // private wedding site
   viewport: 'width=device-width, initial-scale=1',
