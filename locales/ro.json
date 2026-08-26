@@ -1,10 +1,10 @@
 {
   "nav": {
-    "welcome": "Bun Venit",
+    "welcome": "Împreună, în sfârșit",
     "program": "Program",
     "rsvp": "Confirmare",
     "accommodation": "Cazare",
-    "honeymoon": "Fond Lună de Miere",
+    "honeymoon": "O Mică Idee de Cadou...",
     "menu": "Meniu",
     "parking": "Parcare",
     "contact": "Contact",
@@ -65,13 +65,13 @@
     "scroll": "Derulați pentru a explora"
   },
   "welcome": {
-    "title": "Bun Venit",
+    "title": "Împreună, în sfârșit",
     "intro": "Împreună cu familiile noastre, vă invităm să celebrați nunta noastră.",
     "body": "Așteptăm cu nerăbdare să vă vedem pe 12 iunie 2027. Ceremonia va avea loc la Phoenix Cernica, Strada Strandului 62, 077145 Pantelimon, România, la ora 17:30.",
     "mapsButton": "Deschide în Google Maps"
   },
   "program": {
-    "title": "Ceremonie & Program",
+    "title": "Ziua Cea Mare",
     "subtitle": "Programul zilei noastre speciale",
     "events": [
       { "time": "17:00", "title": "Ceremonia", "description": "la Phoenix Cernica" },
@@ -81,7 +81,7 @@
     ]
   },
   "rsvp": {
-    "title": "Confirmați Prezența",
+    "title": "Vii Alături de Noi?",
     "subtitle": "Vă rugăm să confirmați prezența până pe 30/05/2027.",
     "dresscode": {
       "title": "Cod Vestimentar",
@@ -113,7 +113,7 @@
         "other": "Spuneți-ne mai multe"
       },
       "dietaryOtherPlaceholder": "Vă rugăm specificați cerința alimentară…",
-      "mealTitle": "Selecție Meniu",
+      "mealTitle": "Ce Te Așteaptă",
       "starterTitle": "Aperitive & Canapele",
       "starterNote": "O selecție de canapele și aperitive va fi servită.",
       "starters": [
@@ -159,18 +159,18 @@
     }
   },
   "accommodation": {
-    "title": "Hoteluri & Cazare",
+    "title": "Unde Să Stai",
     "subtitle": "Recomandăm următoarele opțiuni în apropierea locației",
     "bookButton": "Rezervați",
     "distanceFrom": "de la locație"
   },
   "honeymoon": {
-    "title": "Fond Lună de Miere",
+    "title": "O Mică Idee de Cadou...",
     "body": "Prezența voastră, buna dispoziție și dorința de a celebra uniunea noastră sunt tot ceea ce ne dorim în această zi specială.\nNu facem o listă de cadouri de nuntă, dar dacă doriți să ne oferiți un mic cadou, planificăm o călătorie pentru luna noastră de miere.\nPuteți contribui la proiectul nostru fie online, făcând clic pe butonul de mai jos, fie prin cutia de cadouri disponibilă la locația de recepție în ziua nunții.",
     "contributeButton": "Contribuiți"
   },
   "parking": {
-    "title": "Parcare & Transport spre București",
+    "title": "Cum Ajungi & Cum Pleci",
     "subtitle": "Parcare și transport spre București după petrecere",
     "body": "Parcarea este situată la 100 de metri de restaurantul Garuda By Phoenix Cernica. Echipele și personalul nostru vă vor ajuta să parcați mașina. Uber și Bolt sunt disponibile pe scară largă pentru a călători înapoi la București după petrecere.",
     "step1": "Pasul 1",
@@ -179,7 +179,7 @@
     "parkingButton": "Instrucțiuni de parcare"
   },
   "contact": {
-    "title": "Contactați-ne",
+    "title": "Ia Legătura",
     "rene": "René",
     "ramona": "Ramona",
     "emailButton": "Trimiteți-ne un email"
