@@ -24,12 +24,15 @@ const VIDEO_TYPES: Record<string, string> = {
 const N8N_WEBHOOK =
   'https://n8n.ramonapicksrene.com/webhook/6bdd98e4-4e3c-4b98-b00a-8ea3444cb59a'
 
+const MAX_CAPTION_LEN = 80
+
 type PostRow = {
   id: string
   name: string
   media_key: string
   media_type: string
   created_at: number
+  caption: string | null
 }
 
 // ---------- GET /api/posts?cursor=<createdAt>_<id> ----------
@@ -41,7 +44,7 @@ export async function GET(req: NextRequest) {
   if (cursor) {
     const [ts, id] = cursor.split('_')
     const res = await DB.prepare(
-      `SELECT id, name, media_key, media_type, created_at FROM posts
+      `SELECT id, name, media_key, media_type, created_at, caption FROM posts
        WHERE (created_at < ?1) OR (created_at = ?1 AND id < ?2)
        ORDER BY created_at DESC, id DESC LIMIT ?3`
     )
@@ -50,7 +53,7 @@ export async function GET(req: NextRequest) {
     rows = res.results
   } else {
     const res = await DB.prepare(
-      `SELECT id, name, media_key, media_type, created_at FROM posts
+      `SELECT id, name, media_key, media_type, created_at, caption FROM posts
        ORDER BY created_at DESC, id DESC LIMIT ?1`
     )
       .bind(PAGE_SIZE + 1)
@@ -70,6 +73,7 @@ export async function GET(req: NextRequest) {
         mediaUrl: `/api/media/${r.media_key}`,
         mediaType: r.media_type,
         createdAt: r.created_at,
+        caption: r.caption || null,
       })),
       nextCursor: hasMore && last ? `${last.created_at}_${last.id}` : null,
     },
@@ -95,6 +99,7 @@ export async function POST(req: NextRequest) {
 
   const name = String(form.get('name') || '').trim().slice(0, 60)
   const email = String(form.get('email') || '').trim().slice(0, 120)
+  const caption = String(form.get('caption') || '').trim().slice(0, MAX_CAPTION_LEN) || null
   const file = form.get('file')
 
   if (!name || name.length < 2) {
@@ -147,10 +152,10 @@ export async function POST(req: NextRequest) {
   // ---- Store metadata in D1 ----
   const mediaType = isImage ? 'image' : 'video'
   await DB.prepare(
-    `INSERT INTO posts (id, name, email, media_key, media_type, content_type, size, created_at)
-     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8)`
+    `INSERT INTO posts (id, name, email, media_key, media_type, content_type, size, created_at, caption)
+     VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)`
   )
-    .bind(id, name, email, mediaKey, mediaType, contentType, file.size, now)
+    .bind(id, name, email, mediaKey, mediaType, contentType, file.size, now, caption)
     .run()
 
   // ---- Fire n8n webhook (independent of upload success) ----
@@ -164,6 +169,7 @@ export async function POST(req: NextRequest) {
     sizeBytes: file.size,
     mediaUrl: `https://www.ramonapicksrene.com/api/media/${mediaKey}`,
     feedUrl: 'https://www.ramonapicksrene.com/evidence',
+    caption,
     timestamp: new Date(now).toISOString(),
   }
   waitUntil(
@@ -193,6 +199,7 @@ export async function POST(req: NextRequest) {
       mediaUrl: `/api/media/${mediaKey}`,
       mediaType,
       createdAt: now,
+      caption,
     },
   })
 }

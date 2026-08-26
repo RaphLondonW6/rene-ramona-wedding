@@ -10,6 +10,7 @@ type Post = {
   mediaUrl: string
   mediaType: 'image' | 'video'
   createdAt: number
+  caption?: string | null
 }
 
 type UploadState =
@@ -370,12 +371,19 @@ function PostCard({
         )}
       </div>
 
-      <div className="px-4 py-3 flex items-center justify-between">
-        <p className="font-body text-sm text-darkText">
-          <span className="text-darkText/50 italic font-serif-body">{prefix}</span>{' '}
-          <span className="font-semibold">{post.name}</span>
-        </p>
-        <time className="font-body text-[11px] text-darkText/40">{time}</time>
+      <div className="px-4 py-3">
+        <div className="flex items-center justify-between">
+          <p className="font-body text-sm text-darkText">
+            <span className="text-darkText/50 italic font-serif-body">{prefix}</span>{' '}
+            <span className="font-semibold">{post.name}</span>
+          </p>
+          <time className="font-body text-[11px] text-darkText/40">{time}</time>
+        </div>
+        {post.caption && (
+          <p className="font-serif-body text-sm text-darkText/80 italic mt-1.5 leading-snug">
+            "{post.caption}"
+          </p>
+        )}
       </div>
 
       <PostIdRow id={post.id} />
@@ -451,6 +459,7 @@ function UploadModal({
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [caption, setCaption] = useState('')
   const [state, setState] = useState<UploadState>({ phase: 'idle' })
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -508,6 +517,7 @@ function UploadModal({
       fd.append('file', toSend)
       fd.append('name', name)
       fd.append('email', email)
+      fd.append('caption', caption.trim().slice(0, 80))
       fd.append('website', '') // honeypot
 
       const res = await fetch('/api/posts', { method: 'POST', body: fd })
@@ -643,6 +653,25 @@ function UploadModal({
                 className="mt-1 w-full border border-cream bg-white/80 px-3 py-2.5 font-body text-sm text-darkText
                            focus:outline-none focus:border-champagne rounded-sm"
               />
+            </label>
+
+            {/* Caption (optional) */}
+            <label className="block mb-2">
+              <span className="font-body text-xs tracking-wider uppercase text-darkText/70">
+                {e.captionLabel} <span className="italic normal-case tracking-normal text-darkText/40">{e.optionalHint}</span>
+              </span>
+              <input
+                type="text"
+                maxLength={80}
+                value={caption}
+                onChange={(ev) => setCaption(ev.target.value.slice(0, 80))}
+                placeholder={e.captionPlaceholder}
+                className="mt-1 w-full border border-cream bg-white/80 px-3 py-2.5 font-body text-sm text-darkText
+                           focus:outline-none focus:border-champagne rounded-sm"
+              />
+              <span className="block text-right font-body text-[10px] text-darkText/40 mt-0.5">
+                {caption.length}/80
+              </span>
             </label>
 
             {/* Honeypot */}

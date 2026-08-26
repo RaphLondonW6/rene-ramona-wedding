@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS posts (
   media_type  TEXT NOT NULL,          -- 'image' | 'video'
   content_type TEXT NOT NULL,         -- original MIME type
   size        INTEGER NOT NULL,
-  created_at  INTEGER NOT NULL        -- unix ms
+  created_at  INTEGER NOT NULL,       -- unix ms
+  caption     TEXT                    -- optional guest caption, max 80 chars (enforced in app code)
 );
 
 CREATE INDEX IF NOT EXISTS idx_posts_created ON posts (created_at DESC);

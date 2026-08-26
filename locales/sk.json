@@ -26,6 +26,9 @@
     "namePlaceholder": "Vaše meno (bude zobrazené, vyberajte múdro)",
     "emailLabel": "Váš email",
     "emailPlaceholder": "Pre oficiálne potvrdenie — nikdy sa nezobrazí verejne",
+    "captionLabel": "Popis",
+    "optionalHint": "(nepovinné)",
+    "captionPlaceholder": "Napíšte niečo pre archívy… (max 80 znakov)",
     "submit": "Vstúpiť do archívov",
     "cancel": "Radšej nie",
     "loadingMessages": [

@@ -26,6 +26,9 @@
     "namePlaceholder": "Numele tău (va fi afișat, alege cu grijă)",
     "emailLabel": "Emailul tău",
     "emailPlaceholder": "Pentru confirmarea oficială — nu va fi afișat public",
+    "captionLabel": "Descriere",
+    "optionalHint": "(opțional)",
+    "captionPlaceholder": "Spune ceva pentru arhive… (max 80 de caractere)",
     "submit": "Intră în arhive",
     "cancel": "Las-o baltă",
     "loadingMessages": [
