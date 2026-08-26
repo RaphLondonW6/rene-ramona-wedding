@@ -116,9 +116,7 @@ export default function RSVP() {
         {/* Dress Code Card */}
         <div className="reveal bg-white/80 border border-cream/80 p-6 md:p-8 mb-10 shadow-sm text-center">
           <p className="font-serif-display text-xl text-champagne mb-3">{t.rsvp.dresscode.title}</p>
-          <p className="font-serif-body text-lg italic text-lightText mb-2">{t.rsvp.dresscode.subtitle}</p>
-          <p className="font-body text-sm text-darkText">{t.rsvp.dresscode.men}</p>
-          <p className="font-body text-sm text-darkText">{t.rsvp.dresscode.women}</p>
+          <p className="font-serif-body text-lg italic text-lightText">{t.rsvp.dresscode.subtitle}</p>
         </div>
 
         {/* Form */}

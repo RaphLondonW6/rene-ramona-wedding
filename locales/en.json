@@ -85,9 +85,7 @@
     "subtitle": "Thank you for confirming your presence before 30/05/2027.",
     "dresscode": {
       "title": "Dress Code",
-      "subtitle": "Cocktail — A balance between elegant and comfortable.",
-      "men": "Men: A suit and tie.",
-      "women": "Women: Knee-length, tea-length, or midi dresses."
+      "subtitle": "Cocktail — A balance between elegant and comfortable."
     },
     "form": {
       "firstName": "First Name",
