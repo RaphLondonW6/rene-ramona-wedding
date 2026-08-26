@@ -12,7 +12,6 @@ type FormValues = {
   email: string
   phone: string
   attendance: 'attending' | 'not-attending'
-  homeAddress: string
   nationality: string
   message: string
   dietary: string
@@ -64,7 +63,6 @@ export default function RSVP() {
           lastName:     data.lastName,
           email:        data.email,
           phone:        data.phone,
-          address:      data.homeAddress,
           nationality:  data.nationality,
           attendance:   data.attendance === 'attending' ? 'true' : 'false',
           dietary:      data.dietary,
@@ -174,9 +172,19 @@ export default function RSVP() {
                 autoComplete="email"
               />
             </Field>
-            <Field label={f.phone} error={errors.phone?.message}>
+            <Field
+              label={
+                <>
+                  {f.phone}{' '}
+                  <span className="italic normal-case tracking-normal text-lightText/70">
+                    {ff.optionalLabel}
+                  </span>
+                </>
+              }
+              error={errors.phone?.message}
+            >
               <input
-                {...register('phone', { required: f.required })}
+                {...register('phone')}
                 type="tel"
                 className={`form-input ${errors.phone ? 'error' : ''}`}
                 placeholder="RO +40, UK +44, SK +421"
@@ -184,17 +192,6 @@ export default function RSVP() {
               />
             </Field>
           </div>
-
-          {/* Home Address */}
-          <Field label={ff.homeAddressLabel} className="mb-4">
-            <textarea
-              {...register('homeAddress')}
-              rows={2}
-              className="form-input resize-none"
-              placeholder={ff.homeAddressPlaceholder}
-              autoComplete="street-address"
-            />
-          </Field>
 
           {/* Nationality */}
           <Field label={ff.nationality} className="mb-4">
@@ -362,7 +359,7 @@ function Field({
   children,
   className = '',
 }: {
-  label: string
+  label: React.ReactNode
   error?: string
   children: React.ReactNode
   className?: string

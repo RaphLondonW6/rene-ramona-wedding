@@ -253,7 +253,7 @@ Hotel data lives in `lib/accommodations.ts`. All 8 hotels use real photos stored
 
 ## RSVP Form Fields
 
-Internal form field names (React Hook Form): `firstName`, `lastName`, `email`, `phone`, `attendance`, `homeAddress`, `nationality`, `dietary`, `dietaryOther`, `message`, `gdpr`. A honeypot field (`_hp`) silently blocks bots.
+Internal form field names (React Hook Form): `firstName`, `lastName`, `email`, `phone`, `attendance`, `nationality`, `dietary`, `dietaryOther`, `message`, `gdpr`. A honeypot field (`_hp`) silently blocks bots.
 
 JSON payload sent to n8n uses these **exact** keys (note the mapping from internal names):
 
@@ -263,16 +263,17 @@ JSON payload sent to n8n uses these **exact** keys (note the mapping from intern
 | `lastName` | `lastName` |
 | `email` | `email` |
 | `phone` | `phone` |
-| `address` | `homeAddress` |
 | `nationality` | `nationality` |
 | `attendance` | `attendance` |
 | `dietary` | `dietary` |
 | `otherDietary` | `dietaryOther` |
 | `message` | `message` |
 
-`homeAddress` and `nationality` are optional fields added to capture postal address (for sending a physical invite) and nationality. `nationality` is a **dropdown** (not a free-text input) with Romanian, Slovak, French, British pinned at the top, followed by an alphabetical list of European and other nationalities.
+**Home address field removed (Aug 2026)** — flagged as a critical privacy concern in a site audit (guest postal addresses being collected/stored unnecessarily). The `homeAddress` field, its `address` JSON key, and its locale strings (`homeAddressLabel`, `homeAddressPlaceholder`) were fully removed from `RSVP.tsx` and all three locale files. The n8n workflow's Google Sheets node still has an `address` column mapping (`{{ $json.body.address }}`) — it will just receive empty values going forward; remove that column mapping in n8n if desired.
 
-Phone placeholder reads `RO +40, UK +44, SK +421` as a hint for the three main guest nationalities.
+`nationality` is a **dropdown** (not a free-text input) with Romanian, Slovak, French, British pinned at the top, followed by an alphabetical list of European and other nationalities.
+
+Phone is **optional** — labelled with an italic "(Optional)" next to the field label (locale key `rsvp.form.optionalLabel`) and has no `required` validation. Placeholder reads `RO +40, UK +44, SK +421` as a hint for the three main guest nationalities.
 
 Dietary options: `none`, `gluten`, `vegetarian`, `vegan`, `other` — "Allergies" was removed; "Other" is labelled "Tell us more about it" (RO: "Spuneți-ne mai multe", SK: "Povedzte nám viac").
 
@@ -366,9 +367,11 @@ An Instagram-style guest photo/video wall. Guests upload photos & videos which p
     ```bash
     curl -X DELETE https://www.ramonapicksrene.com/api/posts/<id> -H "x-admin-token: <token>"
     ```
-- **Frontend:** `app/evidence/page.tsx` + `components/EvidenceWall.tsx` — infinite scroll, floating + FAB, bottom-sheet upload modal, client-side image compression (canvas → 1920px JPEG 85% before upload), rotating funny loading messages, CSS confetti on success. All microcopy trilingual in `locales/*.json` under `evidence` key.
+- **Frontend:** `app/evidence/page.tsx` + `components/EvidenceWall.tsx` — infinite scroll, floating upload button (custom "photos" icon at `public/images/evidence-fab.png`, replaced the original "+" glyph), bottom-sheet upload modal, client-side image compression (canvas → 1920px JPEG 85% before upload), rotating funny loading messages, CSS confetti on successful upload. All microcopy trilingual in `locales/*.json` under `evidence` key. Each post card shows its `id` (small muted text with tap-to-copy) so posts can be identified for admin deletion.
+- **Live auto-refresh:** the feed polls `GET /api/posts` every 5s in the background (paused when the browser tab is hidden). Rather than a hard page reload — which would reset scroll position and interrupt video playback — new posts are held back and surfaced via a tap-to-reveal pill at the top of the feed ("✨ New evidence just landed…", locale key `evidence.newArrivals`). Tapping it merges the new posts in and scrolls to top.
+- **Ambient confetti:** a two-sided confetti burst (`SideConfetti` component in `EvidenceWall.tsx`) fires from both bottom corners of the screen on page load, on every reveal of new evidence, and then loops automatically every 3.5s for as long as the page is open. Skipped for `prefers-reduced-motion` and paused when the tab is hidden.
 - **Overlay:** the "💍 Ramona & René · 12·06·2027" ribbon is a CSS overlay on the feed — originals in R2 stay untouched.
-- **n8n webhook** (confirmation email): `https://n8n.ramonapicksrene.com/webhook/6bdd98e4-4e3c-4b98-b00a-8ea3444cb59a` — payload: `{event, postId, guestName, guestEmail, mediaType, contentType, sizeBytes, mediaUrl, feedUrl, timestamp}`
+- **n8n webhook** (confirmation email): `https://n8n.ramonapicksrene.com/webhook/6bdd98e4-4e3c-4b98-b00a-8ea3444cb59a` — payload: `{event, postId, guestName, guestEmail, mediaType, contentType, sizeBytes, mediaUrl, feedUrl, timestamp}`. n8n workflow: Webhook (POST, Respond: Immediately) → IF (`{{ $json.body.mediaType }}` is equal to `image`) → separate Gmail nodes per branch. HTML templates: `public/evidence-confirmation.html` (source, with `IMAGE_BLOCK`/`VIDEO_BLOCK` markers) — image/video-specific versions with n8n expressions already substituted were generated once for pasting into the two Gmail nodes.
 - **`lib/cloudflare.ts`** — `env()` / `waitUntil()` helpers wrapping `getRequestContext()` from `@cloudflare/next-on-pages` (added to devDependencies)
 
 **Setup status: DONE (Aug 2026).** R2 bucket `wedding-media` created (R2 had to be enabled account-wide in the dashboard first — error 10042 otherwise), D1 `wedding-posts` created (id `46503719-d1fd-448b-9a7d-28f9f28e5a11`), schema applied via `npx wrangler d1 execute wedding-posts --remote --file=schema.sql`, `ADMIN_TOKEN` secret set on the Worker.
