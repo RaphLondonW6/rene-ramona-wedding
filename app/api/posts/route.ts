@@ -24,7 +24,7 @@ const VIDEO_TYPES: Record<string, string> = {
 const N8N_WEBHOOK =
   'https://n8n.ramonapicksrene.com/webhook/6bdd98e4-4e3c-4b98-b00a-8ea3444cb59a'
 
-const MAX_CAPTION_LEN = 80
+const MAX_CAPTION_LEN = 250
 
 type PostRow = {
   id: string

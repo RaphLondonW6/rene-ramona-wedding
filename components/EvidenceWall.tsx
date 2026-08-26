@@ -517,7 +517,7 @@ function UploadModal({
       fd.append('file', toSend)
       fd.append('name', name)
       fd.append('email', email)
-      fd.append('caption', caption.trim().slice(0, 80))
+      fd.append('caption', caption.trim().slice(0, 250))
       fd.append('website', '') // honeypot
 
       const res = await fetch('/api/posts', { method: 'POST', body: fd })
@@ -660,17 +660,17 @@ function UploadModal({
               <span className="font-body text-xs tracking-wider uppercase text-darkText/70">
                 {e.captionLabel} <span className="italic normal-case tracking-normal text-darkText/40">{e.optionalHint}</span>
               </span>
-              <input
-                type="text"
-                maxLength={80}
+              <textarea
+                rows={2}
+                maxLength={250}
                 value={caption}
-                onChange={(ev) => setCaption(ev.target.value.slice(0, 80))}
+                onChange={(ev) => setCaption(ev.target.value.slice(0, 250))}
                 placeholder={e.captionPlaceholder}
-                className="mt-1 w-full border border-cream bg-white/80 px-3 py-2.5 font-body text-sm text-darkText
+                className="mt-1 w-full border border-cream bg-white/80 px-3 py-2.5 font-body text-sm text-darkText resize-none
                            focus:outline-none focus:border-champagne rounded-sm"
               />
               <span className="block text-right font-body text-[10px] text-darkText/40 mt-0.5">
-                {caption.length}/80
+                {caption.length}/250
               </span>
             </label>
 

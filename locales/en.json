@@ -28,7 +28,7 @@
     "emailPlaceholder": "For your official archive receipt — never shown publicly",
     "captionLabel": "Caption",
     "optionalHint": "(optional)",
-    "captionPlaceholder": "Say something for the record… (80 characters max)",
+    "captionPlaceholder": "Say something for the record… (250 characters max)",
     "submit": "Enter the archives",
     "cancel": "Never mind",
     "loadingMessages": [

@@ -28,7 +28,7 @@
     "emailPlaceholder": "Pentru confirmarea oficială — nu va fi afișat public",
     "captionLabel": "Descriere",
     "optionalHint": "(opțional)",
-    "captionPlaceholder": "Spune ceva pentru arhive… (max 80 de caractere)",
+    "captionPlaceholder": "Spune ceva pentru arhive… (max 250 de caractere)",
     "submit": "Intră în arhive",
     "cancel": "Las-o baltă",
     "loadingMessages": [

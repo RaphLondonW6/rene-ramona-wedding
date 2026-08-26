@@ -28,7 +28,7 @@
     "emailPlaceholder": "Pre oficiálne potvrdenie — nikdy sa nezobrazí verejne",
     "captionLabel": "Popis",
     "optionalHint": "(nepovinné)",
-    "captionPlaceholder": "Napíšte niečo pre archívy… (max 80 znakov)",
+    "captionPlaceholder": "Napíšte niečo pre archívy… (max 250 znakov)",
     "submit": "Vstúpiť do archívov",
     "cancel": "Radšej nie",
     "loadingMessages": [
