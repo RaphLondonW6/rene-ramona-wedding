@@ -32,10 +32,6 @@ export default function Contact() {
 
           <p className="font-serif-display text-3xl text-champagne mb-2">René & Ramona</p>
 
-          <address className="not-italic font-serif-body text-lg text-lightText mt-4 leading-loose">
-            {t.contact.address}
-          </address>
-
           <div className="gold-divider my-8" />
 
           {/* Email CTA */}
