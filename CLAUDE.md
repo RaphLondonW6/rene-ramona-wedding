@@ -415,20 +415,37 @@ The card features the couple's beach photo (`couple.png`, same folder), gold bor
 
 ---
 
-## RSVP Email Confirmation (N8N + Gmail)
+## RSVP Email Confirmation (N8N + SMTP)
 
-`public/email-confirmation.html` is an HTML email template to be sent automatically to guests after they submit their RSVP. It matches the wedding website design (champagne/gold palette, table-based layout, inline CSS, web-safe fonts for email client compatibility).
+**Redesigned Aug 2026** after a brutal-honesty review of the live email turned up real issues (see "Gotchas" below). Source templates, one per language:
+- `public/email-confirmation.html` (EN)
+- `public/email-confirmation-ro.html` (RO)
+- `public/email-confirmation-sk.html` (SK)
 
-**Template variable:** `{{firstName}}` — replace with the guest's first name via N8N expression.
+All three share the same dark-header/gold-accent design (`#1a1a18` header/footer, `#c9a96e` gold, `#f9f6f0` cream background) — matching the style already used in `public/evidence-confirmation.html`, not the older champagne/gold table layout this section used to describe.
+
+**Template variable:** `{{firstName}}` — replace with `{{ $json.body.firstName }}` (or the equivalent n8n expression for wherever the RSVP payload lands) via node expression.
+
+**Structure, in order:** dark header (names + date/venue) → hero ("Thank you, {{firstName}}") → warm body copy → invitation card image (moved up from the old design so the sign-off can be last) → "what happens next" info box (schedule, venue, parking, accommodation, tips) → **single CTA** "📸 Leave Us a Memory" linking to `/evidence` (inviting guests to post an early photo + message before the wedding) → sign-off ("With so much love, Ramona & René ❤️") → P.S. with a plain-text website link → footer → GDPR note.
 
 **N8N workflow setup:**
 1. **Trigger** — Webhook node at path `rsvp-wedding` (receives the RSVP form POST directly)
-2. **Gmail node** — paste the HTML as email body (HTML mode)
-3. **To** — map to: `{{ $json["email"] }}`
-4. **Subject** — `Your RSVP is confirmed — René & Ramona · 12 June 2027`
-5. **First name** — replace `{{firstName}}` with `{{ $json["firstName"] }}`
+2. **Email node** (SMTP, not Gmail, in the live workflow) — paste the matching-language HTML as the body (HTML format)
+3. **From Email** — must include a display name, not just the bare address, or the guest's inbox shows the raw email instead of a name: `René & Ramona <hello@ramonapicksrene.com>` (standard `"Name" <email>` RFC format — safe, doesn't change the sending address)
+4. **To Email** — map to the guest's email from the trigger payload
+5. **Subject** — `We're looking forward to seeing you 🎉` (note: "seeing", not "see" — grammar fix from the original)
+6. **First name** — replace `{{firstName}}` with the correct expression pointing at the RSVP payload
 
-**Email includes:** R&R monogram header, personalised confirmation message, event details (date, time, venue), dress code reminder, link to the website, and a GDPR footer note.
+**Known issue caught in review:** an earlier live send greeted a guest as "Hi Rafafafa," — almost certainly a broken or test personalization value. Always send a real test RSVP and check the actual name renders correctly before trusting a template change.
+
+**Language routing:** not yet automated — the RSVP form doesn't currently pass a language preference to n8n, so today only one template gets sent regardless of the guest's site language. Wiring up per-language branching (e.g. on the `nationality` field or an explicit language selector) is a natural next step if needed.
+
+**"Cannot attend" branch** — separate templates for guests who decline, sent from the false branch of the `attendance` IF node in the same n8n workflow:
+- `public/email-cannot-attend.html` (EN)
+- `public/email-cannot-attend-ro.html` (RO)
+- `public/email-cannot-attend-sk.html` (SK)
+
+Same visual design and `{{firstName}}` convention as the attending templates. Redesigned alongside the attending email (Aug 2026) to add: a warm paragraph inviting the guest to still leave a photo/message on `/evidence` despite not attending in person, a "📸 Leave Us a Message" CTA (was previously just "Visit our wedding website"), and the GDPR footer note (previously missing). Subject used: `Thank you for letting us know ❤️`.
 
 ---
 

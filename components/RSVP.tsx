@@ -207,9 +207,12 @@ export default function RSVP() {
               </optgroup>
               <optgroup label="— Other —">
                 <option value="Albanian">Albanian</option>
+                <option value="American">American</option>
+                <option value="Australian">Australian</option>
                 <option value="Austrian">Austrian</option>
                 <option value="Belgian">Belgian</option>
                 <option value="Bulgarian">Bulgarian</option>
+                <option value="Canadian">Canadian</option>
                 <option value="Croatian">Croatian</option>
                 <option value="Czech">Czech</option>
                 <option value="Danish">Danish</option>
@@ -235,9 +238,6 @@ export default function RSVP() {
                 <option value="Swedish">Swedish</option>
                 <option value="Swiss">Swiss</option>
                 <option value="Ukrainian">Ukrainian</option>
-                <option value="American">American</option>
-                <option value="Australian">Australian</option>
-                <option value="Canadian">Canadian</option>
                 <option value="Other">Other</option>
               </optgroup>
             </select>
