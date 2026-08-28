@@ -77,7 +77,8 @@ database_id = "46503719-d1fd-448b-9a7d-28f9f28e5a11"
 ```
 
 **To deploy:**
-```bash
+```powershell
+cd "C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\rene-ramona-wedding"
 git add -A
 git commit -m "your message"
 git push
@@ -238,14 +239,14 @@ Hotel data lives in `lib/accommodations.ts`. All 8 hotels use real photos stored
 
 | # | Hotel | Distance | Photo file | Booking |
 |---|---|---|---|---|
-| 1 | Mercure Conacul Cozieni | 35 km | `Mercure_Conacul_Cozieni.png` | Accor direct |
-| 2 | ibis Styles Bucharest City Center | 13 km | `ibis-styles-bucharest.jpg` | Accor direct + dates |
+| 1 | ibis Styles Bucharest City Center | 13 km | `ibis-styles-bucharest.jpg` | Accor direct + dates |
+| 2 | Novotel Bucharest City Centre | 13 km | `NovotelBucharestCityCentre.png` | Direct website |
 | 3 | Mercure Bucharest Unirii | 14 km | `Mercure_Bucharest_Unirii.png` | Accor direct + dates |
-| 4 | Novotel Bucharest City Centre | 13 km | `NovotelBucharestCityCentre.png` | Direct website |
-| 5 | Corinthia Bucharest | 14 km | `Corinthia_bucharest.png` | Direct website |
-| 6 | Hotel Epoque Bucharest | 14 km | `HotelEpoque.png` | Booking.com + dates |
-| 7 | InterContinental Athenee Palace | 14 km | `InterContinental_Bucharest.png` | Direct booking site |
-| 8 | Grand Hotel Bucharest | 14 km | `GrandHotelBucharest.png` | Direct website |
+| 4 | Corinthia Bucharest | 14 km | `Corinthia_bucharest.png` | Direct website |
+| 5 | Hotel Epoque Bucharest | 14 km | `HotelEpoque.png` | Booking.com + dates |
+| 6 | InterContinental Athenee Palace | 14 km | `InterContinental_Bucharest.png` | Direct booking site |
+| 7 | Grand Hotel Bucharest | 14 km | `GrandHotelBucharest.png` | Direct website |
+| 8 | Mercure Conacul Cozieni | 35 km | `Mercure_Conacul_Cozieni.png` | Accor direct |
 
 **Note:** Hotel images are in `public/images/hotels/` — add new files there and reference them as `/images/hotels/filename.ext` in `accommodations.ts`.
 

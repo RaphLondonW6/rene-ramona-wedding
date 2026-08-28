@@ -13,17 +13,6 @@ export interface Accommodation {
 export const accommodations: Accommodation[] = [
   {
     id: 1,
-    name: 'Mercure Conacul Cozieni',
-    type: 'Resort',
-    distance: '35 km',
-    description: 'A beautiful Mercure estate resort set in the Romanian countryside, offering a peaceful retreat with elegant rooms and scenic grounds.',
-    stars: 4,
-    image: '/images/hotels/Mercure_Conacul_Cozieni.png',
-    bookingUrl: 'https://all.accor.com/hotel/B9U8/index.en.shtml',
-    priceRange: '€€',
-  },
-  {
-    id: 2,
     name: 'ibis Styles Bucharest City Center',
     type: 'Hotel',
     distance: '13 km',
@@ -32,6 +21,17 @@ export const accommodations: Accommodation[] = [
     image: '/images/hotels/ibis-styles-bucharest.jpg',
     bookingUrl: 'https://all.accor.com/booking/en/accor/hotel/B089?destination=bucharest-romania&compositions=1&dateIn=2027-06-12&dateOut=2027-06-13&nights=1&hideWDR=false&accessibleRoom=false',
     priceRange: '€',
+  },
+  {
+    id: 2,
+    name: 'Novotel Bucharest City Centre',
+    type: 'Hotel',
+    distance: '13 km',
+    description: "A reliable international brand with modern amenities, central location and easy access to Bucharest's attractions.",
+    stars: 4,
+    image: '/images/hotels/NovotelBucharestCityCentre.png',
+    bookingUrl: 'https://www.novotelbucharestcitycentre.com/',
+    priceRange: '€€€',
   },
   {
     id: 3,
@@ -46,17 +46,6 @@ export const accommodations: Accommodation[] = [
   },
   {
     id: 4,
-    name: 'Novotel Bucharest City Centre',
-    type: 'Hotel',
-    distance: '13 km',
-    description: "A reliable international brand with modern amenities, central location and easy access to Bucharest's attractions.",
-    stars: 4,
-    image: '/images/hotels/NovotelBucharestCityCentre.png',
-    bookingUrl: 'https://www.novotelbucharestcitycentre.com/',
-    priceRange: '€€€',
-  },
-  {
-    id: 5,
     name: 'Corinthia Bucharest',
     type: 'Hotel',
     distance: '14 km',
@@ -67,7 +56,7 @@ export const accommodations: Accommodation[] = [
     priceRange: '€€€€',
   },
   {
-    id: 6,
+    id: 5,
     name: 'Hotel Epoque Bucharest',
     type: 'Boutique Hotel',
     distance: '14 km',
@@ -78,7 +67,7 @@ export const accommodations: Accommodation[] = [
     priceRange: '€€€€',
   },
   {
-    id: 7,
+    id: 6,
     name: 'InterContinental Athenee Palace Bucharest',
     type: 'Hotel',
     distance: '14 km',
@@ -89,7 +78,7 @@ export const accommodations: Accommodation[] = [
     priceRange: '€€€€',
   },
   {
-    id: 8,
+    id: 7,
     name: 'Grand Hotel Bucharest',
     type: 'Hotel',
     distance: '14 km',
@@ -98,5 +87,16 @@ export const accommodations: Accommodation[] = [
     image: '/images/hotels/GrandHotelBucharest.png',
     bookingUrl: 'https://www.grandhotelbucharest.com/',
     priceRange: '€€€€',
+  },
+  {
+    id: 8,
+    name: 'Mercure Conacul Cozieni',
+    type: 'Resort',
+    distance: '35 km',
+    description: 'A beautiful Mercure estate resort set in the Romanian countryside, offering a peaceful retreat with elegant rooms and scenic grounds.',
+    stars: 4,
+    image: '/images/hotels/Mercure_Conacul_Cozieni.png',
+    bookingUrl: 'https://all.accor.com/hotel/B9U8/index.en.shtml',
+    priceRange: '€€',
   },
 ]
