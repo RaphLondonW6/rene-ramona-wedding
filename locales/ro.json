@@ -4,7 +4,7 @@
     "program": "Program",
     "rsvp": "Confirmare",
     "accommodation": "Cazare",
-    "honeymoon": "O Mică Idee de Cadou...",
+    "honeymoon": "Wedding Gift",
     "menu": "Meniu",
     "parking": "Parcare",
     "contact": "Contact",
@@ -164,7 +164,7 @@
     "distanceFrom": "de la locație"
   },
   "honeymoon": {
-    "title": "O Mică Idee de Cadou...",
+    "title": "Wedding Gift",
     "body": "Prezența voastră, buna dispoziție și dorința de a celebra uniunea noastră sunt tot ceea ce ne dorim în această zi specială.\nNu facem o listă de cadouri de nuntă, dar dacă doriți să ne oferiți un mic cadou, planificăm o călătorie pentru luna noastră de miere.\nPuteți contribui la proiectul nostru fie online, făcând clic pe butonul de mai jos, fie prin cutia de cadouri disponibilă la locația de recepție în ziua nunții.",
     "contributeButton": "Contribuiți"
   },
