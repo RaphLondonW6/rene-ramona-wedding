@@ -142,7 +142,7 @@ rene-ramona-wedding/
 │   ├── Welcome.tsx         # Intro text + venue details + Google Maps
 │   ├── Program.tsx         # Animated timeline
 │   ├── RSVP.tsx            # Attendance form only → Google Sheets (meal selection removed)
-│   ├── Menu.tsx            # Standalone menu section (Starters, Mains, Dessert, Drinks, Kids)
+│   ├── Menu.tsx            # Standalone menu section (Starters, Mains, Dessert, Drinks, Kids) — REMOVED from page.tsx Aug 2026
 │   ├── Accommodation.tsx   # Hotel cards
 │   ├── HoneymoonFund.tsx   # Donation + wish generator
 │   ├── Parking.tsx         # Parking guide with 3 step images (stacked)
@@ -212,12 +212,10 @@ Welcome (intro italic + body)
 Program (subtitle: white)
 ↓ SectionImage: confirm-presence.jpg
 RSVP (subtitle: white; success message: dark, includes confirmation email note; auto-scrolls to #rsvp on submit)
-↓ SectionImage: menu.jpg
-Menu (Starters, Mains, Dessert, Drinks, Kids)
 ↓ SectionImage: hotels-accommodation.jpg
 Accommodation (subtitle: white)
 ↓ SectionImage: honeymoon-fund.jpg
-HoneymoonFund
+HoneymoonFund (nav label & section title: "Wedding Gift" in all 3 languages — Aug 2026)
 ↓ SectionVideo: parking.mp4
 Parking
 ↓ SectionImage: contact.jpg
@@ -329,7 +327,7 @@ CSS z-index stacking on `.card-outer`:
 
 All UI strings live in `locales/{en,ro,sk}.json`. The `LanguageContext` provides a `t` object throughout the Next.js app.
 
-Locale files contain: `nav`, `hero`, `welcome`, `program`, `rsvp`, `accommodation`, `honeymoon`, `parking`, `contact`, `footer`. The `nav` object includes a `menu` key (EN: "Menu", RO: "Meniu", SK: "Menu").
+Locale files contain: `nav`, `hero`, `welcome`, `program`, `rsvp`, `accommodation`, `honeymoon`, `parking`, `contact`, `footer`. The `nav` object no longer includes a `menu` key (Menu section removed Aug 2026). The `honeymoon` nav key and section title are now "Wedding Gift" across all three locales.
 
 The `parking` key holds: `title`, `subtitle`, `body`, `step1`, `step2`, `step3`.
 
