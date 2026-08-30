@@ -252,7 +252,7 @@ Hotel data lives in `lib/accommodations.ts`. All 8 hotels use real photos stored
 
 ## RSVP Form Fields
 
-Internal form field names (React Hook Form): `firstName`, `lastName`, `email`, `phone`, `attendance`, `nationality`, `dietary`, `dietaryOther`, `message`, `gdpr`. A honeypot field (`_hp`) silently blocks bots.
+Internal form field names (React Hook Form): `firstName`, `lastName`, `email`, `phone`, `attendance`, `nationality`, `dietary`, `dietaryOther`, `message`, `gdpr`, `hasPartner`, `partnerFirstName`, `partnerLastName`, `partnerDietary`, `partnerDietaryOther`, `hasChildren`, `children` (array of `{ name, age }`). A honeypot field (`_hp`) silently blocks bots.
 
 JSON payload sent to n8n uses these **exact** keys (note the mapping from internal names):
 
@@ -267,6 +267,20 @@ JSON payload sent to n8n uses these **exact** keys (note the mapping from intern
 | `dietary` | `dietary` |
 | `otherDietary` | `dietaryOther` |
 | `message` | `message` |
+| `hasPartner` | `hasPartner` (`"yes"` / `"no"`, only when attending) |
+| `partnerFirstName` | `partnerFirstName` (only when `hasPartner === "yes"`) |
+| `partnerLastName` | `partnerLastName` (only when `hasPartner === "yes"`) |
+| `partnerDietary` | `partnerDietary` (only when `hasPartner === "yes"`) |
+| `partnerOtherDietary` | `partnerDietaryOther` (only when `hasPartner === "yes"`) |
+| `hasChildren` | `hasChildren` (`"yes"` / `"no"`, only when attending) |
+| `childrenCount` | number of children (only when `hasChildren === "yes"`) |
+| `childrenDetails` | JSON string array `[{"name":"…","age":"…"},…]` (only when `hasChildren === "yes"`) |
+
+**Accompanying guest & children support (Aug 2026):** After confirming attendance, guests can declare:
+- A **partner / +1** (yes/no toggle). If yes: partner first name, last name, dietary requirements (same options). Partner fields are required when `hasPartner === 'yes'`.
+- **Children** (yes/no toggle). If yes: dynamic list of children (up to 6) — each child has a name (required) and age (0–17 dropdown). First child slot is auto-added when the toggle is set to yes. A note informs guests that children will be served the dedicated kids menu.
+
+Partner and children sections are only shown when `attendance === 'attending'`. `useFieldArray` from React Hook Form manages the dynamic children list.
 
 **Home address field removed (Aug 2026)** — flagged as a critical privacy concern in a site audit (guest postal addresses being collected/stored unnecessarily). The `homeAddress` field, its `address` JSON key, and its locale strings (`homeAddressLabel`, `homeAddressPlaceholder`) were fully removed from `RSVP.tsx` and all three locale files. The n8n workflow's Google Sheets node still has an `address` column mapping (`{{ $json.body.address }}`) — it will just receive empty values going forward; remove that column mapping in n8n if desired.
 
@@ -274,11 +288,13 @@ JSON payload sent to n8n uses these **exact** keys (note the mapping from intern
 
 Phone is **optional** — labelled with an italic "(Optional)" next to the field label (locale key `rsvp.form.optionalLabel`) and has no `required` validation. Placeholder reads `RO +40, UK +44, SK +421` as a hint for the three main guest nationalities.
 
-Dietary options: `none`, `gluten`, `vegetarian`, `vegan`, `other` — "Allergies" was removed; "Other" is labelled "Tell us more about it" (RO: "Spuneți-ne mai multe", SK: "Povedzte nám viac").
+Dietary options: `none`, `gluten`, `vegetarian`, `vegan`, `other` — "Allergies" was removed; "Other" is labelled "Tell us more about it" (RO: "Spuneți-ne mai multe", SK: "Povedzte nám viac"). Same options are used for partner dietary.
 
-The Meal Selection has been moved to the standalone **Menu** section (`components/Menu.tsx`). RSVP only contains attendance, personal details, dietary requirements, optional message, and GDPR consent.
+The Meal Selection has been moved to the standalone **Menu** section (`components/Menu.tsx`). RSVP only contains attendance, personal details, dietary requirements, partner/children details, optional message, and GDPR consent.
 
 On successful submission, the form is replaced in-place by a success banner (no layout shift — the outer wrapper stays in the DOM). A `useEffect` watching `status === 'success'` smoothly scrolls the page to `#rsvp` so the banner is always visible.
+
+**New locale keys added (Aug 2026)** to all three locale files under `rsvp.form`: `hasPartner`, `partnerYes`, `partnerNo`, `partnerSection`, `partnerFirstName`, `partnerLastName`, `partnerDietary`, `hasChildren`, `childrenSection`, `addChild`, `removeChild`, `childName`, `childAge`, `childAgeSelect`, `childrenNote`.
 
 ---
 
@@ -392,16 +408,19 @@ https://www.ramonapicksrene.com/images/invitation-card.png
 
 **Source file:** `C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\wedding-invitation-card.html`
 
-The card features the couple's beach photo (`couple.png`, same folder), gold border frame, Great Vibes / Cormorant Garamond / Cinzel fonts, and a CSS gradient fade from photo into cream card background.
+The card features the couple's beach photo (`couple.png`, same folder), gold border frame, Cormorant Garamond / Cinzel fonts, and a CSS gradient fade from photo into cream card background. The **R & R monogram** uses Cormorant Garamond (weight 300, letter-spacing 12px) — updated Aug 2026 from Great Vibes to match the rest of the card.
 
 **To regenerate the image** (e.g. after content changes):
 1. Open `wedding-invitation-card.html` in a browser to preview
-2. Run Chrome headless to export:
+2. Run Chrome headless to export at 2× resolution (add `--force-device-scale-factor=2` for high-res):
 ```powershell
-& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --screenshot="C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\invitation-card.png" --window-size=680,1200 --enable-local-file-access "file:///C:/Users/RSCHAEFFER/OneDrive%20-%20ACCOR/Accor/CLAUDE/wedding-invitation-card.html"
+& "C:\Program Files\Google\Chrome\Application\chrome.exe" --headless --screenshot="C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\invitation-card.png" --window-size=680,1200 --force-device-scale-factor=2 --enable-local-file-access "file:///C:/Users/RSCHAEFFER/OneDrive%20-%20ACCOR/Accor/CLAUDE/wedding-invitation-card.html"
 ```
 3. Crop any black banner at the bottom if present
-4. Copy to `public/images/invitation-card.png` and push to repo
+4. Copy to `public/images/invitation-card.png` and push to repo:
+```powershell
+copy "C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\invitation-card.png" "C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\rene-ramona-wedding\public\images\invitation-card.png"
+```
 
 **Used in n8n email** — added below the sign-off as:
 ```html

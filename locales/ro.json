@@ -154,7 +154,22 @@
       "successMessage": "Confirmarea dvs. a fost primită, vă vom trimite un email de confirmare. Abia așteptăm să sărbătorim împreună cu voi!",
       "errorMessage": "Ceva nu a mers bine. Vă rugăm să încercați din nou sau să ne contactați direct.",
       "required": "Acest câmp este obligatoriu",
-      "invalidEmail": "Introduceți o adresă de email validă"
+      "invalidEmail": "Introduceți o adresă de email validă",
+      "hasPartner": "Veniți cu un partener / +1?",
+      "partnerYes": "Da",
+      "partnerNo": "Nu",
+      "partnerSection": "Detalii Partener",
+      "partnerFirstName": "Prenumele Partenerului",
+      "partnerLastName": "Numele Partenerului",
+      "partnerDietary": "Cerințele Alimentare ale Partenerului",
+      "hasChildren": "Aduceți copii?",
+      "childrenSection": "Copii",
+      "addChild": "Adaugă un copil",
+      "removeChild": "Elimină",
+      "childName": "Nume",
+      "childAge": "Vârstă",
+      "childAgeSelect": "Selectați vârsta…",
+      "childrenNote": "Copiii vor beneficia de un meniu dedicat — aperitiv, șnițel de pui cu cartofi prăjiți, tort și băuturi răcoritoare."
     }
   },
   "accommodation": {

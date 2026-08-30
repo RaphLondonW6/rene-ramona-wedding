@@ -154,7 +154,22 @@
       "successMessage": "Vaše RSVP bolo prijaté, pošleme vám potvrdzovací e-mail. Tešíme sa, že to oslavíme s vami!",
       "errorMessage": "Niečo sa pokazilo. Skúste to znova alebo nás kontaktujte priamo.",
       "required": "Toto pole je povinné",
-      "invalidEmail": "Zadajte platnú e-mailovú adresu"
+      "invalidEmail": "Zadajte platnú e-mailovú adresu",
+      "hasPartner": "Prichádzate s partnerom / +1?",
+      "partnerYes": "Áno",
+      "partnerNo": "Nie",
+      "partnerSection": "Údaje o Partnerovi",
+      "partnerFirstName": "Meno Partnera",
+      "partnerLastName": "Priezvisko Partnera",
+      "partnerDietary": "Diétne požiadavky Partnera",
+      "hasChildren": "Prinesiete deti?",
+      "childrenSection": "Deti",
+      "addChild": "Pridať dieťa",
+      "removeChild": "Odstrániť",
+      "childName": "Meno",
+      "childAge": "Vek",
+      "childAgeSelect": "Vyberte vek…",
+      "childrenNote": "Deti budú mať špeciálne detské menu — predjedlo, kurací rezeň s hranolkami, tortu a nealkoholické nápoje."
     }
   },
   "accommodation": {

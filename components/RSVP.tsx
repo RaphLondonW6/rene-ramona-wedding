@@ -1,10 +1,12 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, useFieldArray } from 'react-hook-form'
 import { useLanguage } from '@/context/LanguageContext'
 
 const RSVP_ENDPOINT = 'https://n8n.ramonapicksrene.com/webhook/rsvp-wedding'
+
+type ChildEntry = { name: string; age: string }
 
 type FormValues = {
   firstName: string
@@ -17,6 +19,13 @@ type FormValues = {
   dietary: string
   dietaryOther: string
   gdpr: boolean
+  hasPartner: 'yes' | 'no'
+  partnerFirstName: string
+  partnerLastName: string
+  partnerDietary: string
+  partnerDietaryOther: string
+  hasChildren: 'yes' | 'no'
+  children: ChildEntry[]
 }
 
 type Status = 'idle' | 'submitting' | 'success' | 'error'
@@ -24,6 +33,7 @@ type Status = 'idle' | 'submitting' | 'success' | 'error'
 export default function RSVP() {
   const { t } = useLanguage()
   const f = t.rsvp.form
+  const ff = f as any
   const sectionRef = useRef<HTMLDivElement>(null)
   const [status, setStatus] = useState<Status>('idle')
   const [honeypot, setHoneypot] = useState('')
@@ -32,13 +42,36 @@ export default function RSVP() {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm<FormValues>({
-    defaultValues: { attendance: 'attending', dietary: 'none' },
+    defaultValues: {
+      attendance: 'attending',
+      dietary: 'none',
+      hasPartner: 'no',
+      partnerDietary: 'none',
+      hasChildren: 'no',
+      children: [],
+    },
+  })
+
+  const { fields: childFields, append: appendChild, remove: removeChild } = useFieldArray({
+    control,
+    name: 'children',
   })
 
   const dietary = watch('dietary')
+  const partnerDietary = watch('partnerDietary')
   const attendance = watch('attendance')
+  const hasPartner = watch('hasPartner')
+  const hasChildren = watch('hasChildren')
+
+  // Auto-add first child slot when guest enables hasChildren
+  useEffect(() => {
+    if (hasChildren === 'yes' && childFields.length === 0) {
+      appendChild({ name: '', age: '' })
+    }
+  }, [hasChildren]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Scroll reveal
   useEffect(() => {
@@ -55,20 +88,37 @@ export default function RSVP() {
     setStatus('submitting')
 
     try {
+      const payload: Record<string, unknown> = {
+        firstName:    data.firstName,
+        lastName:     data.lastName,
+        email:        data.email,
+        phone:        data.phone,
+        nationality:  data.nationality,
+        attendance:   data.attendance === 'attending' ? 'true' : 'false',
+        dietary:      data.dietary,
+        otherDietary: data.dietaryOther,
+        message:      data.message,
+      }
+
+      if (data.attendance === 'attending') {
+        payload.hasPartner = data.hasPartner
+        if (data.hasPartner === 'yes') {
+          payload.partnerFirstName    = data.partnerFirstName
+          payload.partnerLastName     = data.partnerLastName
+          payload.partnerDietary      = data.partnerDietary
+          payload.partnerOtherDietary = data.partnerDietaryOther
+        }
+        payload.hasChildren = data.hasChildren
+        if (data.hasChildren === 'yes' && data.children.length > 0) {
+          payload.childrenCount   = data.children.length
+          payload.childrenDetails = JSON.stringify(data.children)
+        }
+      }
+
       const res = await fetch(RSVP_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstName:    data.firstName,
-          lastName:     data.lastName,
-          email:        data.email,
-          phone:        data.phone,
-          nationality:  data.nationality,
-          attendance:   data.attendance === 'attending' ? 'true' : 'false',
-          dietary:      data.dietary,
-          otherDietary: data.dietaryOther,
-          message:      data.message,
-        }),
+        body: JSON.stringify(payload),
       })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       setStatus('success')
@@ -85,8 +135,6 @@ export default function RSVP() {
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }, [status])
-
-  const ff = f as any
 
   return (
     <div
@@ -136,6 +184,7 @@ export default function RSVP() {
             onChange={(e) => setHoneypot(e.target.value)}
           />
 
+          {/* ── Your details ── */}
           {/* Name row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <Field label={f.firstName} error={errors.firstName?.message}>
@@ -265,7 +314,7 @@ export default function RSVP() {
           {/* Fields only shown when attending */}
           {attendance === 'attending' && (
             <>
-              {/* Dietary */}
+              {/* Your dietary */}
               <Field label={f.dietary} className="mb-4">
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                   {(Object.entries(f.dietaryOptions) as [string, string][]).map(([val, label]) => (
@@ -294,6 +343,150 @@ export default function RSVP() {
                 </Field>
               )}
 
+              {/* ── Partner / +1 ── */}
+              <div className="border-t border-cream/60 pt-6 mt-2 mb-4">
+                <Field label={ff.hasPartner} className="mb-4">
+                  <div className="flex gap-4">
+                    {(['yes', 'no'] as const).map((val) => (
+                      <label key={val} className="flex items-center gap-2 cursor-pointer group">
+                        <input
+                          {...register('hasPartner')}
+                          type="radio"
+                          value={val}
+                          className="w-4 h-4 accent-champagne"
+                        />
+                        <span className="font-body text-sm text-darkText group-hover:text-champagne transition-colors">
+                          {val === 'yes' ? ff.partnerYes : ff.partnerNo}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </Field>
+
+                {hasPartner === 'yes' && (
+                  <div className="bg-white/60 border border-cream/60 p-4 md:p-6 mt-2">
+                    <p className="font-serif-display text-base text-champagne mb-4">{ff.partnerSection}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                      <Field label={ff.partnerFirstName} error={errors.partnerFirstName?.message}>
+                        <input
+                          {...register('partnerFirstName', { required: hasPartner === 'yes' ? f.required : false })}
+                          className={`form-input ${errors.partnerFirstName ? 'error' : ''}`}
+                          placeholder={ff.partnerFirstName}
+                          autoComplete="off"
+                        />
+                      </Field>
+                      <Field label={ff.partnerLastName} error={errors.partnerLastName?.message}>
+                        <input
+                          {...register('partnerLastName', { required: hasPartner === 'yes' ? f.required : false })}
+                          className={`form-input ${errors.partnerLastName ? 'error' : ''}`}
+                          placeholder={ff.partnerLastName}
+                          autoComplete="off"
+                        />
+                      </Field>
+                    </div>
+                    <Field label={ff.partnerDietary} className="mb-0">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        {(Object.entries(f.dietaryOptions) as [string, string][]).map(([val, label]) => (
+                          <label key={val} className="flex items-center gap-2 cursor-pointer group">
+                            <input
+                              {...register('partnerDietary')}
+                              type="radio"
+                              value={val}
+                              className="w-4 h-4 accent-champagne"
+                            />
+                            <span className="font-body text-sm text-darkText group-hover:text-champagne transition-colors">
+                              {label}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    </Field>
+                    {partnerDietary === 'other' && (
+                      <Field label="" className="mt-3">
+                        <input
+                          {...register('partnerDietaryOther')}
+                          className="form-input"
+                          placeholder={f.dietaryOtherPlaceholder}
+                        />
+                      </Field>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* ── Children ── */}
+              <div className="border-t border-cream/60 pt-6 mt-2 mb-4">
+                <Field label={ff.hasChildren} className="mb-4">
+                  <div className="flex gap-4">
+                    {(['yes', 'no'] as const).map((val) => (
+                      <label key={val} className="flex items-center gap-2 cursor-pointer group">
+                        <input
+                          {...register('hasChildren')}
+                          type="radio"
+                          value={val}
+                          className="w-4 h-4 accent-champagne"
+                        />
+                        <span className="font-body text-sm text-darkText group-hover:text-champagne transition-colors">
+                          {val === 'yes' ? ff.partnerYes : ff.partnerNo}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                </Field>
+
+                {hasChildren === 'yes' && (
+                  <div className="bg-white/60 border border-cream/60 p-4 md:p-6 mt-2">
+                    <p className="font-serif-display text-base text-champagne mb-1">{ff.childrenSection}</p>
+                    <p className="font-body text-xs text-lightText italic mb-4">{ff.childrenNote}</p>
+
+                    {childFields.map((field, index) => (
+                      <div key={field.id} className="flex items-end gap-3 mb-3">
+                        <div className="flex-1 grid grid-cols-2 gap-3">
+                          <Field
+                            label={`${ff.childName} ${index + 1}`}
+                            error={(errors.children?.[index] as any)?.name?.message}
+                          >
+                            <input
+                              {...register(`children.${index}.name`, { required: f.required })}
+                              className={`form-input ${(errors.children?.[index] as any)?.name ? 'error' : ''}`}
+                              placeholder={ff.childName}
+                            />
+                          </Field>
+                          <Field label={ff.childAge}>
+                            <select
+                              {...register(`children.${index}.age`)}
+                              className="form-input bg-white"
+                              defaultValue=""
+                            >
+                              <option value="" disabled>{ff.childAgeSelect}</option>
+                              {Array.from({ length: 18 }, (_, i) => (
+                                <option key={i} value={String(i)}>{i}</option>
+                              ))}
+                            </select>
+                          </Field>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => removeChild(index)}
+                          className="mb-0.5 text-xs text-lightText hover:text-red-400 transition-colors font-body uppercase tracking-wider whitespace-nowrap"
+                        >
+                          {ff.removeChild}
+                        </button>
+                      </div>
+                    ))}
+
+                    {childFields.length < 6 && (
+                      <button
+                        type="button"
+                        onClick={() => appendChild({ name: '', age: '' })}
+                        className="mt-2 text-sm font-body text-champagne hover:text-darkText transition-colors border border-champagne/50 hover:border-champagne px-4 py-2 tracking-wider uppercase"
+                      >
+                        + {ff.addChild}
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
             </>
           )}
 
@@ -386,4 +579,3 @@ function Spinner() {
     </svg>
   )
 }
-
