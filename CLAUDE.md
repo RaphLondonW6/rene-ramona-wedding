@@ -248,6 +248,8 @@ Hotel data lives in `lib/accommodations.ts`. All 8 hotels use real photos stored
 
 **Note:** Hotel images are in `public/images/hotels/` — add new files there and reference them as `/images/hotels/filename.ext` in `accommodations.ts`.
 
+**Accor Friends & Family block (Sep 2026):** Below the hotel grid, `Accommodation.tsx` renders a note and a button pointing guests to the Accor Friends & Family discount offer. The note explains they can log in with their ALL account (or create one for free), with an inline link to `https://all.accor.com/a/en.html`. The button links to `https://all.accor.com/a/en/offers/global-friends-and-family-offer.html`. Locale keys added to all three locale files under `accommodation`: `friendsFamilyNote`, `friendsFamilyCreateAccount` (link text: "here" / "aici" / "tu"), `friendsFamilyButton`.
+
 ---
 
 ## RSVP Form Fields
