@@ -302,7 +302,7 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
 </footer>
 
 <script>
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx-j5358T5pYsoumhYdeoa-shYgrb0Q1KFryjH4E_9WN5WbgB7TWy1b3ib95njlxWTebg/exec';
+const APPS_SCRIPT_URL = 'https://n8n.ramonapicksrene.com/webhook/388e5812-d1a7-446a-88a7-d2f993670797';
 
 /* --- LANGUAGE SWITCHER --- */
 let currentLang = 'en';
@@ -435,7 +435,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
   spinner.classList.remove('hidden');
 
   try {
-    await fetch(APPS_SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+    await fetch(APPS_SCRIPT_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
     document.getElementById('rsvp-form').reset();
     tg.classList.remove('is-attending'); tg.classList.add('is-out');
     document.getElementById('form-success').classList.remove('hidden');
