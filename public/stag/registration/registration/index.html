@@ -123,6 +123,11 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
 .form-group textarea::placeholder{color:var(--muted);opacity:.6}
 .form-group textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,240,255,.15)}
 .error-msg{font-size:.78rem;color:var(--pink);min-height:1em}
+.radio-group{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.25rem}
+.radio-option{display:flex;align-items:center;gap:.5rem;cursor:pointer;padding:.65rem 1.25rem;background:var(--card);border:1px solid var(--border);border-radius:50px;transition:border-color var(--t),background var(--t),color var(--t);font-size:.9rem;font-weight:500;user-select:none}
+.radio-option:has(input:checked){border-color:var(--cyan);background:rgba(0,240,255,.1);color:var(--cyan)}
+.radio-option.is-invalid-opt{border-color:var(--pink)}
+.radio-option input{position:absolute;opacity:0;width:0;height:0}
 .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .feedback{margin-top:1.5rem;padding:1rem 1.25rem;border-radius:var(--r);font-size:.95rem;text-align:center;font-weight:500}
@@ -253,6 +258,21 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
       </div>
 
       <div class="form-group">
+        <label data-en="Room preference" data-sk="Preferencia izby">Room preference <span class="req">*</span></label>
+        <div class="radio-group" role="radiogroup">
+          <label class="radio-option">
+            <input type="radio" name="room" value="own"/>
+            <span data-en="Own room" data-sk="Vlastná izba">Own room</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="room" value="shared"/>
+            <span data-en="Share a room" data-sk="Zdieľam izbu">Share a room</span>
+          </label>
+        </div>
+        <span class="error-msg" id="err-room"></span>
+      </div>
+
+      <div class="form-group">
         <label for="comments" data-en="Leave a message to the best man 😎" data-sk="Zanechaj správu svadobnému mužovi 😎">Leave a message to the best man 😎</label>
         <textarea id="comments" data-en-placeholder="Anything you'd like to know or tell us…" data-sk-placeholder="Čokoľvek, čo chceš vedieť alebo nám povedať…" placeholder="Anything you'd like to know or tell us…"></textarea>
       </div>
@@ -318,6 +338,7 @@ function setLang(lang) {
   errMsgs.lastName  = isEn ? 'Please enter your surname.'    : 'Zadaj svoje priezvisko.';
   errMsgs.email     = isEn ? 'Please enter a valid email.'   : 'Zadaj platnú emailovú adresu.';
   errMsgs.phone     = isEn ? 'Please enter a valid phone number.' : 'Zadaj platné telefónne číslo.';
+  errMsgs.room      = isEn ? 'Please select a room preference.' : 'Vyber si preferenciu izby.';
 }
 
 /* --- COUNTDOWN (target: 14 May 2027) --- */
@@ -348,7 +369,8 @@ const errMsgs = {
   firstName: 'Please enter your first name.',
   lastName:  'Please enter your surname.',
   email:     'Please enter a valid email.',
-  phone:     'Please enter a valid phone number.'
+  phone:     'Please enter a valid phone number.',
+  room:      'Please select a room preference.'
 };
 const fields = {
   'first-name': { test: v => v.trim().length >= 2, key: 'firstName' },
@@ -370,20 +392,38 @@ Object.keys(fields).forEach(id => {
   el.addEventListener('input', () => { if(el.classList.contains('is-invalid')) validateField(id); });
 });
 
+function validateRoom() {
+  const checked = document.querySelector('input[name="room"]:checked');
+  const errEl = document.getElementById('err-room');
+  const ok = !!checked;
+  document.querySelectorAll('.radio-option').forEach(opt => opt.classList.toggle('is-invalid-opt', !ok));
+  errEl.textContent = ok ? '' : errMsgs.room;
+  return ok;
+}
+document.querySelectorAll('input[name="room"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    document.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('is-invalid-opt'));
+    document.getElementById('err-room').textContent = '';
+  });
+});
+
 /* --- SUBMIT --- */
 document.getElementById('rsvp-form').addEventListener('submit', async e => {
   e.preventDefault();
   document.getElementById('form-success').classList.add('hidden');
   document.getElementById('form-error').classList.add('hidden');
-  if (!Object.keys(fields).map(validateField).every(Boolean)) return;
+  const fieldsOk = Object.keys(fields).map(validateField).every(Boolean);
+  const roomOk = validateRoom();
+  if (!fieldsOk || !roomOk) return;
 
   const payload = {
     firstName: document.getElementById('first-name').value.trim(),
     lastName:  document.getElementById('last-name').value.trim(),
     email:     document.getElementById('email').value.trim(),
     phone:     document.getElementById('phone').value.trim(),
-    attending: tog.checked ? 'Yes' : 'No',
-    comments:  document.getElementById('comments').value.trim(),
+    attending:      tog.checked ? 'Yes' : 'No',
+    roomPreference: document.querySelector('input[name="room"]:checked')?.value || '',
+    comments:       document.getElementById('comments').value.trim(),
     timestamp: new Date().toISOString()
   };
 
