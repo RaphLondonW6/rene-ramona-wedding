@@ -306,9 +306,16 @@ Submissions are POSTed as JSON to the n8n webhook endpoint hardcoded in `compone
 const RSVP_ENDPOINT = 'https://n8n.ramonapicksrene.com/webhook/rsvp-wedding'
 ```
 
-Request: `POST`, `Content-Type: application/json`. The 10-field JSON body maps internal form names to the n8n-expected keys (see field table above). Errors are caught and set `status('error')` — unlike the old Google Apps Script integration which used `no-cors` and silently ignored failures.
+Request: `POST`, `Content-Type: application/json`. The JSON body maps internal form names to the n8n-expected keys (see field table above). Errors are caught and set `status('error')` — unlike the old Google Apps Script integration which used `no-cors` and silently ignored failures.
 
 **n8n is self-hosted at `n8n.ramonapicksrene.com`.** If submissions stop working, check that the n8n instance is running and the `rsvp-wedding` webhook workflow is active.
+
+**Google Sheets node mappings (updated Aug 2026)** — the n8n Google Sheets node has been updated to include all new partner and children fields: `hasPartner`, `partnerFirstName`, `partnerLastName`, `partnerDietary`, `partnerOtherDietary`, `hasChildren`, `childrenCount`, `childrenDetails`. `childrenDetails` is a JSON string array `[{"name":"…","age":"…"},…]`.
+
+**To test the webhook:** make sure the `rsvp-wedding` workflow is open in n8n and click "Listen for test event", then fire a POST from your terminal:
+```powershell
+Invoke-RestMethod -Method POST -Uri "https://n8n.ramonapicksrene.com/webhook-test/rsvp-wedding" -ContentType "application/json" -Body '{"firstName":"Test","lastName":"Guest","email":"test@example.com","phone":"+44 7700 000000","nationality":"British","attendance":"true","dietary":"none","otherDietary":"","message":"Test","hasPartner":"yes","partnerFirstName":"Jane","partnerLastName":"Guest","partnerDietary":"vegetarian","partnerOtherDietary":"","hasChildren":"yes","childrenCount":2,"childrenDetails":"[{\"name\":\"Emma\",\"age\":\"7\"},{\"name\":\"Tom\",\"age\":\"4\"}]"}'
+```
 
 ---
 
@@ -469,7 +476,7 @@ Same visual design and `{{firstName}}` convention as the attending templates. Re
 
 ## Stag Party Registration Page
 
-A hidden, standalone page for René's stag party (Ibiza, 14–16 May 2027). It is **not linked from the wedding site navigation** — accessible only via direct URL:
+A hidden, standalone page for René's stag party (Benidorm, 14–16 May 2027). It is **not linked from the wedding site navigation** — accessible only via direct URL:
 
 **URL:** `https://ramonapicksrene.com/stag/registration/registration`
 

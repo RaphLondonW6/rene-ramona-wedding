@@ -51,18 +51,17 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
 .photo-wall{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .photo-grid{
   display:grid;
-  grid-template-rows:repeat(3,1fr);
-  grid-auto-flow:column;
-  grid-auto-columns:30vh;
-  height:100%;
-  gap:10px;
-  padding:10px;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-flow:row;
+  grid-auto-rows:25vw;
+  gap:8px;
+  padding:8px;
   box-sizing:border-box;
-  animation:scroll-right 90s linear infinite;
+  animation:scroll-down 120s linear infinite;
   will-change:transform;
 }
 .photo-grid img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block;box-shadow:0 3px 16px rgba(0,0,0,.6)}
-@keyframes scroll-right{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+@keyframes scroll-down{0%{transform:translateY(-50%)}100%{transform:translateY(0)}}
 .hero__overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(9,9,15,.55) 0%,rgba(9,9,15,.78) 60%,rgba(9,9,15,1) 100%)}
 .hero__content{position:relative;z-index:1;padding:2rem 1.25rem}
 .hero__label{font-size:.85rem;letter-spacing:.25em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem}
@@ -151,8 +150,8 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
 <header class="hero">
   <div class="photo-wall">
     <div class="photo-grid">
-      <img src="/stag/photos/1.jpg" alt=""><img src="/stag/photos/2.jpg" alt=""><img src="/stag/photos/3.jpg" alt=""><img src="/stag/photos/4.png" alt=""><img src="/stag/photos/5.jpg" alt=""><img src="/stag/photos/6.jpg" alt=""><img src="/stag/photos/7.jpg" alt=""><img src="/stag/photos/8.jpg" alt=""><img src="/stag/photos/9.jpg" alt=""><img src="/stag/photos/10.jpg" alt=""><img src="/stag/photos/11.jpg" alt=""><img src="/stag/photos/12.jpg" alt=""><img src="/stag/photos/13.jpg" alt=""><img src="/stag/photos/14.jpg" alt=""><img src="/stag/photos/15.jpg" alt=""><img src="/stag/photos/16.jpg" alt=""><img src="/stag/photos/17.jpg" alt=""><img src="/stag/photos/18.jpg" alt=""><img src="/stag/photos/19.jpg" alt=""><img src="/stag/photos/20.jpg" alt=""><img src="/stag/photos/21.jpg" alt=""><img src="/stag/photos/22.jpg" alt=""><img src="/stag/photos/23.jpg" alt=""><img src="/stag/photos/24.jpg" alt=""><img src="/stag/photos/25.jpg" alt=""><img src="/stag/photos/1.jpg" alt=""><img src="/stag/photos/2.jpg" alt=""><img src="/stag/photos/3.jpg" alt=""><img src="/stag/photos/4.png" alt=""><img src="/stag/photos/5.jpg" alt="">
-      <img src="/stag/photos/1.jpg" alt=""><img src="/stag/photos/2.jpg" alt=""><img src="/stag/photos/3.jpg" alt=""><img src="/stag/photos/4.png" alt=""><img src="/stag/photos/5.jpg" alt=""><img src="/stag/photos/6.jpg" alt=""><img src="/stag/photos/7.jpg" alt=""><img src="/stag/photos/8.jpg" alt=""><img src="/stag/photos/9.jpg" alt=""><img src="/stag/photos/10.jpg" alt=""><img src="/stag/photos/11.jpg" alt=""><img src="/stag/photos/12.jpg" alt=""><img src="/stag/photos/13.jpg" alt=""><img src="/stag/photos/14.jpg" alt=""><img src="/stag/photos/15.jpg" alt=""><img src="/stag/photos/16.jpg" alt=""><img src="/stag/photos/17.jpg" alt=""><img src="/stag/photos/18.jpg" alt=""><img src="/stag/photos/19.jpg" alt=""><img src="/stag/photos/20.jpg" alt=""><img src="/stag/photos/21.jpg" alt=""><img src="/stag/photos/22.jpg" alt=""><img src="/stag/photos/23.jpg" alt=""><img src="/stag/photos/24.jpg" alt=""><img src="/stag/photos/25.jpg" alt=""><img src="/stag/photos/1.jpg" alt=""><img src="/stag/photos/2.jpg" alt=""><img src="/stag/photos/3.jpg" alt=""><img src="/stag/photos/4.png" alt=""><img src="/stag/photos/5.jpg" alt="">
+      <img src="/stag/photos/1.jpg" alt=""><img src="/stag/photos/2.jpg" alt=""><img src="/stag/photos/3.jpg" alt=""><img src="/stag/photos/4.png" alt=""><img src="/stag/photos/5.jpg" alt=""><img src="/stag/photos/6.jpg" alt=""><img src="/stag/photos/7.jpg" alt=""><img src="/stag/photos/8.jpg" alt=""><img src="/stag/photos/9.jpg" alt=""><img src="/stag/photos/10.jpg" alt=""><img src="/stag/photos/11.jpg" alt=""><img src="/stag/photos/12.jpg" alt=""><img src="/stag/photos/13.jpg" alt=""><img src="/stag/photos/14.jpg" alt=""><img src="/stag/photos/15.jpg" alt=""><img src="/stag/photos/16.jpg" alt=""><img src="/stag/photos/17.jpg" alt=""><img src="/stag/photos/18.jpg" alt=""><img src="/stag/photos/19.jpg" alt=""><img src="/stag/photos/20.jpg" alt=""><img src="/stag/photos/21.jpg" alt=""><img src="/stag/photos/22.jpg" alt=""><img src="/stag/photos/23.jpg" alt=""><img src="/stag/photos/24.jpg" alt=""><img src="/stag/photos/25.png" alt=""><img src="/stag/photos/26.jpg" alt=""><img src="/stag/photos/27.jpg" alt=""><img src="/stag/photos/28.png" alt=""><img src="/stag/photos/29.jpg" alt=""><img src="/stag/photos/30.jpg" alt=""><img src="/stag/photos/31.jpg" alt=""><img src="/stag/photos/32.png" alt=""><img src="/stag/photos/33.jpg" alt=""><img src="/stag/photos/34.png" alt=""><img src="/stag/photos/35.png" alt=""><img src="/stag/photos/36.png" alt=""><img src="/stag/photos/37.png" alt=""><img src="/stag/photos/38.png" alt=""><img src="/stag/photos/39.png" alt=""><img src="/stag/photos/40.png" alt=""><img src="/stag/photos/41.jpg" alt=""><img src="/stag/photos/42.png" alt=""><img src="/stag/photos/43.png" alt=""><img src="/stag/photos/44.png" alt=""><img src="/stag/photos/45.jpg" alt=""><img src="/stag/photos/46.png" alt=""><img src="/stag/photos/47.png" alt=""><img src="/stag/photos/48.png" alt=""><img src="/stag/photos/49.png" alt=""><img src="/stag/photos/50.png" alt=""><img src="/stag/photos/51.png" alt=""><img src="/stag/photos/52.png" alt=""><img src="/stag/photos/53.png" alt="">
+      <img src="/stag/photos/1.jpg" alt=""><img src="/stag/photos/2.jpg" alt=""><img src="/stag/photos/3.jpg" alt=""><img src="/stag/photos/4.png" alt=""><img src="/stag/photos/5.jpg" alt=""><img src="/stag/photos/6.jpg" alt=""><img src="/stag/photos/7.jpg" alt=""><img src="/stag/photos/8.jpg" alt=""><img src="/stag/photos/9.jpg" alt=""><img src="/stag/photos/10.jpg" alt=""><img src="/stag/photos/11.jpg" alt=""><img src="/stag/photos/12.jpg" alt=""><img src="/stag/photos/13.jpg" alt=""><img src="/stag/photos/14.jpg" alt=""><img src="/stag/photos/15.jpg" alt=""><img src="/stag/photos/16.jpg" alt=""><img src="/stag/photos/17.jpg" alt=""><img src="/stag/photos/18.jpg" alt=""><img src="/stag/photos/19.jpg" alt=""><img src="/stag/photos/20.jpg" alt=""><img src="/stag/photos/21.jpg" alt=""><img src="/stag/photos/22.jpg" alt=""><img src="/stag/photos/23.jpg" alt=""><img src="/stag/photos/24.jpg" alt=""><img src="/stag/photos/25.png" alt=""><img src="/stag/photos/26.jpg" alt=""><img src="/stag/photos/27.jpg" alt=""><img src="/stag/photos/28.png" alt=""><img src="/stag/photos/29.jpg" alt=""><img src="/stag/photos/30.jpg" alt=""><img src="/stag/photos/31.jpg" alt=""><img src="/stag/photos/32.png" alt=""><img src="/stag/photos/33.jpg" alt=""><img src="/stag/photos/34.png" alt=""><img src="/stag/photos/35.png" alt=""><img src="/stag/photos/36.png" alt=""><img src="/stag/photos/37.png" alt=""><img src="/stag/photos/38.png" alt=""><img src="/stag/photos/39.png" alt=""><img src="/stag/photos/40.png" alt=""><img src="/stag/photos/41.jpg" alt=""><img src="/stag/photos/42.png" alt=""><img src="/stag/photos/43.png" alt=""><img src="/stag/photos/44.png" alt=""><img src="/stag/photos/45.jpg" alt=""><img src="/stag/photos/46.png" alt=""><img src="/stag/photos/47.png" alt=""><img src="/stag/photos/48.png" alt=""><img src="/stag/photos/49.png" alt=""><img src="/stag/photos/50.png" alt=""><img src="/stag/photos/51.png" alt=""><img src="/stag/photos/52.png" alt=""><img src="/stag/photos/53.png" alt="">
     </div>
   </div>
   <div class="hero__overlay"></div>
@@ -326,7 +325,7 @@ function setLang(lang) {
   const target = new Date('2027-05-14T00:00:00').getTime();
   function tick(){
     const diff = target - Date.now();
-    if(diff<=0){document.getElementById('countdown').innerHTML='<p style="color:var(--cyan);font-size:1.5rem;letter-spacing:.1em">WE\'RE IN IBIZA 🎉</p>';return;}
+    if(diff<=0){document.getElementById('countdown').innerHTML='<p style="color:var(--cyan);font-size:1.5rem;letter-spacing:.1em">WE\'RE IN BENIDORM 🎉</p>';return;}
     const d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1e3);
     document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
     document.getElementById('cd-hours').textContent=String(h).padStart(2,'0');
