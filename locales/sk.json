@@ -176,7 +176,10 @@
     "title": "Kde Sa Ubytovať",
     "subtitle": "Odporúčame nasledujúce možnosti v blízkosti miesta konania",
     "bookButton": "Rezervovať",
-    "distanceFrom": "od miesta konania"
+    "distanceFrom": "od miesta konania",
+    "friendsFamilyNote": "Môžeš využiť špeciálne zľavy z ponúk Accor pre priateľov a rodinu. Stačí kliknúť na tlačidlo nižšie a prihlásiť sa pomocou svojho ALL účtu (môžeš si ho vytvoriť zadarmo",
+    "friendsFamilyCreateAccount": "tu",
+    "friendsFamilyButton": "Ponuky priateľov a rodiny"
   },
   "honeymoon": {
     "title": "Wedding Gift",

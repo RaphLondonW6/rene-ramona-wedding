@@ -176,7 +176,10 @@
     "title": "Where to Stay",
     "subtitle": "We recommend the following options near the venue",
     "bookButton": "Book Now",
-    "distanceFrom": "from venue"
+    "distanceFrom": "from venue",
+    "friendsFamilyNote": "You may benefit from special discounts from our Accor friends and family offers. You will need to click on the button below and login with your ALL account (you can create one for free",
+    "friendsFamilyCreateAccount": "here",
+    "friendsFamilyButton": "Friends and Family offers"
   },
   "honeymoon": {
     "title": "Wedding Gift",

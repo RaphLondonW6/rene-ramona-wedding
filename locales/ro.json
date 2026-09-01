@@ -176,7 +176,10 @@
     "title": "Unde Să Stai",
     "subtitle": "Recomandăm următoarele opțiuni în apropierea locației",
     "bookButton": "Rezervați",
-    "distanceFrom": "de la locație"
+    "distanceFrom": "de la locație",
+    "friendsFamilyNote": "Poți beneficia de reduceri speciale prin ofertele pentru prieteni și familie Accor. Va trebui să dai clic pe butonul de mai jos și să te autentifici cu contul tău ALL (poți crea unul gratuit",
+    "friendsFamilyCreateAccount": "aici",
+    "friendsFamilyButton": "Oferte prieteni și familie"
   },
   "honeymoon": {
     "title": "Wedding Gift",

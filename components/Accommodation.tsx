@@ -108,6 +108,28 @@ export default function Accommodation() {
           ))}
         </div>
 
+        <div className="reveal mt-12 text-center max-w-2xl mx-auto">
+          <p className="font-body text-sm text-darkText leading-relaxed mb-6">
+            {(t as any).accommodation.friendsFamilyNote}{' '}
+            <a
+              href="https://all.accor.com/a/en.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline text-darkText hover:text-champagne transition-colors"
+            >
+              {(t as any).accommodation.friendsFamilyCreateAccount}
+            </a>)
+          </p>
+          <a
+            href="https://all.accor.com/a/en/offers/global-friends-and-family-offer.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline inline-block"
+          >
+            {(t as any).accommodation.friendsFamilyButton}
+          </a>
+        </div>
+
         <div className="reveal ornament mt-16" aria-hidden="true">— ✦ —</div>
       </div>
     </div>
