@@ -46,6 +46,17 @@ export const accommodations: Accommodation[] = [
   },
   {
     id: 4,
+    name: 'Handwritten Collection Bucharest Unirii Square',
+    type: 'Boutique Hotel',
+    distance: '14 km',
+    description: 'A unique boutique stay where culture meets comfort, near the Historic Old Town and Parliament. Part of Accor\'s Handwritten Collection — independent spirit, personal touches, and 4.5/5 guest rating.',
+    stars: 4,
+    image: '/images/hotels/Handwritten_Bucharest_Unirii.jpg',
+    bookingUrl: 'https://all.accor.com/booking/en/accor/hotel/C2B4?destination=bucharest-romania&compositions=1&dateIn=2027-06-12&dateOut=2027-06-13&nights=1&hideWDR=false&accessibleRoom=false',
+    priceRange: '€€',
+  },
+  {
+    id: 6,
     name: 'Corinthia Bucharest',
     type: 'Hotel',
     distance: '14 km',
@@ -56,7 +67,7 @@ export const accommodations: Accommodation[] = [
     priceRange: '€€€€',
   },
   {
-    id: 5,
+    id: 7,
     name: 'Hotel Epoque Bucharest',
     type: 'Boutique Hotel',
     distance: '14 km',
@@ -67,7 +78,7 @@ export const accommodations: Accommodation[] = [
     priceRange: '€€€€',
   },
   {
-    id: 6,
+    id: 8,
     name: 'InterContinental Athenee Palace Bucharest',
     type: 'Hotel',
     distance: '14 km',
@@ -78,7 +89,7 @@ export const accommodations: Accommodation[] = [
     priceRange: '€€€€',
   },
   {
-    id: 7,
+    id: 9,
     name: 'Grand Hotel Bucharest',
     type: 'Hotel',
     distance: '14 km',
@@ -89,7 +100,7 @@ export const accommodations: Accommodation[] = [
     priceRange: '€€€€',
   },
   {
-    id: 8,
+    id: 10,
     name: 'Mercure Conacul Cozieni',
     type: 'Resort',
     distance: '35 km',

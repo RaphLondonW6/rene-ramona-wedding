@@ -491,16 +491,25 @@ Cloudflare's ASSETS binding serves `index.html` automatically for directory-styl
 - Bebas Neue + Inter fonts (Google Fonts)
 - EN/SK language switcher (toggle button, top-right)
 - Hero section with a **scrolling photo gallery wall** — a 4-column CSS Grid (`display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:25vw`) scrolling slowly top-to-bottom as one unit (120s loop). Dark overlay on top. Photos live in `public/stag/photos/` numbered `1` → `53` (mix of `.jpg` and `.png`). The grid contains 106 images (all 53 photos duplicated for a seamless loop via `@keyframes scroll-down: translateY(-50%) → translateY(0)`). Source photos from `C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\RENE_Ramona_Wedding\Pictures\Stag\Selection` — HEIC files (1, 2, 3, 7, 10, 11, 12, 14, 41, 45) were converted to JPG via ffmpeg. **To replace or add photos:** convert any HEIC files to JPG (`ffmpeg -y -i input.HEIC output.jpg`), copy to `public/stag/photos/` with sequential numbering, and update the `<img>` tags in the `.photo-grid` div inside the hero (remember to duplicate the full set for the seamless loop).
-- Event details grid (location, dates, cost, vibe) — Cost card shows "Up to €1,000 / person" with no sub-text
-- Cost note block (`.details__note`) below the grid — explains flights are booked individually, encourages booking early, translated EN/SK inline via `data-en`/`data-sk` attributes
+- Event details grid (location, dates, cost, vibe) — Cost card shows **"€650 – €900 / person"** (updated Sep 2026)
+- Cost note block (`.details__note`) — explains flights are booked individually, encourages early booking, includes room-sharing tip and "collecting RSVPs now, plan coming soon" note. Translated EN/SK inline via `data-en`/`data-sk` attributes.
 - Live countdown to 14 May 2027
-- RSVP form: first name, last name, email, phone, attending toggle, free-text comments field
-- Payload fields sent to Google Sheets: `firstName`, `lastName`, `email`, `phone`, `attending`, `comments`, `timestamp`
-- Comments field label/placeholder are translated via `data-en`/`data-sk` and `data-en-placeholder`/`data-sk-placeholder` attributes; placeholder swap is handled in `toggleLang()`
-- Submissions go to a **separate** Google Apps Script endpoint (different from the wedding RSVP):
+- RSVP form: first name, last name, email, phone, **room preference radio** (own / share — added Sep 2026), attending toggle, free-text comments field
+- **Room preference** radio group (`.radio-group`) uses pill-style labels; validated on submit with `validateRoom()`; error messages translated EN/SK via `errMsgs.room`
+- Payload fields sent to n8n: `firstName`, `lastName`, `email`, `phone`, `attending`, `roomPreference`, `comments`, `timestamp`
+- Comments field label/placeholder translated via `data-en`/`data-sk` and `data-en-placeholder`/`data-sk-placeholder`; placeholder swap handled in `setLang()`
+- Submissions go to **n8n webhook** (switched from Google Apps Script, Sep 2026) — no `mode:'no-cors'` needed:
   ```
-  https://script.google.com/macros/s/AKfycbx-j5358T5pYsoumhYdeoa-shYgrb0Q1KFryjH4E_9WN5WbgB7TWy1b3ib95njlxWTebg/exec
+  https://n8n.ramonapicksrene.com/webhook/388e5812-d1a7-446a-88a7-d2f993670797
   ```
+
+**n8n workflow (Sep 2026):** Webhook → Google Sheets (Append Row, all 8 fields) → IF (`$json.body.attending` is equal to `Yes`) → true branch: confirmation email / false branch: "cannot attend" email. Both email nodes use SMTP. Google Sheets column headers use title case ("First Name", "Last Name", etc.) so n8n references them as `$json["First Name"]` etc. after the Sheets node.
+
+**Email templates** (saved in `C:\Users\RSCHAEFFER\OneDrive - ACCOR\Accor\CLAUDE\`):
+- `stag-rsvp-email.html` — dark neon confirmation email ("YOU'RE IN"); personalise with `{{ $json["First Name"] }}` and `{{ $json["Room Preference"] === 'own' ? 'Own room 🛏️' : 'Sharing a room 🛏️🛏️' }}`
+- `stag-cannot-attend-email.html` — "your loss" email with wedding reminder (12 June 2027); personalise with `{{ $json["First Name"] }}`
+
+**Important — email CSS:** Both templates use **fully inlined styles** (no `<style>` block) and **table-based layout** (no flexbox/grid). This is required for Gmail and Outlook compatibility — those clients strip `<head>` stylesheets. Never rewrite these emails using CSS classes or a `<style>` block.
 
 **Translation approach:** All translations are inline `data-en` / `data-sk` attributes on HTML elements — there are no separate JSON locale files for this page. The `toggleLang()` JS function swaps element content by reading the active language's `data-*` attribute.
 
