@@ -128,6 +128,16 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
 .radio-option:has(input:checked){border-color:var(--cyan);background:rgba(0,240,255,.1);color:var(--cyan)}
 .radio-option.is-invalid-opt{border-color:var(--pink)}
 .radio-option input{position:absolute;opacity:0;width:0;height:0}
+.theme-cards{display:flex;flex-direction:column;gap:.75rem;margin-top:.5rem}
+.theme-card{display:block;cursor:pointer;background:var(--card);border:2px solid var(--border);border-radius:var(--r);padding:1.25rem 1.25rem 1rem;transition:border-color var(--t),background var(--t)}
+.theme-card:hover{border-color:var(--muted)}
+.theme-card:has(input:checked){border-color:var(--cyan);background:rgba(0,240,255,.06)}
+.theme-card input{position:absolute;opacity:0;width:0;height:0}
+.theme-card__header{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.5rem}
+.theme-card__emoji{font-size:1.6rem;line-height:1.2;flex-shrink:0;padding-top:.1rem}
+.theme-card__title{font-family:var(--display);font-size:1.1rem;letter-spacing:.05em;color:var(--txt);line-height:1.2}
+.theme-card__tagline{font-size:.78rem;color:var(--cyan);font-style:italic;margin-top:.15rem}
+.theme-card__body{font-size:.82rem;color:var(--muted);line-height:1.55;margin-top:.35rem}
 .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .feedback{margin-top:1.5rem;padding:1rem 1.25rem;border-radius:var(--r);font-size:.95rem;text-align:center;font-weight:500}
@@ -195,11 +205,14 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
         <p data-en="Party hard. No regrets." data-sk="Párty naplno. Bez ľútosti.">Party hard. No regrets.</p>
       </div>
     </div>
-    <p class="details__note"
-       data-en="This is a cost estimate covering flights from your home country to Benidorm, accommodation, drinks, and activities. I won't be charging you for flights directly — you'll each book your own. I'd encourage you to do so well in advance to keep costs down. With that in mind, I'm sending this out just under a year before the stag, so you have plenty of time to plan. Share a room with someone to decrease the costs. I'm collecting RSVPs now and will share the plan shortly 🎉"
-       data-sk="Toto je odhadovaná cena zahŕňajúca lety z tvojej krajiny do Benidormu, ubytovanie, nápoje a aktivity. Lety nebudem organizovať centrálne — každý si rezervuje sám. Odporúčam rezervovať čo najskôr, aby boli ceny čo najnižšie. Preto posielam túto pozvánku takmer rok vopred, aby si mal dostatok času na plánovanie. Zdieľaj izbu s niekým, aby si znížil náklady. Zbierám prihlášky a čoskoro zdieľam plán 🎉">
-      This is a cost estimate covering flights from your home country to Benidorm, accommodation, drinks, and activities. I won't be charging you for flights directly — you'll each book your own. I'd encourage you to do so well in advance to keep costs down. With that in mind, I'm sending this out just under a year before the stag, so you have plenty of time to plan. Share a room with someone to decrease the costs. I'm collecting RSVPs now and will share the plan shortly 🎉
-    </p>
+    <div class="details__note" id="cost-note" style="text-align:left">
+      <p style="font-weight:700;font-size:1.05rem;margin-bottom:1rem;color:var(--txt)">💸 THE DAMAGE: A ROUGH IDEA OF COSTS</p>
+      <p style="margin-bottom:1rem">Before anyone starts selling their kidneys, here's a rough estimate of what the Benidorm stag is likely to cost, including flights, accommodation, drinks and activities.</p>
+      <p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">✈️ Flights:</strong> I won't be booking these for you — you'll each need to sort your own flights. The earlier you book, the less likely you are to cry when you see the price. I'm sending this out just under a year before the stag, so you've got plenty of time to hunt down a decent deal.</p>
+      <p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">🛏️ Accommodation:</strong> Sharing a room is strongly encouraged. You're going on a stag, not a romantic getaway, so get comfortable with your future roommate and save yourselves some money.</p>
+      <p style="margin-bottom:1rem"><strong style="color:var(--cyan)">🍻 Drinks &amp; activities:</strong> The estimate includes a rough budget for the important things in life: alcohol, questionable decisions and activities that seemed like a good idea at the time.</p>
+      <p>I'm collecting RSVPs now and will share the full plan, costs and itinerary shortly. 🎉</p>
+    </div>
   </div>
 </section>
 
@@ -273,6 +286,84 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
       </div>
 
       <div class="form-group">
+        <label data-en="Vote for your favourite theme" data-sk="Hlasuj za obľúbenú tému">Vote for your favourite theme <span style="color:var(--muted);font-weight:400;font-size:.75rem;letter-spacing:0;text-transform:none">(optional)</span></label>
+        <p style="font-size:.82rem;color:var(--muted);margin:.25rem 0 .75rem" data-en="Pick the theme you'd most like — we'll go with the crowd favourite." data-sk="Vyber tému, ktorú by si pre víkend najviac chcel — vyberieme obľúbenú.">Pick the theme you'd most like — we'll go with the crowd favourite.</p>
+        <div class="theme-cards" role="radiogroup">
+
+          <label class="theme-card">
+            <input type="radio" name="theme" value="pub-olympics"/>
+            <div class="theme-card__header">
+              <span class="theme-card__emoji">🏅</span>
+              <div>
+                <div class="theme-card__title" data-en="Pub Olympics" data-sk="Pub Olympiáda">Pub Olympics</div>
+                <div class="theme-card__tagline" data-en="&ldquo;Faster. Stronger. Drunker.&rdquo;" data-sk="&ldquo;Rýchlejšie. Silnejšie. Opitejšie.&rdquo;">&ldquo;Faster. Stronger. Drunker.&rdquo;</div>
+              </div>
+            </div>
+            <div class="theme-card__body" data-en="Split into teams with a leaderboard all weekend. Mix of pub games, beach challenges and silly physical competitions. 🍺 Drinking relay · 🎯 Darts · 🏓 Beer pong · 🧠 Pub quiz · 🏖️ Beach volleyball · 🥚 Egg &amp; spoon · 💪 Arm wrestling · 🎱 Pool · 🎤 Team karaoke · 🤡 Groom challenges" data-sk="Skupiny s rebríčkom celý víkend. Mix pub hier, plážových výziev a smiešnych fyzických súťaží. 🍺 Štafeta v pití · 🎯 Šípky · 🏓 Beer pong · 🧠 Pub kvíz · 🏖️ Plážový volejbal · 🥚 Beh s vajíčkom · 💪 Preťahovanie rukou · 🎱 Biliard · 🎤 Tímový karaoke · 🤡 Výzvy pre ženícha">Split into teams with a leaderboard all weekend. Mix of pub games, beach challenges and silly physical competitions. 🍺 Drinking relay · 🎯 Darts · 🏓 Beer pong · 🧠 Pub quiz · 🏖️ Beach volleyball · 🥚 Egg &amp; spoon · 💪 Arm wrestling · 🎱 Pool · 🎤 Team karaoke · 🤡 Groom challenges</div>
+          </label>
+
+          <label class="theme-card">
+            <input type="radio" name="theme" value="hunt-for-groom"/>
+            <div class="theme-card__header">
+              <span class="theme-card__emoji">🏴‍☠️</span>
+              <div>
+                <div class="theme-card__title" data-en="The Hunt for the Groom" data-sk="Hon na ženícha">The Hunt for the Groom</div>
+                <div class="theme-card__tagline" data-en="&ldquo;One groom. Twenty idiots. Zero supervision.&rdquo;" data-sk="&ldquo;Jeden ženích. Dvadsať idiotov. Nulový dohľad.&rdquo;">&ldquo;One groom. Twenty idiots. Zero supervision.&rdquo;</div>
+              </div>
+            </div>
+            <div class="theme-card__body" data-en="Benidorm becomes a giant scavenger hunt. Teams get a series of increasingly ridiculous missions. 📸 Photo with a cowboy · 🍺 Find the cheapest pint · 🎤 Get a stranger to sing · 💃 Recreate a famous dance · 🇪🇸 Order in Spanish · 🎯 Beat a local at darts · 🤵 Get the groom to convince a stranger he's famous" data-sk="Benidorm sa zmení na obrovský scavenger hunt. Tímy dostanú sériu čoraz absurdnejších misií. 📸 Foto s cowboyom · 🍺 Nájdi najlacnejšie pivo · 🎤 Presvedč cudzinca zaspievať · 💃 Zreprodukuj slávny tanec · 🇪🇸 Objednaj po španielsky · 🎯 Poraz domáceho v šípkach · 🤵 Nechaj ženícha presvedčiť cudzinca, že je slávny">Benidorm becomes a giant scavenger hunt. Teams get a series of increasingly ridiculous missions. 📸 Photo with a cowboy · 🍺 Find the cheapest pint · 🎤 Get a stranger to sing · 💃 Recreate a famous dance · 🇪🇸 Order in Spanish · 🎯 Beat a local at darts · 🤵 Get the groom to convince a stranger he's famous</div>
+          </label>
+
+          <label class="theme-card">
+            <input type="radio" name="theme" value="beach-games"/>
+            <div class="theme-card__header">
+              <span class="theme-card__emoji">🌊</span>
+              <div>
+                <div class="theme-card__title" data-en="Benidorm Beach Games" data-sk="Plážové hry v Benidorme">Benidorm Beach Games</div>
+                <div class="theme-card__tagline" data-en="&ldquo;Sun, sea, stupidity.&rdquo;" data-sk="&ldquo;Slnko, more, blbosti.&rdquo;">&ldquo;Sun, sea, stupidity.&rdquo;</div>
+              </div>
+            </div>
+            <div class="theme-card__body" data-en="The outdoor version of the Pub Olympics — a Benidorm-wide summer sports tournament with ridiculous beach events. 🏖️ Beach volleyball · 🏃 Beach relay · 💦 Water-balloon fight · 🥤 Drink relay · 🏓 Paddleball · 🏗️ Sandcastle competition · 🤼 Beach wrestling · 🎯 Target throwing · 📸 Photo challenges · 🏆 Groom's final challenge" data-sk="Vonkajší ekvivalent Pub Olympiády — turnaj plážových hier v Benidorme. 🏖️ Plážový volejbal · 🏃 Plážová štafeta · 💦 Bitka vodovými balonmi · 🥤 Štafeta v pití · 🏓 Pádlový tenis · 🏗️ Súťaž v budovaní hradov · 🤼 Plážový zápas · 🎯 Hod na cieľ · 📸 Foto výzvy · 🏆 Záverečná výzva ženícha">The outdoor version of the Pub Olympics — a Benidorm-wide summer sports tournament with ridiculous beach events. 🏖️ Beach volleyball · 🏃 Beach relay · 💦 Water-balloon fight · 🥤 Drink relay · 🏓 Paddleball · 🏗️ Sandcastle competition · 🤼 Beach wrestling · 🎯 Target throwing · 📸 Photo challenges · 🏆 Groom's final challenge</div>
+          </label>
+
+          <label class="theme-card">
+            <input type="radio" name="theme" value="boat-olympics"/>
+            <div class="theme-card__header">
+              <span class="theme-card__emoji">🚤</span>
+              <div>
+                <div class="theme-card__title" data-en="The Benidorm Boat Olympics" data-sk="Benidormská Loďná Olympiáda">The Benidorm Boat Olympics</div>
+                <div class="theme-card__tagline" data-en="&ldquo;One boat. One groom. Questionable decisions.&rdquo;" data-sk="&ldquo;Jedna loď. Jeden ženích. Pochybné rozhodnutia.&rdquo;">&ldquo;One boat. One groom. Questionable decisions.&rdquo;</div>
+              </div>
+            </div>
+            <div class="theme-card__body" data-en="Hire a private boat/catamaran and turn it into a floating stag competition — the boat itself is the main event. 🌊 Sea swimming challenge · 🏓 Floating beer-pong · 🎵 DJ battle · 🍺 Drinking games · 📸 Best team photo · 🕺 Dance-off · 🏆 Groom challenge · 🤿 Snorkelling challenge" data-sk="Prenájom súkromnej lode/katamaránu a premena na plávajúcu súťaž — loď samotná je hlavnou atrakciou. 🌊 Plávanie v mori · 🏓 Plávajúci beer-pong · 🎵 DJ bitka · 🍺 Pitné hry · 📸 Najlepšia tímová fotka · 🕺 Tanečná bitka · 🏆 Výzva ženícha · 🤿 Šnorchlovanie">Hire a private boat/catamaran and turn it into a floating stag competition — the boat itself is the main event. 🌊 Sea swimming challenge · 🏓 Floating beer-pong · 🎵 DJ battle · 🍺 Drinking games · 📸 Best team photo · 🕺 Dance-off · 🏆 Groom challenge · 🤿 Snorkelling challenge</div>
+          </label>
+
+          <label class="theme-card">
+            <input type="radio" name="theme" value="treasure-hunt"/>
+            <div class="theme-card__header">
+              <span class="theme-card__emoji">🗺️</span>
+              <div>
+                <div class="theme-card__title" data-en="The Benidorm Treasure Hunt" data-sk="Poklad v Benidorme">The Benidorm Treasure Hunt</div>
+                <div class="theme-card__tagline" data-en="&ldquo;The groom has been kidnapped. Probably deserved it.&rdquo;" data-sk="&ldquo;Ženích bol unesený. Pravdepodobne si to zaslúžil.&rdquo;">&ldquo;The groom has been kidnapped. Probably deserved it.&rdquo;</div>
+              </div>
+            </div>
+            <div class="theme-card__body" data-en="Turn the entire resort into a giant team competition. Each team gets a map and a list of missions. 📸 Photo with a stranger · 🍺 Find the cheapest pint · 🇪🇸 Order in Spanish · 🎤 Convince someone to sing · 🏖️ Beach challenge · 💃 Recreate a dance · 🤵 Get the groom to do something embarrassing · 🧩 Find a hidden location · 🍻 Bar challenge" data-sk="Celé letovisko sa premení na obrovskú tímovú súťaž. Každý tím dostane mapu a zoznam misií. 📸 Foto s cudzincom · 🍺 Nájdi najlacnejšie pivo · 🇪🇸 Objednaj po španielsky · 🎤 Presvedč niekoho zaspievať · 🏖️ Plážová výzva · 💃 Zreprodukuj tanec · 🤵 Nechaj ženícha urobiť niečo trápne · 🧩 Nájdi skryté miesto · 🍻 Bar výzva">Turn the entire resort into a giant team competition. Each team gets a map and a list of missions. 📸 Photo with a stranger · 🍺 Find the cheapest pint · 🇪🇸 Order in Spanish · 🎤 Convince someone to sing · 🏖️ Beach challenge · 💃 Recreate a dance · 🤵 Get the groom to do something embarrassing · 🧩 Find a hidden location · 🍻 Bar challenge</div>
+          </label>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="theme-custom" data-en="Got a better idea?" data-sk="Máš lepší nápad?">Got a better idea? <span style="color:var(--muted);font-weight:400;font-size:.75rem;letter-spacing:0;text-transform:none">(optional)</span></label>
+        <input type="text" id="theme-custom" data-en-placeholder="Suggest your own theme idea…" data-sk-placeholder="Navrhni vlastnú tému…" placeholder="Suggest your own theme idea…"/>
+      </div>
+
+      <div class="form-group">
+        <label for="dietary" data-en="Dietary requirements" data-sk="Diétne požiadavky">Dietary requirements <span style="color:var(--muted);font-weight:400;font-size:.75rem;letter-spacing:0;text-transform:none">(optional)</span></label>
+        <textarea id="dietary" data-en-placeholder="e.g. vegetarian, nut allergy, gluten-free…" data-sk-placeholder="napr. vegetarián, alergia na orechy, bezlepková diéta…" placeholder="e.g. vegetarian, nut allergy, gluten-free…" style="min-height:70px"></textarea>
+      </div>
+
+      <div class="form-group">
         <label for="comments" data-en="Leave a message to the best man 😎" data-sk="Zanechaj správu svadobnému mužovi 😎">Leave a message to the best man 😎</label>
         <textarea id="comments" data-en-placeholder="Anything you'd like to know or tell us…" data-sk-placeholder="Čokoľvek, čo chceš vedieť alebo nám povedať…" placeholder="Anything you'd like to know or tell us…"></textarea>
       </div>
@@ -304,6 +395,22 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
 <script>
 const APPS_SCRIPT_URL = 'https://n8n.ramonapicksrene.com/webhook/388e5812-d1a7-446a-88a7-d2f993670797';
 
+/* --- COST NOTE TRANSLATIONS --- */
+const costNoteHTML = {
+  en: `<p style="font-weight:700;font-size:1.05rem;margin-bottom:1rem;color:var(--txt)">💸 THE DAMAGE: A ROUGH IDEA OF COSTS</p>
+<p style="margin-bottom:1rem">Before anyone starts selling their kidneys, here's a rough estimate of what the Benidorm stag is likely to cost, including flights, accommodation, drinks and activities.</p>
+<p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">✈️ Flights:</strong> I won't be booking these for you — you'll each need to sort your own flights. The earlier you book, the less likely you are to cry when you see the price. I'm sending this out just under a year before the stag, so you've got plenty of time to hunt down a decent deal.</p>
+<p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">🛏️ Accommodation:</strong> Sharing a room is strongly encouraged. You're going on a stag, not a romantic getaway, so get comfortable with your future roommate and save yourselves some money.</p>
+<p style="margin-bottom:1rem"><strong style="color:var(--cyan)">🍻 Drinks & activities:</strong> The estimate includes a rough budget for the important things in life: alcohol, questionable decisions and activities that seemed like a good idea at the time.</p>
+<p>I'm collecting RSVPs now and will share the full plan, costs and itinerary shortly. 🎉</p>`,
+  sk: `<p style="font-weight:700;font-size:1.05rem;margin-bottom:1rem;color:var(--txt)">💸 ŠKODY: HRUBÝ ODHAD NÁKLADOV</p>
+<p style="margin-bottom:1rem">Skôr ako niekto začne predávať obličky, tu je hrubý odhad toho, čo rozlúčka so slobodou v Benidorme pravdepodobne bude stáť, vrátane letov, ubytovania, nápojov a aktivít.</p>
+<p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">✈️ Lety:</strong> Tieto za vás rezervovať nebudem — každý si musí zabezpečiť vlastný let. Čím skôr si ho zarezervuješ, tým menšia šanca, že sa rozplačeš pri pohľade na cenu. Posielam toto takmer rok vopred, takže máš dostatok času nájsť slušnú ponuku.</p>
+<p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">🛏️ Ubytovanie:</strong> Zdieľanie izby je dôrazne odporúčané. Ideš na rozlúčku, nie na romantický pobyt, takže si zvykni na svojho budúceho spolubývajúceho a ušetri nejaké peniaze.</p>
+<p style="margin-bottom:1rem"><strong style="color:var(--cyan)">🍻 Nápoje & aktivity:</strong> Odhad zahŕňa hrubý rozpočet na najdôležitejšie veci v živote: alkohol, pochybné rozhodnutia a aktivity, ktoré v danej chvíli vyzerali ako skvelý nápad.</p>
+<p>Zbierám prihlášky a čoskoro zdieľam celý plán, náklady a itinerár. 🎉</p>`
+};
+
 /* --- LANGUAGE SWITCHER --- */
 let currentLang = 'en';
 function setLang(lang) {
@@ -327,6 +434,9 @@ function setLang(lang) {
       el.innerHTML = val;
     }
   });
+
+  // Update cost note (multi-paragraph HTML, handled separately)
+  document.getElementById('cost-note').innerHTML = costNoteHTML[lang];
 
   // Update textarea placeholders
   document.querySelectorAll('[data-en-placeholder]').forEach(el => {
@@ -423,6 +533,9 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
     phone:     document.getElementById('phone').value.trim(),
     attending:      tog.checked ? 'Yes' : 'No',
     roomPreference: document.querySelector('input[name="room"]:checked')?.value || '',
+    themePick:      document.querySelector('input[name="theme"]:checked')?.value || '',
+    themeIdea:      document.getElementById('theme-custom').value.trim(),
+    dietary:        document.getElementById('dietary').value.trim(),
     comments:       document.getElementById('comments').value.trim(),
     timestamp: new Date().toISOString()
   };
