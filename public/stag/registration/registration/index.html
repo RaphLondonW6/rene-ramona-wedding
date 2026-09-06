@@ -563,6 +563,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
   try {
     await fetch(APPS_SCRIPT_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
     document.getElementById('rsvp-form').reset();
+    document.getElementById('rsvp-form').classList.add('hidden');
     tg.classList.remove('is-attending'); tg.classList.add('is-out');
     const successEl = document.getElementById('form-success');
     successEl.innerHTML = wasAttending
