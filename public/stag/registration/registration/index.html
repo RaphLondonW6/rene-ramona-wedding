@@ -552,6 +552,7 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
     timestamp: new Date().toISOString()
   };
 
+  const wasAttending = tog.checked;
   const btn = document.getElementById('submit-btn');
   const btnTxt = document.getElementById('btn-text');
   const spinner = document.getElementById('btn-spinner');
@@ -563,7 +564,15 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
     await fetch(APPS_SCRIPT_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
     document.getElementById('rsvp-form').reset();
     tg.classList.remove('is-attending'); tg.classList.add('is-out');
-    document.getElementById('form-success').classList.remove('hidden');
+    const successEl = document.getElementById('form-success');
+    successEl.innerHTML = wasAttending
+      ? (currentLang === 'en'
+          ? '<strong>You\'re locked in!</strong> See you in Benidorm 🏝️'
+          : '<strong>Si zaregistrovaný!</strong> Uvidíme sa v Benidorme 🏝️')
+      : (currentLang === 'en'
+          ? 'Benidorm will carry on, barely. See you next time brother!'
+          : 'Benidorm bude pokračovať, tak-tak. Uvidíme sa nabudúce, brat!');
+    successEl.classList.remove('hidden');
   } catch(err) {
     document.getElementById('form-error').classList.remove('hidden');
   } finally {
