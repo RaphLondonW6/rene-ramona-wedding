@@ -192,7 +192,7 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
         <span class="details__icon">📅</span>
         <h3 data-en="Dates" data-sk="Dátumy">Dates</h3>
         <p data-en="14 – 16 May 2027" data-sk="14 – 16 máj 2027">14 – 16 May 2027</p>
-        <small data-en="14th evening → Arrival at the hotel, first night between us. 15th → The Stag due day, brace yourself! 🍻 16th → Late check-out, end of the Stag, time to go home 😭" data-sk="14. večer → Príchod do hotela, prvá noc medzi nami. 15. → Deň rozlúčky, priprav sa! 🍻 16. → Neskorý check-out, koniec rozlúčky, čas ísť domov 😭">14th evening → Arrival at the hotel, first night between us. 15th → The Stag due day, brace yourself! 🍻 16th → Late check-out, end of the Stag, time to go home 😭</small>
+        <small data-en="14th evening → Arrival at the hotel, first night between us. 15th → The Stag do day, brace yourself! 🍻 16th → Late check-out, end of the Stag, time to go home 😭" data-sk="14. večer → Príchod do hotela, prvá noc medzi nami. 15. → Deň rozlúčky, priprav sa! 🍻 16. → Neskorý check-out, koniec rozlúčky, čas ísť domov 😭">14th evening → Arrival at the hotel, first night between us. 15th → The Stag do day, brace yourself! 🍻 16th → Late check-out, end of the Stag, time to go home 😭</small>
       </div>
       <div class="details__card">
         <span class="details__icon">💶</span>
@@ -208,9 +208,9 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
     <div class="details__note" id="cost-note" style="text-align:left">
       <p style="font-weight:700;font-size:1.05rem;margin-bottom:1rem;color:var(--txt)">💸 THE DAMAGE: A ROUGH IDEA OF COSTS</p>
       <p style="margin-bottom:1rem">Before anyone starts selling their kidneys, here's a rough estimate of what the Benidorm stag is likely to cost, including flights, accommodation, drinks and activities.</p>
-      <p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">✈️ Flights:</strong> I won't be booking these for you — you'll each need to sort your own flights. The earlier you book, the less likely you are to cry when you see the price. I'm sending this out just under a year before the stag, so you've got plenty of time to hunt down a decent deal.</p>
       <p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">🛏️ Accommodation:</strong> Sharing a room is strongly encouraged. You're going on a stag, not a romantic getaway, so get comfortable with your future roommate and save yourselves some money.</p>
-      <p style="margin-bottom:1rem"><strong style="color:var(--cyan)">🍻 Drinks &amp; activities:</strong> The estimate includes a rough budget for the important things in life: alcohol, questionable decisions and activities that seemed like a good idea at the time.</p>
+      <p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">🍻 Drinks &amp; activities:</strong> The estimate includes a rough budget for the important things in life: alcohol, questionable decisions and activities that seemed like a good idea at the time.</p>
+      <p style="margin-bottom:1rem"><strong style="color:var(--cyan)">✈️ Flights:</strong> I won't be booking these for you — you'll each need to sort your own flights. The earlier you book, the less likely you are to cry when you see the price. I'm sending this out just under a year before the stag, so you've got plenty of time to hunt down a decent deal.</p>
       <p>I'm collecting RSVPs now and will share the full plan, costs and itinerary shortly. 🎉</p>
     </div>
   </div>
@@ -245,6 +245,10 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
         <span class="toggle-label toggle-label--in" data-en="Attending 🎉" data-sk="Prídem 🎉">Attending 🎉</span>
       </div>
 
+      <div id="miss-you-msg" class="hidden" style="text-align:center;padding:.75rem 0 1.25rem;font-size:1.15rem;color:var(--muted)">
+        😢 <span data-en="We'll Miss You" data-sk="Bude nám ťa chýbať">We'll Miss You</span>
+      </div>
+
       <div class="form-row">
         <div class="form-group">
           <label for="first-name" data-en="First Name" data-sk="Meno">First Name <span class="req">*</span></label>
@@ -264,13 +268,13 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
         <span class="error-msg" id="err-email"></span>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="group-phone">
         <label for="phone" data-en="Phone Number" data-sk="Telefónne číslo">Phone Number <span class="req">*</span></label>
         <input type="tel" id="phone" placeholder="+44 7700 900000" autocomplete="tel"/>
         <span class="error-msg" id="err-phone"></span>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="group-room-pref">
         <label data-en="Room preference" data-sk="Preferencia izby">Room preference <span class="req">*</span></label>
         <div class="radio-group" role="radiogroup">
           <label class="radio-option">
@@ -285,7 +289,7 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
         <span class="error-msg" id="err-room"></span>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="group-theme">
         <label data-en="Vote for your favourite theme" data-sk="Hlasuj za obľúbenú tému">Vote for your favourite theme <span style="color:var(--muted);font-weight:400;font-size:.75rem;letter-spacing:0;text-transform:none">(optional)</span></label>
         <p style="font-size:.82rem;color:var(--muted);margin:.25rem 0 .75rem" data-en="Pick the theme you'd most like — we'll go with the crowd favourite." data-sk="Vyber tému, ktorú by si pre víkend najviac chcel — vyberieme obľúbenú.">Pick the theme you'd most like — we'll go with the crowd favourite.</p>
         <div class="theme-cards" role="radiogroup">
@@ -353,12 +357,12 @@ body{font-family:var(--body);background:var(--bg);color:var(--txt);font-size:16p
         </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="group-theme-custom">
         <label for="theme-custom" data-en="Got a better idea?" data-sk="Máš lepší nápad?">Got a better idea? <span style="color:var(--muted);font-weight:400;font-size:.75rem;letter-spacing:0;text-transform:none">(optional)</span></label>
         <input type="text" id="theme-custom" data-en-placeholder="Suggest your own theme idea…" data-sk-placeholder="Navrhni vlastnú tému…" placeholder="Suggest your own theme idea…"/>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" id="group-dietary">
         <label for="dietary" data-en="Dietary requirements" data-sk="Diétne požiadavky">Dietary requirements <span style="color:var(--muted);font-weight:400;font-size:.75rem;letter-spacing:0;text-transform:none">(optional)</span></label>
         <textarea id="dietary" data-en-placeholder="e.g. vegetarian, nut allergy, gluten-free…" data-sk-placeholder="napr. vegetarián, alergia na orechy, bezlepková diéta…" placeholder="e.g. vegetarian, nut allergy, gluten-free…" style="min-height:70px"></textarea>
       </div>
@@ -399,15 +403,15 @@ const APPS_SCRIPT_URL = 'https://n8n.ramonapicksrene.com/webhook/388e5812-d1a7-4
 const costNoteHTML = {
   en: `<p style="font-weight:700;font-size:1.05rem;margin-bottom:1rem;color:var(--txt)">💸 THE DAMAGE: A ROUGH IDEA OF COSTS</p>
 <p style="margin-bottom:1rem">Before anyone starts selling their kidneys, here's a rough estimate of what the Benidorm stag is likely to cost, including flights, accommodation, drinks and activities.</p>
-<p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">✈️ Flights:</strong> I won't be booking these for you — you'll each need to sort your own flights. The earlier you book, the less likely you are to cry when you see the price. I'm sending this out just under a year before the stag, so you've got plenty of time to hunt down a decent deal.</p>
 <p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">🛏️ Accommodation:</strong> Sharing a room is strongly encouraged. You're going on a stag, not a romantic getaway, so get comfortable with your future roommate and save yourselves some money.</p>
-<p style="margin-bottom:1rem"><strong style="color:var(--cyan)">🍻 Drinks & activities:</strong> The estimate includes a rough budget for the important things in life: alcohol, questionable decisions and activities that seemed like a good idea at the time.</p>
+<p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">🍻 Drinks & activities:</strong> The estimate includes a rough budget for the important things in life: alcohol, questionable decisions and activities that seemed like a good idea at the time.</p>
+<p style="margin-bottom:1rem"><strong style="color:var(--cyan)">✈️ Flights:</strong> I won't be booking these for you — you'll each need to sort your own flights. The earlier you book, the less likely you are to cry when you see the price. I'm sending this out just under a year before the stag, so you've got plenty of time to hunt down a decent deal.</p>
 <p>I'm collecting RSVPs now and will share the full plan, costs and itinerary shortly. 🎉</p>`,
   sk: `<p style="font-weight:700;font-size:1.05rem;margin-bottom:1rem;color:var(--txt)">💸 ŠKODY: HRUBÝ ODHAD NÁKLADOV</p>
 <p style="margin-bottom:1rem">Skôr ako niekto začne predávať obličky, tu je hrubý odhad toho, čo rozlúčka so slobodou v Benidorme pravdepodobne bude stáť, vrátane letov, ubytovania, nápojov a aktivít.</p>
-<p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">✈️ Lety:</strong> Tieto za vás rezervovať nebudem — každý si musí zabezpečiť vlastný let. Čím skôr si ho zarezervuješ, tým menšia šanca, že sa rozplačeš pri pohľade na cenu. Posielam toto takmer rok vopred, takže máš dostatok času nájsť slušnú ponuku.</p>
 <p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">🛏️ Ubytovanie:</strong> Zdieľanie izby je dôrazne odporúčané. Ideš na rozlúčku, nie na romantický pobyt, takže si zvykni na svojho budúceho spolubývajúceho a ušetri nejaké peniaze.</p>
-<p style="margin-bottom:1rem"><strong style="color:var(--cyan)">🍻 Nápoje & aktivity:</strong> Odhad zahŕňa hrubý rozpočet na najdôležitejšie veci v živote: alkohol, pochybné rozhodnutia a aktivity, ktoré v danej chvíli vyzerali ako skvelý nápad.</p>
+<p style="margin-bottom:.75rem"><strong style="color:var(--cyan)">🍻 Nápoje & aktivity:</strong> Odhad zahŕňa hrubý rozpočet na najdôležitejšie veci v živote: alkohol, pochybné rozhodnutia a aktivity, ktoré v danej chvíli vyzerali ako skvelý nápad.</p>
+<p style="margin-bottom:1rem"><strong style="color:var(--cyan)">✈️ Lety:</strong> Tieto za vás rezervovať nebudem — každý si musí zabezpečiť vlastný let. Čím skôr si ho zarezervuješ, tým menšia šanca, že sa rozplačeš pri pohľade na cenu. Posielam toto takmer rok vopred, takže máš dostatok času nájsť slušnú ponuku.</p>
 <p>Zbierám prihlášky a čoskoro zdieľam celý plán, náklady a itinerár. 🎉</p>`
 };
 
@@ -469,10 +473,15 @@ function setLang(lang) {
 /* --- TOGGLE --- */
 const tog = document.getElementById('attendance-toggle');
 const tg  = document.getElementById('toggle-group');
-tog.addEventListener('change', () => {
-  tg.classList.toggle('is-attending', tog.checked);
-  tg.classList.toggle('is-out', !tog.checked);
-});
+const attendingOnlyIds = ['group-phone','group-room-pref','group-theme','group-theme-custom','group-dietary'];
+function applyAttendanceUI() {
+  const isAttending = tog.checked;
+  tg.classList.toggle('is-attending', isAttending);
+  tg.classList.toggle('is-out', !isAttending);
+  attendingOnlyIds.forEach(id => document.getElementById(id).classList.toggle('hidden', !isAttending));
+  document.getElementById('miss-you-msg').classList.toggle('hidden', isAttending);
+}
+tog.addEventListener('change', applyAttendanceUI);
 
 /* --- VALIDATION --- */
 const errMsgs = {
@@ -522,8 +531,11 @@ document.getElementById('rsvp-form').addEventListener('submit', async e => {
   e.preventDefault();
   document.getElementById('form-success').classList.add('hidden');
   document.getElementById('form-error').classList.add('hidden');
-  const fieldsOk = Object.keys(fields).map(validateField).every(Boolean);
-  const roomOk = validateRoom();
+  const fieldsOk = Object.keys(fields).map(id => {
+    if (!tog.checked && id === 'phone') return true;
+    return validateField(id);
+  }).every(Boolean);
+  const roomOk = tog.checked ? validateRoom() : true;
   if (!fieldsOk || !roomOk) return;
 
   const payload = {
